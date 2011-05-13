@@ -1,0 +1,32 @@
+﻿<AddIn name        = "Clarion Editor Context Help"
+       author      = "ClarionEdge"
+       copyright   = ""
+       url         = "http://www.clarionedge.com"
+       description = "Real context sensitive help in the clarion editor window!">
+
+  <Manifest>
+    <Identity name="ClarionEdge.ClarionEditorContextHelp" version="0.3"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+    <Dependency addin = "SoftVelocity.ClarionBinding"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "ClarionEditorContextHelp.dll"/>
+  </Runtime>
+
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Help">
+    <MenuItem id = "ClarionEditorContextHelpSeparator"
+              type         = "Separator"
+              insertafter  = "ClarionContextHelp"/>
+    <MenuItem id = "ClarionEditorContextHelp"
+              label = "Clarion Editor Context Search"
+              insertafter  = "ClarionEditorContextHelpSeparator"
+              insertbefore = "SDKHelp"
+              icon         = "Icons.Silk.help"
+              shortcut     = "Shift|F1"
+              class        = "ClarionEdge.ClarionEditorContextHelp.ShowClarionEditorContextHelp"/>
+  </Path>
+  
+</AddIn>

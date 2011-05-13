@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="04 Feb 2011">
+    <note>Internal Release</note>
+    <note type="FEATURE">Provides Context Sensitive Help to the embeditor via Shift+F1</note>
+  </release>
+  <release version="0.2" date="21 Feb 2011">
+    <note type="FEATURE">Help file can hang/freeze in some circumstances</note>
+  </release>
+  <release version="0.3">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+  </release>
+</release_notes>
