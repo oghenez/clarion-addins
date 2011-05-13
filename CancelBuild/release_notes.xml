@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1">
+    <note>Internal Release</note>
+  </release>
+  <release version="0.2" date="06 Oct 2010">
+    <note>Public Release</note>
+    <note type="FEATURE">Places Cancel buttons on the output pad</note>
+    <note type="FIX">The “Cancel Generation” button will now be disabled until generation is actually in progress!</note>
+    <note type="CHANGE">The imports used by this addin are no longer relative to its location so you can put the addin file where ever you want (in the appropriate addin locations of course!)</note>
+  </release>
+  <release version="0.3" date="16 Oct 2010">
+    <note type="FEATURE">Buttons labels are now option. Label state is configured in the IDE options window</note>
+    <note type="CHANGE">Nicer icons for the buttons (from FamFamFam)</note>
+  </release>
+  <release version="0.4">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+  </release>
+</release_notes>
