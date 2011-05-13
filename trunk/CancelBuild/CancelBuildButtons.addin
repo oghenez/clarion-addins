@@ -1,6 +1,7 @@
 ﻿<AddIn name        = "Cancel Build Button"
        author      = "ClarionEdge"
-       copyright   = ""
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionedge.com"
        description = "Put a cancel build button on the toolbar">
 
