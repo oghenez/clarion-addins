@@ -1,0 +1,66 @@
+﻿<AddIn name        = "Cancel Build Button"
+       author      = "ClarionEdge"
+       copyright   = ""
+       url         = "http://www.clarionedge.com"
+       description = "Put a cancel build button on the toolbar">
+
+  <Manifest>
+    <Identity name="ClarionEdge.CancelBuildButtons" version="0.4"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+    <Dependency addin = "SoftVelocity.ClarionBinding"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "CancelBuild.dll"/>
+    <Import assembly = "$SoftVelocity.ClarionBinding/Generator.dll"/>
+    <Import assembly = "$SoftVelocity.ClarionBinding/clarion.gen.dll"/>
+    <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
+    <Import assembly = ":ICSharpCode.SharpDevelop">
+      <ConditionEvaluator name="IsBuildRunning2" class="ICSharpCode.SharpDevelop.IsBuildRunningConditionEvaluator"/>
+    </Import>
+    <Import assembly = ":ICSharpCode.Core"/>
+  </Runtime>
+
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <Path name = "/SharpDevelop/Pads/CompilerMessageView/Toolbar">
+    <ToolbarItem id    = "CancelBuildButtonsSeparator" type  = "Separator"/>
+    <Condition name="Compare" string="${property:CancelBuildButtons.Options.HideButtonLabels??false}" equals="False">
+      <Condition name = "IsBuildRunning2" isbuildrunning="False" action = "Disable">
+        <ToolbarItem id    = "CancelBuild"
+          label = "${res:SoftVelocity.Common.Commands.CancelBuild}"
+          icon  = "Icons.Silk.cross"
+          tooltip = "Cancel active build"
+          class = "SoftVelocity.Common.Project.Commands.CancelBuild"/>
+      </Condition>
+      <Condition name="GeneratingApplication" isgenerationrunning="True" action = "Disable">
+        <MenuItem id    = "CancelGeneration"
+          label = "${res:Clarion.Generator.Menu.CancelGeneration}"
+          icon  = "Icons.Silk.stop"
+          tooltip = "Cancel generation"
+          class   = "SoftVelocity.Generator.Commands.CancelGeneration"/>
+      </Condition>
+    </Condition>
+    <Condition name="Compare" string="${property:CancelBuildButtons.Options.HideButtonLabels??false}" equals="True">
+      <ToolbarItem id    = "CancelBuild"
+        label = ""
+        icon  = "Icons.Silk.cross"
+        tooltip = "Cancel active build"
+        class = "SoftVelocity.Common.Project.Commands.CancelBuild"/>
+      <Condition name="GeneratingApplication" isgenerationrunning="True" action = "Disable">
+        <MenuItem id    = "CancelGeneration"
+          label = ""
+          icon  = "Icons.Silk.stop"
+          tooltip = "Cancel generation"
+          class   = "SoftVelocity.Generator.Commands.CancelGeneration"/>
+      </Condition>
+    </Condition>
+  </Path>
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionEdgeOptions">
+    <DialogPanel id = "CancelBuildOptionsPanel"
+		             label = "Cancel Build/Generate Buttons"
+		             class = "ClarionEdge.CancelBuildButtons.CancelBuildOptionsPanel"/>
+  </Path>
+
+</AddIn>
