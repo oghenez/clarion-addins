@@ -2,8 +2,9 @@
        author      = "ClarionEdge"
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
-       url         = "http://www.clarionedge.com"
-       description = "Real context sensitive help in the clarion editor window!">
+       url         = "http://www.clarionaddins.com/addins/ClarionEditorContextHelp.html"
+       description = "Real context sensitive help in the clarion editor window!"
+       usage       = "When in the Embeditor or Embed Editor use Shift+F1 to open the help. Can also be activated from the Help menu.">
 
   <Manifest>
     <Identity name="ClarionEdge.ClarionEditorContextHelp" version="0.3"/>

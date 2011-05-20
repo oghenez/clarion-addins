@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <release_notes>
   <release version="0.1" date="04 Feb 2011">
-    <note>Internal Release</note>
+    <note type="INFO">Internal Release</note>
     <note type="FEATURE">Provides Context Sensitive Help to the embeditor via Shift+F1</note>
     <note type="BLOG">`ClarionEditorContextHelp addin v0.1 now available! &lt;http://www.clarionedge.com/clarion/addins/clarioneditorcontexthelp-addin-v0-1-now-available.html&gt;`_</note>
   </release>

@@ -61,8 +61,8 @@
 
   <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionEdgeOptions">
     <DialogPanel id = "CancelBuildOptionsPanel"
-		             label = "Cancel Build/Generate Buttons"
-		             class = "ClarionEdge.CancelBuildButtons.CancelBuildOptionsPanel"/>
+                 label = "Cancel Build/Generate Buttons"
+                 class = "ClarionEdge.CancelBuildButtons.CancelBuildOptionsPanel"/>
   </Path>
 
 </AddIn>
