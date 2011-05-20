@@ -1,0 +1,38 @@
+<AddIn name        = "ClearErrors"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/ClearErrors.html"
+       description = "Adds a few new buttons to the Error Pad"
+       usage       = "New Buttons: Clear Errors, Select All Errors and Copy All Errors">
+
+  <Manifest>
+    <Identity name="ClarionEdge.ClearErrors" version="0.4"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+  </Manifest>
+  
+  <Runtime>
+    <Import assembly = "ClearErrors.dll"/>
+  </Runtime>
+
+  <StringResources file="Resources\StringResources.resources"/>
+
+  <Path name = "/SharpDevelop/Pads/ErrorList/Toolbar">
+    <ToolbarItem id    = "ClearErrorsSeparator" type  = "Separator"/>
+    <ToolbarItem id      = "ClearErrors"
+                 tooltip = "${res:ClarionEdge.ClearErrors.ButtonTooltip}"
+                 icon    = "Icons.16x16.BrowserRefresh"
+                 label   = "${res:ClarionEdge.ClearErrors.ButtonLabel}"
+                 class   = "ClarionEdge.ClearErrors.ClearErrors"/>
+    <ToolbarItem id      = "SelectAllErrors"
+                 tooltip = "${res:ClarionEdge.SelectAllErrors.ButtonTooltip}"
+                 icon    = "PadIcons.Output"
+                 label   = "${res:ClarionEdge.SelectAllErrors.ButtonLabel}"
+                 class   = "ClarionEdge.ClearErrors.SelectAllErrors"/>
+    <ToolbarItem id      = "CopyAllErrors"
+                 tooltip = "${res:ClarionEdge.CopyAllErrors.ButtonTooltip}"
+                 icon    = "Icons.16x16.CopyIcon"
+                 label   = "${res:ClarionEdge.CopyAllErrors.ButtonLabel}"
+                 class   = "ClarionEdge.ClearErrors.CopyAllErrors"/>
+  </Path>                 
+</AddIn>
