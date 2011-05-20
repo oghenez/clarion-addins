@@ -1,19 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <release_notes>
-  <release version="0.1">
-    <note>Internal Release</note>
+  <release version="0.1" date="unknown">
+    <note type="INFO">Internal Release</note>
   </release>
   <release version="0.2" date="06 Oct 2010">
-    <note>Public Release</note>
+    <note type="INFO">Public Release</note>
     <note type="FEATURE">Places Cancel buttons on the output pad</note>
     <note type="FIX">The “Cancel Generation” button will now be disabled until generation is actually in progress!</note>
     <note type="CHANGE">The imports used by this addin are no longer relative to its location so you can put the addin file where ever you want (in the appropriate addin locations of course!)</note>
+    <note type="BLOG">`Cancel Build/Generate buttons v0.2 &lt;http://www.clarionedge.com/clarion/addins/cancel-buildgenerate-buttons.html&gt;`_</note>
   </release>
   <release version="0.3" date="16 Oct 2010">
     <note type="FEATURE">Buttons labels are now option. Label state is configured in the IDE options window</note>
     <note type="CHANGE">Nicer icons for the buttons (from FamFamFam)</note>
+    <note type="BLOG">`Cancel Build Buttons addin v0.3 &lt;http://www.clarionedge.com/clarion/addins/cancel-build-buttons-addin-v0-3.html&gt;`_</note>
   </release>
-  <release version="0.4">
+  <release version="0.4" date="14 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+  </release>
+  <release version="0.5" date="16 May 2011">
+    <note type="CHANGE">Renamed project from CancelBuild to CancelBuildButtons. This makes the documentation generation much easier if all these names match.</note>
   </release>
 </release_notes>
