@@ -1,4 +1,4 @@
-﻿<AddIn name        = "Clarion Editor Context Help"
+﻿<AddIn name        = "ClarionEditorContextHelp"
        author      = "ClarionEdge"
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"

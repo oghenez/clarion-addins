@@ -3,9 +3,11 @@
   <release version="0.1" date="04 Feb 2011">
     <note>Internal Release</note>
     <note type="FEATURE">Provides Context Sensitive Help to the embeditor via Shift+F1</note>
+    <note type="BLOG">`ClarionEditorContextHelp addin v0.1 now available! &lt;http://www.clarionedge.com/clarion/addins/clarioneditorcontexthelp-addin-v0-1-now-available.html&gt;`_</note>
   </release>
   <release version="0.2" date="21 Feb 2011">
     <note type="FEATURE">Help file can hang/freeze in some circumstances</note>
+    <note type="BLOG">`ClarionEditorContextHelp addin v0.2–bug fix &lt;http://www.clarionedge.com/clarion/addins/clarioneditorcontexthelp-addin-v0-2bug-fix.html&gt;`_</note>
   </release>
   <release version="0.3">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
