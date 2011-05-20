@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="16 Oct 2010">
+    <note type="INFO">Initial Release</note>
+  </release>
+  <release version="0.2" date="20 May 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+  </release>
+</release_notes>
