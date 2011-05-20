@@ -1,12 +1,13 @@
-﻿<AddIn name        = "Cancel Build Button"
+﻿<AddIn name        = "CancelBuildButtons"
        author      = "ClarionEdge"
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
-       url         = "http://www.clarionedge.com"
-       description = "Put a cancel build button on the toolbar">
+       url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
+       description = "This addin will put two buttons, cancel build and cancel generation, on the toolbar of the output pad."
+       usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog.">
 
   <Manifest>
-    <Identity name="ClarionEdge.CancelBuildButtons" version="0.4"/>
+    <Identity name="ClarionEdge.CancelBuildButtons" version="0.5"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
     <Dependency addin = "SoftVelocity.ClarionBinding"/>
   </Manifest>
