@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="02 March 2011">
+    <note type="INFO">Initial Release</note>
+    <note type="FEATURE">Puts a new button on the main toolbar that will launch the "StartUp Project" in the debugger without building the solution first.</note>
+    <note type="BLOG">`MainToolbarExtras addin v0.1 – Run Startup Project in the debugger &lt;http://www.clarionedge.com/clarion/addins/maintoolbarextras-addin-v0-1-run-startup-project-in-the-debugger.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="01 May 2011">
+    <note type="FEATURE">You can now define the size of the main toolbar and icons!</note>
+    <note type="BLOG">`MainToolbarExtras addin v0.2–Set Main Toolbar Size! &lt;http://www.clarionedge.com/clarion/addins/maintoolbarextras-addin-v0-2set-main-toolbar-size.html&gt;`_</note>
+  </release>
+  <release version="0.3" date="09 May 2011">
+    <note type="FEATURE">Optionally set the size for ALL accessible toolbars in the IDE!</note>
+    <note type="BLOG">`MainToolbarExtras addin v0.3 – Set ALL Toolbar Sizes! &lt;http://www.clarionedge.com/clarion/addins/maintoolbarextras-addin-v0-3-set-all-toolbar-sizes.html&gt;`_</note>
+  </release>
+  <release version="0.4" date="21 May 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+  </release>
+</release_notes>

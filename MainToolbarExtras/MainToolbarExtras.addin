@@ -1,0 +1,64 @@
+<AddIn name = "MainToolbarExtras"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/MainToolbarExtras.html"
+       description = "Some new buttons and other enhancements to the main IDE toolbar."
+       usage       = "Adds a new icon for 'Run Startup Project in Debugger' as well as a Right Click context menu to allow you to set the toolbar/icon size.&#xD;&#xD;  * Right click on the Main Toolbar (anywhere) to get a context menu">
+
+  <Manifest>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.4"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+  </Manifest>
+  
+  <Runtime>
+    <Import assembly = "MainToolbarExtras.dll"/>
+  </Runtime>
+
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <Path name = "/SharpDevelop/Workbench/ToolBar/Standard">
+    <Condition name="Compare" string="${property:ClarionEdge.MainToolbarExtras.ShowRunStartUpProjectInDebugger??True}" equals="True" action="Exclude">
+      <Condition name = "SolutionOpen" action="Disable">
+        <ComplexCondition>
+          <Or>
+            <Condition name="IsProcessRunning" isdebugging = "False"/>
+            <Not>
+              <Condition name="DebuggerSupports" debuggersupports = "ExecutionControl"/>
+            </Not>
+          </Or>
+          <Condition name="IsProcessRunning" isdebugging = "False" action = "Disable">
+            <Condition name="DebuggerSupports" debuggersupports = "StartWithoutDebugging">
+              <ToolbarItem id      = "RunStartUpProjectInDebugger"
+                           insertbefore  = "RunWithoutDebugger"
+                           icon    = "Icons.16x16.RunProgramIcon"
+                           tooltip = "Run the Startup Project in the debugger"
+                           class   = "ClarionEdge.MainToolbarExtras.RunStartUpProjectInDebugger"/>
+            </Condition>
+          </Condition>
+        </ComplexCondition>
+      </Condition>
+    </Condition>
+  </Path>
+
+  <Path name = "/ClarionEdge/MainToolBarExtras/ContextMenu">
+    <MenuItem id="ShowRunStartUpProjectInDebugger"
+              label="Show 'Run StartUp Project In Debugger' Button"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.ShowRunStartUpProjectInDebugger"/>
+    <MenuItem id = "SetToolbarSize"
+              label = "Set Toolbar Size"
+              icon = "Icons.famfamfam.silk.page_white_wrench"
+              class =" ClarionEdge.MainToolbarExtras.SetToolbarSizeCommand"/>
+    <MenuItem id="UpdateOtherToolbars"
+              label="Make ALL toolbars the same size (except Application Editor, sorry!)"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.UpdateOtherToolbars"/>
+  </Path>
+
+  <Path name = "/Workspace/Autostart">
+    <Class id    = "InitializeMainToolbarExtras"
+           class = "ClarionEdge.MainToolbarExtras.StartupCode"/>
+  </Path>
+
+</AddIn>
