@@ -7,13 +7,13 @@
        usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog.">
 
   <Manifest>
-    <Identity name="ClarionEdge.CancelBuildButtons" version="0.5"/>
+    <Identity name="ClarionEdge.CancelBuildButtons" version="0.6"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
     <Dependency addin = "SoftVelocity.ClarionBinding"/>
   </Manifest>
 
   <Runtime>
-    <Import assembly = "CancelBuild.dll"/>
+    <Import assembly = "CancelBuildButtons.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/Generator.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/clarion.gen.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
