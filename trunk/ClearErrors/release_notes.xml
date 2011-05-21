@@ -2,6 +2,7 @@
 <release_notes>
   <release version="0.1" date="08 Oct 2010">
     <note type="INFO">Initial Release</note>
+    <note type="BLOG">`C7 Addin – Clear Errors &lt;http://www.clarionedge.com/clarion/addins/c7-addin-clear-errors.html&gt;`_</note>
   </release>
   <release version="0.2" date="09 Oct 2010">
     <note type="FEATURE">Now supports localization of button label and tooltip</note>
