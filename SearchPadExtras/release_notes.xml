@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="27 Oct 2010">
+    <note type="INFO">Initial Release</note>
+    <note type="BLOG">`SearchPadExtras addin &lt;http://www.clarionedge.com/clarion/addins/searchpadextras-addin.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="05 Feb 2011">
+    <note type="FEATURE">New buttons</note>
+    <note type="BLOG">`SearchPadExtras v0.2 released &lt;http://www.clarionedge.com/clarion/addins/searchpadextras-v0-2-released.html&gt;`_</note>
+  </release>
+  <release version="0.3" date="21 May 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
+  </release>
+</release_notes>
+
