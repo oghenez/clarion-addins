@@ -1,0 +1,51 @@
+﻿<AddIn name        = "ProjectBrowserExtras"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/ProjectBrowserExtras.html"
+       description = "Adds some ehancements to the default project browser pad"
+       usage       = "New buttons available are: &#xD;&#xD;  * Expand/Collaps Tree&#xD;&#xD;  * Close Solution">
+
+  <Manifest>
+    <Identity name="ClarionEdge.ProjectBrowserExtras" version="0.3"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "ProjectBrowserExtras.dll"/>
+    <Import assembly=":ICSharpCode.SharpDevelop"/>
+  </Runtime>
+
+  <BitmapResources file="Resources\BitmapResources.resources" />
+
+  <Path name = "/SharpDevelop/Pads/ProjectBrowser/ToolBar/Standard">
+    <Condition name = "SolutionOpen" action="Disable">
+      <ToolbarItem id    = "ProjectBrowserExtrasSeparator"
+                   type  = "Separator"/>
+      <ToolbarItem id = "ProjectBrowserExtrasContract"
+                   tooltip = "Collapse All Tree Nodes..."
+                   icon = "dvDeleteGreen"
+                   class = "ClarionEdge.ProjectBrowserExtras.CollapseTree"/>
+      <ToolbarItem id = "ProjectBrowserExtrasContract"
+                   tooltip = "Expand All Tree Nodes..."
+                   icon = "dvAddGreen"
+                   class = "ClarionEdge.ProjectBrowserExtras.ExpandTree"/>
+    </Condition>
+    <ComplexCondition action="Disable">
+      <And>
+        <Condition name = "SolutionOpen"/>
+        <Not>
+          <Condition name = "CanCloseSolution"/>
+        </Not>
+      </And>
+      <ToolbarItem id    = "ProjectBrowserExtrasSeparator2"
+                   type  = "Separator"/>
+      <MenuItem id = "CloseCombine2"
+                tooltip = "Close Solution"
+                label = "Close"
+                icon ="dvCancelRed"
+                class = "ICSharpCode.SharpDevelop.Project.Commands.CloseSolution"/>
+    </ComplexCondition>
+  </Path>
+
+</AddIn>
