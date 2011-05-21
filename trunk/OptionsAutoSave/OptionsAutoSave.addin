@@ -1,0 +1,29 @@
+<AddIn name        = "OptionsAutoSave"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/OptionsAutoSave.html"
+       description = "Automatically save the options instead of waiting until the IDE closes"
+       usage       = "**This addin is no longer necessary in Clarion 8**&#xD;&#xD;  For clarion 7 it adds a new menu item which will open the options window and save the changes on exit instead of waiting till the IDE closes.">
+
+	<Runtime>
+		<Import assembly = "OptionsAutoSave.dll"/>
+	</Runtime>
+
+  <Manifest>
+    <Identity name="ClarionEdge.OptionsAutoSave" version="0.2"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Tools">
+    <MenuItem id = "OptionsAutoSave"
+              label = "${res:XML.MainMenu.ToolMenu.Options} (Auto Save)"
+              icon = "Icons.Silk.table_save"
+              insertafter ="Options"
+              insertbefore ="CapeSoftTools"
+              class = "ClarionEdge.OptionsAutoSave.OptionsCommand"/>    
+	</Path>
+	
+</AddIn>
