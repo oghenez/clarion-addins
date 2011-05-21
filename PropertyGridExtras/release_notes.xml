@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="03 March 2011">
+    <note type="INFO">Initial Release</note>
+    <note type="BLOG">`PropertyGridExtras addin v0.1 – Grow/Shrink font size &lt;http://www.clarionedge.com/clarion/addins/propertygridextras-addin-v0-1-growshrink-font-size.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="03 March 2011">
+    <note type="FIX">There was an issue with restoring the saved font using the incorrect Font.Unit in some circumstances."</note>
+  </release>
+  <release version="0.3" date="16 Oct 2010">
+    <note type="FEATURE">Show Additional Indentation – When set to true, displays Property indentations as the Microsoft PropertyGrid does (except for the first level whose +/- glyphs won’t appear in the left most column).</note>
+    <note type="FEATURE">Auto Adjust Label Column – Resizes the label column to adjust itself to the longest label.</note>
+    <note type="FEATURE">Themes (using the DrawManger) – There are 3 build in themes and an additional Dark theme that I have borrowed from the SmartPropertyGrid code example.</note>
+    <note type="BLOG">`PropertyGridExtras addin v0.3 – now with Additional Settings! &lt;http://www.clarionedge.com/clarion/addins/propertygridextras-addin-v0-3-now-with-additional-settings.html&gt;`_</note>
+  </release>
+  <release version="0.4" date="21 May 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+  </release>
+</release_notes>
