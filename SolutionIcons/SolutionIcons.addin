@@ -1,0 +1,37 @@
+<AddIn name = "SolutionIcons"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/SolutionIcons.html"
+       description = "This will add some icons that SV forgot..."
+       usage       = "Display only, this addin has no options.">
+
+  <Manifest>
+    <Identity name="ClarionEdge.SolutionIcons" version="0.4"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+  </Manifest>
+  
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <!-- Extra project browser icons -->
+  <Path name = "/Workspace/Icons">
+    <Icon id = "ClarionTPLIcon"
+          extensions = ".tpl"
+          resource   = "Icons.Silk.plugin" />
+    <Icon id = "ClarionTPWIcon"
+          extensions = ".tpw"
+          resource   = "Icons.Silk.plugin_link" />
+    <Icon id = "ClarionDictionaryIcon"
+          extensions = ".dct"
+          resource   = "Icons.Silk.book_open" />
+    <Icon id = "ClarionApplicationIcon"
+          extensions = ".app"
+          resource   = "Icons.fbd_clarion" />
+    <Icon id = "ClarionDLLIcon"
+          extensions = ".dll"
+          resource   = "Icons.dvRun" />
+    <Icon id = "ClarionICOIcon"
+          extensions = ".ico"
+          resource   = "Icons.Silk.image" />
+  </Path>
+</AddIn>
