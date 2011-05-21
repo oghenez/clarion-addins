@@ -1,0 +1,54 @@
+﻿<AddIn name        = "SearchPadExtras"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/SearchPadExtras.html"
+       description = "Adds some ehancements to the default search pad."
+       usage       = "Buttons added to the toolbar of the search results pad:&#xD;&#xD;  * Copy to Clipboard&#xD;&#xD; * Find&#xD;&#xD;  * Find Next&#xD;&#xD;  * Replace ">
+
+  <Manifest>
+    <Identity name="ClarionEdge.SearchPadExtras" version="0.3"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "SearchPadExtras.dll"/>
+    <Import assembly = ":ICSharpCode.SharpDevelop"/>
+    <Import assembly=":ICSharpCode.TextEditor"/>
+  </Runtime>
+
+  <Path name = "/SharpDevelop/Pads/SearchResultPanel/Toolbar">
+    <ToolbarItem id    = "SearchPadExtrasSeparator"
+                 type  = "Separator"
+                 insertafter = "SelectViewMode"/>
+    <ToolbarItem id = "SearchPadExtrasCopy"
+                 icon = "Icons.16x16.CopyIcon"
+                 tooltip = "Copy results to clipboard..."
+                 class = "ClarionEdge.SearchPadExtras.CopyCommand"/>
+
+    <!-- These are duplicates of those found in the file clarion.addin 
+    Put here following a request from Bob Roos on the newsgroups  -->
+    <ToolbarItem id = "SearchButtonsSeparator" type = "Separator" />
+    <Condition name="Compare" string="false" equals="true" action ="Disable">
+      <ToolbarItem id = "SearchTest"
+                   type = "Label"
+                   label = "Search: "/>
+    </Condition>
+    <ToolbarItem id = "Find"
+              label = "${res:XML.MainMenu.SearchMenu.Find}"
+              icon = "Icons.16x16.FindIcon"
+              shortcut = "Control|F"
+              class = "SearchAndReplace.Find"/>
+    <ToolbarItem id = "FindNext"
+              label = "${res:XML.MainMenu.SearchMenu.FindNext}"
+              icon = "Icons.16x16.FindNextIcon"
+              shortcut = "F3"
+              class = "SearchAndReplace.FindNext"/>
+    <ToolbarItem id = "Replace"
+              label = "${res:XML.MainMenu.SearchMenu.Replace}"
+              icon = "Icons.16x16.ReplaceIcon"
+              shortcut = "Control|R"
+              class = "SearchAndReplace.Replace"/>
+  </Path>
+
+</AddIn>
