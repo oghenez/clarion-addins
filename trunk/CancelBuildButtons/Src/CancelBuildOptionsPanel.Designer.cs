@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelBuildOptionsPanel));
-            this.hideButtonLabels = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            this.hideButtonLabels = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // hideButtonLabels
             // 
-            this.hideButtonLabels.Location = new System.Drawing.Point(12, 51);
+            this.hideButtonLabels.AutoSize = true;
+            this.hideButtonLabels.Location = new System.Drawing.Point(19, 33);
             this.hideButtonLabels.Name = "hideButtonLabels";
-            this.hideButtonLabels.Size = new System.Drawing.Size(220, 20);
+            this.hideButtonLabels.Size = new System.Drawing.Size(194, 17);
             this.hideButtonLabels.TabIndex = 0;
-            this.hideButtonLabels.Values.Text = "Hide Button Labels (requires restart)";
+            this.hideButtonLabels.Text = "Hide Button Labels (requires restart)";
+            this.hideButtonLabels.UseVisualStyleBackColor = true;
             // 
             // CancelBuildOptionsPanel
             // 
@@ -55,6 +56,7 @@
 
         #endregion
 
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox hideButtonLabels;
+
+        private System.Windows.Forms.CheckBox hideButtonLabels;
     }
 }
