@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="21 Dec 2010">
+    <note type="INFO">Initial Release</note>
+    <note type="FEATURE">Adds two new buttons, Expand and Contract, to the Project Browser, otherwise known as the Solution Explorer.</note>
+    <note type="BLOG">`ProjectBrowserExtras Addin &lt;http://www.clarionedge.com/clarion/addins/projectbrowserextras-addin.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="09 Oct 2010">
+    <note type="FEATURE">Adds a new button to the Solution (ProjectBrowser) toolbar – Close Solution.</note>
+    <note type="BLOG">`ProjectBrowserExtras addin v0.2–Close Solution button &lt;http://www.clarionedge.com/clarion/addins/projectbrowserextras-addin-v0-2.html&gt;`_</note>
+  </release>
+  <release version="0.3" date="20 May 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
+  </release>
+</release_notes>
+
