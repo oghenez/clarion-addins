@@ -2,6 +2,7 @@
 <release_notes>
   <release version="0.1" date="16 Oct 2010">
     <note type="INFO">Initial Release</note>
+    <note type="BLOG">`Bringing back Remove Line to C7 &lt;http://www.clarionedge.com/clarion/addins/bringing-back-remove-line-to-c7.html&gt;`_</note>
   </release>
   <release version="0.2" date="20 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
