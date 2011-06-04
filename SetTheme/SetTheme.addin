@@ -1,0 +1,32 @@
+<AddIn name = "SetTheme"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
+       url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
+       description = "Configure you IDE with a colourful theme!"
+       usage       = "Applies themed elements to many parts of the IDE. Includes several built in themes as well as a PaletteDesigner so you can make your own themes.">
+
+  <Manifest>
+    <Identity name="ClarionEdge.SetTheme" version="0.6"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "ComponentFactory.Krypton.Toolkit.dll"/>
+    <Import assembly = "UserControls.Krypton.PaletteSelectors.dll"/>
+    <Import assembly = "SetTheme.dll"/>
+  </Runtime>
+
+  <Path name="/Workspace/Autostart">
+    <Condition name="Compare" string="${property:SetTheme.Options.disableAddin??False}" equals="False">
+      <Class id="AddToolBarItem" class="ClarionEdge.SetTheme.SetThemeCommand"/>
+    </Condition>
+  </Path>
+
+  
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ToolsOptions">
+    <DialogPanel id = "SetThemeOptionsPanel"
+                 label = "Configure IDE Theme"
+                 class = "ClarionEdge.SetTheme.SetThemeOptionsPanel"/>
+  </Path>
+  
+</AddIn>

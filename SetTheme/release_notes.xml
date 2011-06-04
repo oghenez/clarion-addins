@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<release_notes>
+  <release version="0.1" date="07 Nov 2010">
+    <note type="INFO">Initial Release</note>
+    <note type="BLOG">`SetTheme addin–Give the C7 IDE a new look! &lt;http://www.clarionedge.com/clarion/addins/settheme-addin.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="?">
+    <note type="INFO">Internal Release</note>
+  </release>
+  <release version="0.3" date="?">
+    <note type="INFO">Internal Release</note>
+  </release>
+  <release version="0.4" date="08 Dec 2010">
+    <note type="FEATURE">The palette selection now uses the `Krypton Palette Selector &lt;http://paletteselectors.codeplex.com/&gt;`_ controls found on `CodePlex &lt;http://www.codeplex.com/&gt;`_ which gives a much improved interface. </note>
+    <note type="FEATURE">Now supports custom themes! </note>
+    <note type="FEATURE">Comes with 4 custom themes to get you started (these were originally found on the `Krypton Toolkit Forums &lt;http://www.componentfactory.com/forums/&gt;`_) </note>
+    <note type="FEATURE">Addin download package also includes the Krypton Palette Designer so you can create your own IDE themes. </note>
+    <note type="BLOG">`SetTheme addin updated (v0.4) &lt;http://www.clarionedge.com/clarion/addins/settheme-addin-updated-v0-4.html&gt;`_</note>
+  </release>
+  <release version="0.5" date="10 Dec 2010">
+    <note type="FIX">Custom themes now contain a workaround for GAC issues.</note>
+    <note type="FIX">Now includes all the correct DLLs so that you can actually run the PaletteDesigner!</note>
+    <note type="BLOG">`SetTheme fixed – v0.5 &lt;http://www.clarionedge.com/clarion/addins/settheme-fixed-v0-5.html&gt;`_</note>
+  </release>
+  <release version="0.6" date="04 June 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
+  </release>
+
+</release_notes>
