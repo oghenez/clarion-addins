@@ -41,7 +41,7 @@
     </Condition>
   </Path>
 
-  <Path name = "/ClarionEdge/MainToolBarExtras/ContextMenu">
+    <Path name = "/ClarionEdge/MainToolBarExtras/ContextMenu">
     <MenuItem id="ShowRunStartUpProjectInDebugger"
               label="Show 'Run StartUp Project In Debugger' Button"
               type="CheckBox"
