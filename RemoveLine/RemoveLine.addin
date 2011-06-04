@@ -8,18 +8,23 @@
 
   <Runtime>
     <Import assembly = "RemoveLine.dll"/>
+    <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionEdge.RemoveLine" version="0.2"/>
+    <Identity name="ClarionEdge.RemoveLine" version="0.3"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
-  <Path name = "/Workspace/Tools">
-    <MenuItem id = "RemoveLineCommand"
-              label = "Remove Line"
-              shortcut = "Control|Shift|Y"
-              class = "ClarionEdge.RemoveLine.RemoveLineCommand"/>
-  </Path>
+    <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
+      <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+        <MenuItem id = "RemoveLineCommand"
+                  label = "Remove Line"
+                  insertafter = "DuplicateLine"
+                  insertbefore = "Insert"
+                  shortcut = "Control|Shift|Y"
+                  class = "ClarionEdge.RemoveLine.RemoveLineCommand"/>
+      </Condition>
+    </Path>
 
 </AddIn>
