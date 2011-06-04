@@ -1,7 +1,7 @@
 ﻿<AddIn name        = "CancelBuildButtons"
        author      = "ClarionEdge"
        copyright   = "Copyright (c) 2011, Brahn Partridge"
-       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
        description = "This addin will put two buttons, cancel build and cancel generation, on the toolbar of the output pad."
        usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog.">
@@ -59,7 +59,7 @@
     </Condition>
   </Path>
 
-  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionEdgeOptions">
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ToolsOptions">
     <DialogPanel id = "CancelBuildOptionsPanel"
                  label = "Cancel Build/Generate Buttons"
                  class = "ClarionEdge.CancelBuildButtons.CancelBuildOptionsPanel"/>
