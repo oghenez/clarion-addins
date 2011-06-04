@@ -1,0 +1,47 @@
+<AddIn name        = "EditorMacros"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
+       url         = "http://www.clarionaddins.com/addins/EditorMacros.html"
+       description = "Provides Macro support to the text editor!"
+       usage       = "Everything happens in the Editor Macros Pad. Use the Start/Stop buttons in the Record Macro group to record keystrokes. The keystrokes recorded will be displayed in the list control. Use the Start button in the Playback group to play them back!&#xD;&#xD;  * The Pad is not visible by default, you open it from the View/Tools menu">
+
+  <Manifest>
+    <Identity name="ClarionEdge.EditorMacros" version="0.2"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "MouseKeyboardLibrary.dll"/>
+		<Import assembly = "EditorMacros.dll"/>
+	</Runtime>
+
+  <Path name = "/SharpDevelop/Workbench/Pads">
+    <Pad id       = "EditorMacrosPad"
+		     category = "Tools"
+		     title    = "Editor Macros"
+		     icon     = ""
+		     shortcut = ""
+		     class    = "ClarionEdge.EditorMacros.EditorMacrosPad"/>
+  </Path>
+  
+  <!--
+	<Path name = "/Workspace/Tools">
+    <Condition name="Compare" string="${property:EditorMacros.Options.Recording??False}" equals="False">
+      <MenuItem id = "StartRecordMacroCommand"
+                label = "Start Recording"
+                shortcut = "Control|="
+                class = "ClarionEdge.EditorMacros.StartRecordMacroCommand"/>
+    </Condition>>
+    <Condition name="Compare" string="${property:EditorMacros.Options.Recording??False}" equals="True">
+      <MenuItem id = "StopRecordMacroCommand"
+                label = "Stop Recording"
+                shortcut = "Control|="
+                class = "ClarionEdge.EditorMacros.StopRecordMacroCommand"/>
+    </Condition>>
+    <MenuItem id = "PlayMacroCommand"
+		          label = "PlayMacroCommand"
+		          shortcut = "Control|="
+		          class = "ClarionEdge.EditorMacros.PlayMacroCommand"/>	</Path>
+	-->
+</AddIn>
