@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+	<release version="0.1" date="09 Nov 2010">
+		<note type="INFO">Public Release</note>
+		<note type="BLOG">`Editor Macros addin &lt;http://www.clarionedge.com/clarion/addins/editor-macros-addin.html&gt;`_</note>
+	</release>
+	<release version="0.2" date="04 June 2011">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
+    <note type="INFO">This project still has some dependencies on the Krypton Tookit which I will sort out soon</note>
+  </release>
+</release_notes>
