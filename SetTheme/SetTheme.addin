@@ -1,4 +1,4 @@
-<AddIn name = "SetTheme"
+<AddIn name        = "SetTheme"
        author      = "ClarionEdge"
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
@@ -22,7 +22,6 @@
     </Condition>
   </Path>
 
-  
   <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ToolsOptions">
     <DialogPanel id = "SetThemeOptionsPanel"
                  label = "Configure IDE Theme"
