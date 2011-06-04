@@ -11,6 +11,7 @@
     <note type="FEATURE">Select All and Copy All buttons added!</note>
   </release>
   <release version="0.4" date="20 May 2011">
-    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
 </release_notes>
+
