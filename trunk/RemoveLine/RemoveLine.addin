@@ -12,7 +12,7 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionEdge.RemoveLine" version="0.3"/>
+    <Identity name="ClarionEdge.RemoveLine" version="0.4"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
@@ -27,4 +27,9 @@
       </Condition>
     </Path>
 
+  <Path name="/Workspace/Autostart">
+     <Class id="RemoveLineAssemblyResolve" class="ClarionEdge.RemoveLine.AssemblyResolve"/>
+  </Path>
+  
+  
 </AddIn>

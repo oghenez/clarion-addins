@@ -7,11 +7,14 @@
   <release version="0.2" date="20 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
   </release>
-  <release version="0.3" date="20 May 2011">
+  <release version="0.3" date="04 June 2011">
     <note type="CHANGE">No longer messes up the editor if you try and delete the last line of an embed when in source view</note>
     <note type="FEATURE">Now supports undo</note>
     <note type="FEATURE">Now supports all text editor controls (clw, inc, tpw, tpl, etc) not just the clarion Embeditor/Embed editor</note>
     <note type="CHANGE">Menu item moved into the Edit menu. Seems to make more sense here</note>
     <note type="CHANGE">Menu item is only active when a text editor is open</note>
   </release>
-</release_notes>
+  <release version="0.4" date="11 June 2011">
+    <note type="FEATURE">Added a new Autostart command to do an AssemblyResolve when the correct assembly version for CommonSources.dll is not found. This means the same addin will for for C7 and C8!</note>
+  </release>
+  </release_notes>
