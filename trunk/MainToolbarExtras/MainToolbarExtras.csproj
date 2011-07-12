@@ -102,6 +102,9 @@
     <None Include="Resources\famfamfam_silk_help.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MainToolbarExtras.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="release_notes.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

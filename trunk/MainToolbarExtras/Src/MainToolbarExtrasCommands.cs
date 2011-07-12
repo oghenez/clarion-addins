@@ -21,7 +21,6 @@ namespace ClarionEdge.MainToolbarExtras
                 }
             }
              */
-            
         }
 
         void WorkbenchSingleton_WorkbenchCreated(object sender, System.EventArgs e)
