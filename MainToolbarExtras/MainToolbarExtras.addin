@@ -4,7 +4,9 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/MainToolbarExtras.html"
        description = "Some new buttons and other enhancements to the main IDE toolbar."
-       usage       = "Adds a new icon for 'Run Startup Project in Debugger' as well as a Right Click context menu to allow you to set the toolbar/icon size.&#xD;&#xD;  * Right click on the Main Toolbar (anywhere) to get a context menu">
+       usage       = "Adds a new icon for 'Run Startup Project in Debugger' as well as a Right Click context menu to allow you to set the toolbar/icon size.&#xD;&#xD;  * Right click on the Main Toolbar (anywhere) to get a context menu"
+       screenshot  = "MainToolbarExtras.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
     <Identity name="ClarionEdge.MainToolbarExtras" version="0.4"/>
@@ -13,6 +15,7 @@
   
   <Runtime>
     <Import assembly = "MainToolbarExtras.dll"/>
+    <Import assembly = "$SoftVelocity.Generator/Generator.dll"/>
   </Runtime>
 
   <BitmapResources file="Resources\BitmapResources.resources"/>
