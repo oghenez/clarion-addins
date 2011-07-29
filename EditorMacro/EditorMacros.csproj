@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.3.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="ICSharpCode.Core">
       <HintPath>..\..\..\..\..\..\Clarion7\bin\ICSharpCode.Core.dll</HintPath>
       <Private>False</Private>
@@ -88,15 +85,24 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Resources\BitmapResources.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <EmbeddedResource Include="Src\EditorMacrosPadControl.resx">
       <DependentUpon>EditorMacrosPadControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EditorMacros.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="release_notes.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\play.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\record.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

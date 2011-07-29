@@ -22,13 +22,14 @@ namespace ClarionEdge.EditorMacros
 
         KeyboardHook keyboardHook = new KeyboardHook();
         TextArea textArea;
+        
 
         public EditorMacrosPadControl()
         {
             InitializeComponent();
             //headerGroup.ValuesPrimary.Image = CommonResources.Properties.famfamfam_silk.famfamfam_silk_script_edit;
-            buttonStop.Enabled = false;
-            buttonStartPlayback.Enabled = false;
+            buttonStopRecording.Enabled = false;
+            buttonPlayBack.Enabled = false;
 
             listBoxDebug.DataSource = events;
             listBoxDebug.DisplayMember = "DisplayString";
@@ -50,9 +51,9 @@ namespace ClarionEdge.EditorMacros
                 return;
             }
 
-            buttonStart.Enabled = false;
-            buttonStop.Enabled = true;
-            buttonStartPlayback.Enabled = false;
+            buttonPlayBack.Enabled = false;
+            buttonStopRecording.Enabled = true;
+            buttonPlayBack.Enabled = false;
 
             textArea = provider.TextEditorControl.ActiveTextAreaControl.TextArea;
             //textArea.KeyEventHandler += new ICSharpCode.TextEditor.KeyEventHandler(textArea_KeyEventHandler);
@@ -72,7 +73,7 @@ namespace ClarionEdge.EditorMacros
             keyboardHook.Stop();
             if (events.Count > 0)
             {
-                buttonStartPlayback.Enabled = true;
+                buttonPlayBack.Enabled = true;
             }
 
             if (textArea == null)
@@ -82,8 +83,8 @@ namespace ClarionEdge.EditorMacros
 
             //textArea.KeyDown -= HandleKeyDown;
             //textArea.KeyUp -= HandleKeyUp;
-            buttonStart.Enabled = true;
-            buttonStop.Enabled = false;
+            buttonStartRecording.Enabled = true;
+            buttonStopRecording.Enabled = false;
         }
 
         void keyboardHook_KeyDown(object sender, KeyEventArgs e)
@@ -173,11 +174,5 @@ namespace ClarionEdge.EditorMacros
 
 
         }
-
-        private void kryptonLinkLabel1_LinkClicked(object sender, EventArgs e)
-        {
-            Process.Start("http://www.clarionedge.com/addins");
-        }
-
     }
 }
