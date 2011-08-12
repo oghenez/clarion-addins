@@ -17,4 +17,7 @@
   <release version="0.4" date="11 June 2011">
     <note type="FEATURE">Added a new Autostart command to do an AssemblyResolve when the correct assembly version for CommonSources.dll is not found. This means the same addin will for for C7 and C8!</note>
   </release>
-  </release_notes>
+  <release version="0.5" date="30 June 2011">
+    <note type="FEATURE">ResolveEventHandler was causing an exception in C8 when loading the window designer. The ResolveEventHandler now also resolves CommonControl and ClarionNetWindow</note>
+  </release>
+</release_notes>

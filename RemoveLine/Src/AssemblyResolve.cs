@@ -17,30 +17,33 @@ namespace ClarionEdge.RemoveLine
         {
             //This handler is called only when the common language runtime tries to bind to the assembly and fails.
 
-            //Retrieve the list of referenced assemblies in an array of AssemblyName.
-            Assembly MyAssembly, objExecutingAssemblies;
-            string strTempAssmbPath = "";
-
-            objExecutingAssemblies = Assembly.GetExecutingAssembly();
-            AssemblyName[] arrReferencedAssmbNames = objExecutingAssemblies.GetReferencedAssemblies();
-
-            //Loop through the array of referenced assembly names.
-            foreach (AssemblyName strAssmbName in arrReferencedAssmbNames)
+            Assembly MyAssembly;
+            string strTempAssmbPath = String.Empty;
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            switch(args.Name.Substring(0, args.Name.IndexOf(",")))
             {
-                //Check for the assembly names that have raised the "AssemblyResolve" event.
-                if (strAssmbName.FullName.Substring(0, strAssmbName.FullName.IndexOf(",")) == args.Name.Substring(0, args.Name.IndexOf(",")))
-                {
-                    //Build the path of the assembly from where it has to be loaded.
-                    if (args.Name.Substring(0, args.Name.IndexOf(",")) == "CommonSources")
-                    {
-                        AppDomain currentDomain = AppDomain.CurrentDomain;
-                        strTempAssmbPath = Path.Combine(currentDomain.BaseDirectory, @"Addins\BackendBindings\ClarionBinding\Common\CommonSources.dll");
-                        LoggingService.Debug("*** RemoveLine, strTempAssmbPath: " + strTempAssmbPath);
-                    }
+                case "CommonSources":
+                    strTempAssmbPath = @"Addins\BackendBindings\ClarionBinding\Common\CommonSources.dll";
                     break;
-                }
+                case "CommonControl":
+                    strTempAssmbPath = @"Addins\BackendBindings\ClarionBinding\Common\Controls\CommonControl.dll";
+                    break;
+                case "ClarionNetWindow":
+                    strTempAssmbPath = @"Addins\BackendBindings\ClarionBinding\Common\ClarionNetWindow.dll";
+                    break;
+                case "MenubarControl":
+                    strTempAssmbPath = @"Addins\BackendBindings\ClarionBinding\Common\Controls\MenubarControl.dll";
+                    break;
 
             }
+            if (strTempAssmbPath != String.Empty) {
+                strTempAssmbPath = Path.Combine(currentDomain.BaseDirectory, strTempAssmbPath);
+                }
+
+            LoggingService.Debug(" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Inside ClarionEdge.RemoveLine ResolveEventHandler @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            LoggingService.Debug("            args.Name=" + args.Name);
+            LoggingService.Debug("            strTempAssmbPath=" + strTempAssmbPath);
+            LoggingService.Debug(" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Inside ClarionEdge.RemoveLine ResolveEventHandler @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             //Load the assembly from the specified path.
             MyAssembly = Assembly.LoadFrom(strTempAssmbPath);
 
