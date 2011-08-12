@@ -9,7 +9,7 @@
     <note type="FEATURE">Help file can hang/freeze in some circumstances</note>
     <note type="BLOG">`ClarionEditorContextHelp addin v0.2–bug fix &lt;http://www.clarionedge.com/clarion/addins/clarioneditorcontexthelp-addin-v0-2bug-fix.html&gt;`_</note>
   </release>
-  <release version="0.3">
+  <release version="0.3" date="14 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
   </release>
 </release_notes>
