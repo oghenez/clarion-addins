@@ -4,7 +4,9 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/ClearErrors.html"
        description = "Adds a few new buttons to the Error Pad"
-       usage       = "New Buttons: Clear Errors, Select All Errors and Copy All Errors">
+       usage       = "New Buttons: Clear Errors, Select All Errors and Copy All Errors"
+       screenshot  = "ClearErrors.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
     <Identity name="ClarionEdge.ClearErrors" version="0.4"/>
