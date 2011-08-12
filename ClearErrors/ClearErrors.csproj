@@ -81,6 +81,9 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="ClearErrors.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="release_notes.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
