@@ -32,6 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Navigator, Version=4.3.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Component Factory\Krypton Toolkit 4.3.0\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon, Version=4.3.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Component Factory\Krypton Toolkit 4.3.0\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.3.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files\Component Factory\Krypton Toolkit 4.3.0\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
@@ -44,6 +54,16 @@
     <Reference Include="ICSharpCode.SharpDevelop">
       <HintPath>..\..\..\..\..\..\Clarion7\bin\ICSharpCode.SharpDevelop.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="PaletteDesigner, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\..\..\..\Program Files\Component Factory\Krypton Toolkit 4.3.0\Bin\PaletteDesigner.exe</HintPath>
+    </Reference>
+    <Reference Include="PaletteUpgradeTool, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\..\..\..\Program Files\Component Factory\Krypton Toolkit 4.3.0\Bin\PaletteUpgradeTool.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -98,6 +118,23 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CustomThemes\Asphalt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\Hazel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\McLane.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\Plastic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SetTheme.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

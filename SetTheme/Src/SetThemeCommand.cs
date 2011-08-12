@@ -61,10 +61,13 @@ namespace ClarionEdge.SetTheme
                 }
             }
 
-            SetupDockPanel();
+            //SetupDockPanel();
         }
+    }
+    class SetupDockPanel : AbstractCommand
+    {
 
-        private void SetupDockPanel()
+        public override void Run()
         {
             LoggingService.Debug("**** SetupDockPanel ***");
             IWorkbenchLayout wl = WorkbenchSingleton.Workbench.WorkbenchLayout;
@@ -83,6 +86,17 @@ namespace ClarionEdge.SetTheme
                                 if (panelC is DockPanel)
                                 {
                                     LoggingService.Debug("Found it!");
+                                    DockPanel dp = (DockPanel)panelC;
+                                    dp.ShowDocumentIcon = true;
+                                    dp.SuspendLayout(true);
+                                    dp = null;
+                                    dp.Extender.AutoHidePaneFactory = null;
+                                    dp.Extender.DockPaneTabFactory = null;
+                                    dp.Extender.AutoHideStripFactory = null;
+                                    dp.Extender.DockPaneCaptionFactory = null;
+                                    dp.Extender.DockPaneStripFactory = null;
+                                    DockPanelSkin.Extender.SetVS2005Schema(dp);
+                                    dp.ResumeLayout(true, true);
                                 }
                             }
                         }
