@@ -5,6 +5,7 @@
        url         = "http://www.clarionaddins.com/addins/RemoveLine.html"
        description = "Remove the line at the current cursor position"
        usage       = "When in the Embeditor or Embed Editor use :kbd:`Control-Shift-Y` to remove the current line"
+       screenshot  = "RemoveLine.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Runtime>
@@ -13,7 +14,7 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionEdge.RemoveLine" version="0.4"/>
+    <Identity name="ClarionEdge.RemoveLine" version="0.5"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
