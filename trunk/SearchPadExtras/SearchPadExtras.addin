@@ -4,7 +4,9 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/SearchPadExtras.html"
        description = "Adds some ehancements to the default search pad."
-       usage       = "Buttons added to the toolbar of the search results pad:&#xD;&#xD;  * Copy to Clipboard&#xD;&#xD;  * Find&#xD;&#xD;  * Find Next&#xD;&#xD;  * Replace ">
+       usage       = "Buttons added to the toolbar of the search results pad:&#xD;&#xD;  * Copy to Clipboard&#xD;&#xD;  * Find&#xD;&#xD;  * Find Next&#xD;&#xD;  * Replace "
+       screenshot  = "SearchPadExtras.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
     <Identity name="ClarionEdge.SearchPadExtras" version="0.3"/>
