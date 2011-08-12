@@ -4,7 +4,10 @@
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
        description = "This addin will put two buttons, cancel build and cancel generation, on the toolbar of the output pad."
-       usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog.">
+       usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog."
+       screenshot  = "CancelBuildButtons.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
+      
 
   <Manifest>
     <Identity name="ClarionEdge.CancelBuildButtons" version="0.7"/>

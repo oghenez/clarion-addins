@@ -21,12 +21,12 @@
 	<release version="0.5" date="16 May 2011">
 		<note type="CHANGE">Renamed project from CancelBuild to CancelBuildButtons. This makes the documentation generation much easier if all these names match.</note>
 	</release>
-	<release version="0.6" date="21 May 2011">
-		<note type="FIX">.addin file was referencing old DLL name</note>
-		<note type="CHANGE">No longer uses the Krypton Toolkit. This was only used for a single checkbox in the options dialog anyway!</note>
-	</release>
-	<release version="0.7" date="04 June 2011">
-		<note type="FIX">Options dialog was pointing to old ClarionEdge node. Changed this to the Tools node</note>
-		<note type="CHANGE">License now has a rst format link</note>
-	</release>
+  <release version="0.6" date="21 May 2011">
+    <note type="FIX">.addin file was referencing old DLL name</note>
+    <note type="CHANGE">No longer uses the Krypton Toolkit. This was only used for a single checkbox in the options dialog anyway!</note>
+  </release>
+  <release version="0.7" date="04 June 2011">
+    <note type="FIX">Options dialog was pointing to old ClarionEdge node. Changed this to the Tools node</note>
+    <note type="CHANGE">License now has a rst format link</note>
+  </release>
 </release_notes>
