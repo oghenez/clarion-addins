@@ -4,7 +4,9 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/OptionsAutoSave.html"
        description = "Automatically save the options instead of waiting until the IDE closes"
-       usage       = "**This addin is no longer necessary in Clarion 8**&#xD;&#xD;  For clarion 7 it adds a new menu item which will open the options window and save the changes on exit instead of waiting till the IDE closes.">
+       usage       = "**This addin is no longer necessary in Clarion 8**&#xD;&#xD;  For clarion 7 it adds a new menu item which will open the options window and save the changes on exit instead of waiting till the IDE closes."
+       screenshot  = "OptionsAutoSave.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
 	<Runtime>
 		<Import assembly = "OptionsAutoSave.dll"/>
