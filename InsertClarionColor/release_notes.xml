@@ -8,4 +8,11 @@
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
     <note type="INFO">`This project requires the ZetaColorEditor &lt;http://www.codeproject.com/KB/miscctrl/ZetaColorEditor.aspx&gt;`_</note>
   </release>
+  <release version="0.3" date="22 Aug 2011">
+    <note type="CHANGE">Toolbar button is now always enabled</note>
+    <note type="FEATURE">Color picker now has a 'Clarion code' entry control which you can use for copy paste of clarion BGR format hex codes.</note>
+    <note type="FEATURE">Color picker now remembers the last selected color.</note>
+    <note type="FEATURE">Returned values are converted to clarion equates where available. This includes system color equates.</note>
+    <note type="FEATURE">If there is no active editor window found a dialog will offering to copy the selected color to the clipboard.</note>
+  </release>
 </release_notes>

@@ -4,12 +4,12 @@
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
        description = "Insert a clarion color into the text area!"
-       usage       = "When you are editing clarion sournce, use the menu item in :menuselection:`Edit --> Insert --> Insert Clarion Color...` or the icon on the toolbar to insert a clarion color code."
+       usage       = "When you are editing clarion source, use the menu item in :menuselection:`Edit --> Insert --> Insert Clarion Color...` or the icon on the toolbar to insert a clarion color code."
        screenshot  = "InsertClarionColor.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.InsertClarionColor" version="0.2"/>
+    <Identity name="ClarionEdge.InsertClarionColor" version="0.3"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
@@ -22,30 +22,26 @@
   <BitmapResources file="Resources\BitmapResources.resources"/>
 
   <Path name = "/SharpDevelop/Workbench/MainMenu/Edit/Insert">
-    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
-        <MenuItem id = "InsertClarionColor"
+    <MenuItem id = "InsertClarionColor"
                   label = "Insert Clarion Color..."
                   insertafter  = "InsertColor"
                   insertbefore = "InsertGuid"
                   icon ="Icons.Silk.color_wheel"
                   class = "ClarionEdge.InsertClarionColor.ShowColorDialog"/>
-    </Condition>
   </Path>
-  
+
   <Path name = "/SharpDevelop/Workbench/ToolBar/Standard">
-    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
-      <ToolbarItem id    = "InsertClarionColorSeparator" 
-                   type  = "Separator"
-                   insertafter = "Delete"
-                   insertbefore = "UndoRedoSeparator"/>
-      <ToolbarItem id = "InsertClarionColor"
-                   icon = "Icons.Silk.color_wheel"
-                   tooltip = "Insert Clarion Color..."
-                   loadclasslazy = "false"
-                   insertafter = "Delete"
-                   insertbefore = "UndoRedoSeparator"
-                   class = "ClarionEdge.InsertClarionColor.ShowColorDialog"/>
-    </Condition>
+    <ToolbarItem id    = "InsertClarionColorSeparator"
+                 type  = "Separator"
+                 insertafter = "Delete"
+                 insertbefore = "UndoRedoSeparator"/>
+    <ToolbarItem id = "InsertClarionColor"
+                 icon = "Icons.Silk.color_wheel"
+                 tooltip = "Insert Clarion Color..."
+                 loadclasslazy = "false"
+                 insertafter = "Delete"
+                 insertbefore = "UndoRedoSeparator"
+                 class = "ClarionEdge.InsertClarionColor.ShowColorDialog"/>
   </Path>
-  
+
 </AddIn>
