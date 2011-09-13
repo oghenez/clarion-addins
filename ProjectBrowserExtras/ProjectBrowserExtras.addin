@@ -4,7 +4,7 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/ProjectBrowserExtras.html"
        description = "Adds some ehancements to the default project browser pad"
-       usage       = "New buttons available are: &#xD;&#xD;  * Expand/Collaps Tree&#xD;&#xD;  * Close Solution"
+       usage       = "New buttons available are: &#xD;&#xD;  * Expand/Collapse Tree&#xD;&#xD;  * Close Solution"
        screenshot  = "ProjectBrowserExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 

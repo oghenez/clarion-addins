@@ -5,7 +5,7 @@
     <note type="BLOG">`Bringing back Remove Line to C7 &lt;http://www.clarionedge.com/clarion/addins/bringing-back-remove-line-to-c7.html&gt;`_</note>
   </release>
   <release version="0.2" date="20 May 2011">
-    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
   <release version="0.3" date="04 June 2011">
     <note type="CHANGE">No longer messes up the editor if you try and delete the last line of an embed when in source view</note>
@@ -19,5 +19,11 @@
   </release>
   <release version="0.5" date="30 June 2011">
     <note type="FEATURE">ResolveEventHandler was causing an exception in C8 when loading the window designer. The ResolveEventHandler now also resolves CommonControl and ClarionNetWindow</note>
+  </release>
+  <release version="0.6" date="15 August 2011">
+    <note type="FEATURE">Another assembly resolver.</note>
+  </release>
+  <release version="0.7" date="24 August 2011">
+    <note type="FIX">Assembly resolver now uses Directory.GetPath to search the BackendBindings folder for the correct assembly instead of using hard coded values!</note>
   </release>
 </release_notes>

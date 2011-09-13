@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SolutionIcons" version="0.4"/>
+    <Identity name="ClarionEdge.SolutionIcons" version="0.5"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -35,5 +35,32 @@
     <Icon id = "ClarionICOIcon"
           extensions = ".ico"
           resource   = "Icons.Silk.image" />
+    <Icon id = "ClarionAIcon"
+          extensions = ".a"
+          resource   = "Icons.GenericCode" />
+    <Icon id = "ClarionCIcon"
+          extensions = ".c"
+          resource   = "Icons.Silk.page_white_c" />
+    <Icon id = "ClarionExpIcon"
+          extensions = ".exp"
+          resource   = "Icons.Silk.page" />
+    <Icon id = "ClarionhHTMIcon"
+          extensions = ".htm"
+          resource   = "Icons.Silk.html" />
+    <Icon id = "ClarionHTMLIcon"
+          extensions = ".html"
+          resource   = "Icons.Silk.html" />
+    <Icon id = "ClarionCSSIcon"
+          extensions = ".css"
+          resource   = "Icons.Silk.css" />
+    <Icon id = "ClarionBATIcon"
+          extensions = ".bat"
+          resource   = "Icons.Silk.bat" />
+    <Icon id = "ClarionAPIIcon"
+          extensions = ".api"
+          resource   = "Icons.Silk.bricks" />
+    <Icon id = "ClarionTXTIcon"
+          extensions = ".txt"
+          resource   = "Icons.Silk.text" />
   </Path>
 </AddIn>

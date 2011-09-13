@@ -20,6 +20,16 @@ namespace ClarionEdge.RemoveLine
             Assembly MyAssembly;
             string strTempAssmbPath = String.Empty;
             AppDomain currentDomain = AppDomain.CurrentDomain;
+            string[] files = Directory.GetFiles(
+                Path.Combine(currentDomain.BaseDirectory, @"Addins\BackendBindings\ClarionBinding\")
+                , args.Name.Substring(0, args.Name.IndexOf(",")) + ".dll"
+                , SearchOption.AllDirectories);
+            if (files != null && files[0] != String.Empty)
+            {
+                strTempAssmbPath = files[0];
+            }
+            /*
+             * This was the old hard coded method... the above use of GetFiles seems to be working ok and is much more generic... assuming that there is not two files with the same name in the path!
             switch(args.Name.Substring(0, args.Name.IndexOf(",")))
             {
                 case "CommonSources":
@@ -34,8 +44,12 @@ namespace ClarionEdge.RemoveLine
                 case "MenubarControl":
                     strTempAssmbPath = @"Addins\BackendBindings\ClarionBinding\Common\Controls\MenubarControl.dll";
                     break;
+                case "CWBinding":
+                    strTempAssmbPath = @"Addins\BackendBindings\ClarionBinding\ClarionWin\CWBinding.dll";
+                    break;
 
             }
+            */
             if (strTempAssmbPath != String.Empty) {
                 strTempAssmbPath = Path.Combine(currentDomain.BaseDirectory, strTempAssmbPath);
                 }
@@ -46,7 +60,7 @@ namespace ClarionEdge.RemoveLine
             LoggingService.Debug(" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Inside ClarionEdge.RemoveLine ResolveEventHandler @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             //Load the assembly from the specified path.
             MyAssembly = Assembly.LoadFrom(strTempAssmbPath);
-
+            
             //Return the loaded assembly.
             return MyAssembly;
         }

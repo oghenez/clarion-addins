@@ -14,6 +14,6 @@
     <note type="BLOG">`PropertyGridExtras addin v0.3 – now with Additional Settings! &lt;http://www.clarionedge.com/clarion/addins/propertygridextras-addin-v0-3-now-with-additional-settings.html&gt;`_</note>
   </release>
   <release version="0.4" date="21 May 2011">
-    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependancies, adding docs, etc</note>
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
 </release_notes>
