@@ -3,7 +3,7 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/PropertyGridExtras.html"
-       description = "Enhacements to the default Property Grid."
+       description = "Enhancements to the default Property Grid."
        usage       = "Right click on the Property Grid in the Property Pad to access some new options. Change font size, set grid style."
        screenshot  = "PropertyGridExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">

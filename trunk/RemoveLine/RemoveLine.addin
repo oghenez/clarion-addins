@@ -14,7 +14,7 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionEdge.RemoveLine" version="0.5"/>
+    <Identity name="ClarionEdge.RemoveLine" version="0.7"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 

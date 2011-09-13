@@ -96,6 +96,17 @@
 			}
 		}
 
+
+        [Browsable(false)]
+        public bool SystemColorsTabPageSelected
+        {
+            get
+            {
+                return colorEditorControl.SystemColorsTabPageSelected;
+            }
+            set { }
+        }
+
 		/// <summary>
 		/// Gets or sets the external provider.
 		/// </summary>

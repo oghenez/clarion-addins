@@ -1,0 +1,37 @@
+<AddIn name        = "IdeDebug"
+       author      = "ClarionEdge"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/IdeDebug.html"
+       description = "Toggle QuietMode and Enable IDE Debugging."
+       usage       = "This is still in the early stages. Currenty this only has an option to toggle QuietMode but eventually it will allow you to configure IDE Debug output and optionally send the results to someone."
+       screenshot  = "IdeDebug.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
+
+  <Runtime>
+    <Import assembly = "IdeDebug.dll"/>
+  </Runtime>
+
+  <Manifest>
+    <Identity name="ClarionAddins.IdeDebug" version="0.1"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/UIOptions">
+    <DialogPanel id = "IdeDebugOptionsPanel"
+                 label = "Ide Debugging"
+                 class = "ClarionAddins.IdeDebug.OptionsPanel"/>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu">
+    <Condition name="Compare" string="${property:CoreProperties.QuietMode??true}" equals="False" action="Exclude">
+      <MenuItem id = "IdeDebugQuietMode" label = "*QuietMode OFF*" type="Menu">
+      </MenuItem>
+    </Condition>
+  </Path>
+
+  <Path name="/Workspace/Autostart">
+    <Class id="IdeDebugAutoStart" class="ClarionAddins.IdeDebug.AutoStartCommand"/>
+  </Path>
+
+</AddIn>

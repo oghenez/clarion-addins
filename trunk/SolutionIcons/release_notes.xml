@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <release_notes>
-  <release version="0.1-0.3" date="???">
+  <release version="0.1-0.3" date="01 Jan 2010">
     <note type="INFO">Internal Release</note>
   </release>
   <release version="0.4" date="21 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
     <note type="FEATURE">Adding some more icons and reducing the .resources file to only those icons used instead of the whole of FamFamFam silk icon set!</note>
+  </release>
+  <release version="0.5" date="13 August 2011">
+    <note type="CHANGE">I have added icons for a few more extensions: \*.a, \*.c, \*.exp, \*.htm, \*.html, \*.css, \*.bat, \*.api, \*.txt</note>
   </release>
 </release_notes>

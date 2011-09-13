@@ -1,178 +1,192 @@
 ﻿namespace ZetaColorEditor.Runtime.InternalControls
 {
-	#region Using directives.
-	// ----------------------------------------------------------------------
+    #region Using directives.
+    // ----------------------------------------------------------------------
 
-	using System;
-	using System.ComponentModel;
-	using System.Drawing;
-	using System.Windows.Forms;
-	using Colors;
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Colors;
 
-	// ----------------------------------------------------------------------
-	#endregion
+    // ----------------------------------------------------------------------
+    #endregion
 
-	public partial class CustomColorEditorUserControl :
-		UserControl
-	{
-		/// <summary>
-		/// To get rid of rounding inaccuracies etc.
-		/// </summary>
-		private enum LeadingInputElement
-		{
-			Unknown,
-			ColorAreaAndSlider,
-			RgbInput,
-			HslInput,
-			HtmlInput
-		}
+    public partial class CustomColorEditorUserControl :
+        UserControl
+    {
+        /// <summary>
+        /// To get rid of rounding inaccuracies etc.
+        /// </summary>
+        private enum LeadingInputElement
+        {
+            Unknown,
+            ColorAreaAndSlider,
+            RgbInput,
+            HslInput,
+            HtmlInput,
+            ClarionInput
+        }
 
-		private bool _ignoreTextFieldChange;
-		private bool _ignoreColorChangeEvents;
+        private bool _ignoreTextFieldChange;
+        private bool _ignoreColorChangeEvents;
 
-		private Control _changingControl;
+        private Control _changingControl;
 
-		private LeadingInputElement _currentLeadingInputElement =
-			LeadingInputElement.Unknown;
+        private LeadingInputElement _currentLeadingInputElement =
+            LeadingInputElement.Unknown;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="CustomColorEditorUserControl"/> class.
-		/// </summary>
-		public CustomColorEditorUserControl()
-		{
-			InitializeComponent();
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomColorEditorUserControl"/> class.
+        /// </summary>
+        public CustomColorEditorUserControl()
+        {
+            InitializeComponent();
+        }
 
-		/// <summary>
-		/// Handles the Load event of the <see cref="CustomColorEditorUserControl"/> control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="System.EventArgs"/> instance 
-		/// containing the event data.</param>
-		private void customColorEditorUserControl_Load(
-			object sender,
-			EventArgs e )
-		{
-		}
+        /// <summary>
+        /// Handles the Load event of the <see cref="CustomColorEditorUserControl"/> control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance 
+        /// containing the event data.</param>
+        private void customColorEditorUserControl_Load(
+            object sender,
+            EventArgs e)
+        {
+        }
 
-		/// <summary>
-		/// Handles the ColorChanged event of the colorSliderControl control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="System.EventArgs"/> instance 
-		/// containing the event data.</param>
-		private void colorControl_ColorChanged(
-			object sender,
-			EventArgs e )
-		{
-			if ( !_ignoreColorChangeEvents )
-			{
-				updateTextFields();
+        /// <summary>
+        /// Handles the ColorChanged event of the colorSliderControl control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance 
+        /// containing the event data.</param>
+        private void colorControl_ColorChanged(
+            object sender,
+            EventArgs e)
+        {
+            if (!_ignoreColorChangeEvents)
+            {
+                updateTextFields();
 
-				if ( NeedUpdateUI != null )
-				{
-					NeedUpdateUI( this, EventArgs.Empty );
-				}
-			}
-		}
+                if (NeedUpdateUI != null)
+                {
+                    NeedUpdateUI(this, EventArgs.Empty);
+                }
+            }
+        }
 
-		/// <summary>
-		/// Occurs when the parent needs to update command states.
-		/// </summary>
-		public event EventHandler NeedUpdateUI;
+        /// <summary>
+        /// Occurs when the parent needs to update command states.
+        /// </summary>
+        public event EventHandler NeedUpdateUI;
 
-		/// <summary>
-		/// Updates the text fields.
-		/// </summary>
-		private void updateTextFields()
-		{
-			_ignoreTextFieldChange = true;
-			try
-			{
-				currentColorPanel.BackColor = colorControl.SelectedColor;
+        /// <summary>
+        /// Updates the text fields.
+        /// </summary>
+        private void updateTextFields()
+        {
+            _ignoreTextFieldChange = true;
+            try
+            {
+                currentColorPanel.BackColor = colorControl.SelectedColor;
 
-				var color = colorControl.SelectedColor;
-				var hslColor = HslColor.FromColor( color );
+                var color = colorControl.SelectedColor;
+                var hslColor = HslColor.FromColor(color);
 
-				if ( _currentLeadingInputElement != LeadingInputElement.HtmlInput )
-				{
-					if ( _changingControl != htmlTextBox )
-					{
-						htmlTextBox.Text = toHtml( color );
-					}
-				}
+                if (_currentLeadingInputElement != LeadingInputElement.HtmlInput)
+                {
+                    if (_changingControl != htmlTextBox)
+                    {
+                        htmlTextBox.Text = toHtml(color);
+                    }
+                }
 
-				if ( _currentLeadingInputElement != LeadingInputElement.RgbInput )
-				{
-					if ( _changingControl != rControl )
-					{
-						rControl.Value = color.R;
-					}
-					if ( _changingControl != gControl )
-					{
-						gControl.Value = color.G;
-					}
-					if ( _changingControl != bControl )
-					{
-						bControl.Value = color.B;
-					}
-				}
+                if (_currentLeadingInputElement != LeadingInputElement.ClarionInput)
+                {
+                    if (_changingControl != clarionTextBox)
+                    {
+                        clarionTextBox.Text = toClarion(color);
+                    }
+                }
 
-				if ( _currentLeadingInputElement != LeadingInputElement.HslInput )
-				{
-					if ( _changingControl != hControl )
-					{
-						hControl.Value = (decimal)hslColor.PreciseHue;
-					}
-					if ( _changingControl != sControl )
-					{
-						sControl.Value = (decimal)hslColor.PreciseSaturation;
-					}
-					if ( _changingControl != lControl )
-					{
-						lControl.Value = (decimal)hslColor.PreciseLight;
-					}
-				}
-			}
-			finally
-			{
-				_ignoreTextFieldChange = false;
-			}
-		}
+                if (_currentLeadingInputElement != LeadingInputElement.RgbInput)
+                {
+                    if (_changingControl != rControl)
+                    {
+                        rControl.Value = color.R;
+                    }
+                    if (_changingControl != gControl)
+                    {
+                        gControl.Value = color.G;
+                    }
+                    if (_changingControl != bControl)
+                    {
+                        bControl.Value = color.B;
+                    }
+                }
 
-		private static string toHtml( Color color )
-		{
-			return string.Format(
-				@"#{0:X2}{1:X2}{2:X2}",
-				color.R,
-				color.G,
-				color.B );
-		}
+                if (_currentLeadingInputElement != LeadingInputElement.HslInput)
+                {
+                    if (_changingControl != hControl)
+                    {
+                        hControl.Value = (decimal)hslColor.PreciseHue;
+                    }
+                    if (_changingControl != sControl)
+                    {
+                        sControl.Value = (decimal)hslColor.PreciseSaturation;
+                    }
+                    if (_changingControl != lControl)
+                    {
+                        lControl.Value = (decimal)hslColor.PreciseLight;
+                    }
+                }
+            }
+            finally
+            {
+                _ignoreTextFieldChange = false;
+            }
+        }
 
-		private void setColor( HslColor color )
-		{
-			setColor( color.ToRgbColor() );
-		}
+        private string toClarion(Color color)
+        {
+            return string.Format("{0:X2}{1:X2}{2:X2}h", color.B, color.G, color.R);
+        }
 
-		private void setColor( RgbColor color )
-		{
-			Color c = color.ToColor();
-			colorControl.SelectedColor = c;
+        private static string toHtml(Color color)
+        {
+            return string.Format(
+                @"#{0:X2}{1:X2}{2:X2}",
+                color.R,
+                color.G,
+                color.B);
+        }
 
-			if ( NeedUpdateUI != null )
-			{
-				NeedUpdateUI( this, EventArgs.Empty );
-			}
-		}
+        private void setColor(HslColor color)
+        {
+            setColor(color.ToRgbColor());
+        }
 
-		/// <summary>
-		/// Gets or sets the selected color.
-		/// </summary>
-		/// <value>The color of the selected.</value>
-		[Browsable( false )]
-		public Color SelectedColor
-		{
-			get
+        private void setColor(RgbColor color)
+        {
+            Color c = color.ToColor();
+            colorControl.SelectedColor = c;
+
+            if (NeedUpdateUI != null)
+            {
+                NeedUpdateUI(this, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected color.
+        /// </summary>
+        /// <value>The color of the selected.</value>
+        [Browsable(false)]
+        public Color SelectedColor
+        {
+            get
 			{
 				if ( DesignMode )
 				{
@@ -198,6 +212,29 @@
 								}
 							}
 
+                        case LeadingInputElement.ClarionInput:
+                            {
+                                string clarion = clarionTextBox.Text.Trim('h', 'H', ' ');
+                                if (clarion.Length == 7)
+                                    clarion = clarion.Substring(1, 6); // trim off the leading "00" or "0" that i sometimes included in clarion 
+                                if (clarion.Length == 8)
+                                    clarion = clarion.Substring(2, 6); // trim off the leading "00" or "0" that i sometimes included in clarion 
+
+                                if (clarion.Length == 6)
+                                {
+                                    string clarionColorInHtml = clarion.Substring(4, 2) +
+                                        clarion.Substring(2, 2) +
+                                        clarion.Substring(0, 2);
+                                    return RgbColor.FromColor(ColorTranslator.FromHtml(
+                                        @"#" + clarionColorInHtml)).ToColor();
+                                }
+                                else
+                                {
+                                    // Fallback.
+                                    return colorControl.SelectedColor;
+                                }
+                            }
+
 						case LeadingInputElement.ColorAreaAndSlider:
 							{
 								return colorControl.SelectedColor;
@@ -221,193 +258,220 @@
 					}
 				}
 			}
-			set
-			{
-				if ( !DesignMode )
-				{
-					_ignoreTextFieldChange = true;
-					_ignoreColorChangeEvents = true;
-					try
-					{
-						HslColor hslColor = HslColor.FromColor( value );
+            set
+            {
+                if (!DesignMode)
+                {
+                    _ignoreTextFieldChange = true;
+                    _ignoreColorChangeEvents = true;
+                    try
+                    {
+                        HslColor hslColor = HslColor.FromColor(value);
 
-						rControl.Value = value.R;
-						gControl.Value = value.G;
-						bControl.Value = value.B;
+                        rControl.Value = value.R;
+                        gControl.Value = value.G;
+                        bControl.Value = value.B;
 
-						hControl.Value = (decimal)hslColor.PreciseHue;
-						sControl.Value = (decimal)hslColor.PreciseSaturation;
-						lControl.Value = (decimal)hslColor.PreciseLight;
+                        hControl.Value = (decimal)hslColor.PreciseHue;
+                        sControl.Value = (decimal)hslColor.PreciseSaturation;
+                        lControl.Value = (decimal)hslColor.PreciseLight;
 
-						htmlTextBox.Text = toHtml( value );
-						currentColorPanel.BackColor = value;
+                        htmlTextBox.Text = toHtml(value);
+                        clarionTextBox.Text = toClarion(value);
+                        currentColorPanel.BackColor = value;
 
-						setColor( RgbColor.FromColor( value ) );
-					}
-					finally
-					{
-						_ignoreColorChangeEvents = false;
-						_ignoreTextFieldChange = false;
-					}
+                        setColor(RgbColor.FromColor(value));
+                    }
+                    finally
+                    {
+                        _ignoreColorChangeEvents = false;
+                        _ignoreTextFieldChange = false;
+                    }
 
-					if ( NeedUpdateUI != null )
-					{
-						NeedUpdateUI( this, EventArgs.Empty );
-					}
+                    if (NeedUpdateUI != null)
+                    {
+                        NeedUpdateUI(this, EventArgs.Empty);
+                    }
 
-					//	setColor( RgbColor.FromColor( value ) );
-				}
-			}
-		}
+                    //	setColor( RgbColor.FromColor( value ) );
+                }
+            }
+        }
 
-		private void rControl_ValueChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				if ( rControl.Value >= 0 && rControl.Value <= 255 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.RgbInput );
+        private void rControl_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                if (rControl.Value >= 0 && rControl.Value <= 255)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.RgbInput);
 
-					setColor(
-						new RgbColor(
-							(int)rControl.Value,
-							(int)gControl.Value,
-							(int)bControl.Value ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(
+                        new RgbColor(
+                            (int)rControl.Value,
+                            (int)gControl.Value,
+                            (int)bControl.Value));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void gControl_ValueChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				if ( gControl.Value >= 0 && gControl.Value <= 255 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.RgbInput );
+        private void gControl_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                if (gControl.Value >= 0 && gControl.Value <= 255)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.RgbInput);
 
-					setColor(
-						new RgbColor(
-							(int)rControl.Value,
-							(int)gControl.Value,
-							(int)bControl.Value ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(
+                        new RgbColor(
+                            (int)rControl.Value,
+                            (int)gControl.Value,
+                            (int)bControl.Value));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void bControl_ValueChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				if ( bControl.Value >= 0 && bControl.Value <= 255 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.RgbInput );
+        private void bControl_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                if (bControl.Value >= 0 && bControl.Value <= 255)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.RgbInput);
 
-					setColor(
-						new RgbColor(
-							(int)rControl.Value,
-							(int)gControl.Value,
-							(int)bControl.Value ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(
+                        new RgbColor(
+                            (int)rControl.Value,
+                            (int)gControl.Value,
+                            (int)bControl.Value));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void hControl_ValueChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				if ( hControl.Value >= 0 && hControl.Value <= 360 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.HslInput );
+        private void hControl_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                if (hControl.Value >= 0 && hControl.Value <= 360)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.HslInput);
 
-					setColor(
-						new HslColor(
-							(double)hControl.Value,
-							(double)sControl.Value,
-							(double)lControl.Value ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(
+                        new HslColor(
+                            (double)hControl.Value,
+                            (double)sControl.Value,
+                            (double)lControl.Value));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void sControl_ValueChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				if ( sControl.Value >= 0 && sControl.Value <= 100 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.HslInput );
+        private void sControl_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                if (sControl.Value >= 0 && sControl.Value <= 100)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.HslInput);
 
-					setColor(
-						new HslColor(
-							(double)hControl.Value,
-							(double)sControl.Value,
-							(double)lControl.Value ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(
+                        new HslColor(
+                            (double)hControl.Value,
+                            (double)sControl.Value,
+                            (double)lControl.Value));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void lControl_ValueChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				if ( lControl.Value >= 0 && lControl.Value <= 100 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.HslInput );
+        private void lControl_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                if (lControl.Value >= 0 && lControl.Value <= 100)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.HslInput);
 
-					setColor(
-						new HslColor(
-							(double)hControl.Value,
-							(double)sControl.Value,
-							(double)lControl.Value ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(
+                        new HslColor(
+                            (double)hControl.Value,
+                            (double)sControl.Value,
+                            (double)lControl.Value));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void htmlTextBox_TextChanged( object sender, EventArgs e )
-		{
-			if ( !_ignoreTextFieldChange )
-			{
-				string html = htmlTextBox.Text.Trim( '#', ' ' );
+        private void htmlTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                string html = htmlTextBox.Text.Trim('#', ' ');
 
-				if ( html.Length == 6 )
-				{
-					_changingControl = (Control)sender;
-					notifyValueChangedByUser( LeadingInputElement.HtmlInput );
+                if (html.Length == 6)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.HtmlInput);
 
-					setColor( RgbColor.FromColor( ColorTranslator.FromHtml(
-						@"#" + html ) ) );
-					_changingControl = null;
-				}
-			}
-		}
+                    setColor(RgbColor.FromColor(ColorTranslator.FromHtml(
+                        @"#" + html)));
+                    _changingControl = null;
+                }
+            }
+        }
 
-		private void colorControl_ValueChangedByUser(
-			object sender,
-			EventArgs e )
-		{
-			notifyValueChangedByUser(
-				LeadingInputElement.ColorAreaAndSlider );
-		}
+        private void colorControl_ValueChangedByUser(
+            object sender,
+            EventArgs e)
+        {
+            notifyValueChangedByUser(
+                LeadingInputElement.ColorAreaAndSlider);
+        }
 
-		/// <summary>
-		/// Notifies that the value has been changed by the user.
-		/// </summary>
-		/// <param name="inputElement">The input element.</param>
-		private void notifyValueChangedByUser(
-			LeadingInputElement inputElement )
-		{
-			_currentLeadingInputElement = inputElement;
-		}
-	}
+        /// <summary>
+        /// Notifies that the value has been changed by the user.
+        /// </summary>
+        /// <param name="inputElement">The input element.</param>
+        private void notifyValueChangedByUser(
+            LeadingInputElement inputElement)
+        {
+            _currentLeadingInputElement = inputElement;
+        }
+
+        private void clarionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!_ignoreTextFieldChange)
+            {
+                string clarion = clarionTextBox.Text.Trim('h', 'H', ' ');
+                if (clarion.Length == 7) 
+                    clarion = clarion.Substring(1, 6); // trim off the leading "00" or "0" that i sometimes included in clarion 
+                if (clarion.Length == 8)
+                    clarion = clarion.Substring(2, 6); // trim off the leading "00" or "0" that i sometimes included in clarion 
+                
+                if (clarion.Length == 6)
+                {
+                    _changingControl = (Control)sender;
+                    notifyValueChangedByUser(LeadingInputElement.ClarionInput);
+
+                    string clarionColorInHtml = clarion.Substring(4, 2) +
+                        clarion.Substring(2, 2) +
+                        clarion.Substring(0, 2);
+                    setColor(RgbColor.FromColor(ColorTranslator.FromHtml(
+                        @"#" + clarionColorInHtml)));
+                    
+                    _changingControl = null;
+                }
+            }
+        }
+    }
 }

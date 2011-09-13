@@ -139,7 +139,7 @@
     <value>bControl</value>
   </data>
   <data name="&gt;&gt;bControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bControl.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -163,7 +163,7 @@
     <value>gControl</value>
   </data>
   <data name="&gt;&gt;gControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gControl.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -187,7 +187,7 @@
     <value>rControl</value>
   </data>
   <data name="&gt;&gt;rControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rControl.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -298,10 +298,142 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;lControl.Name" xml:space="preserve">
+    <value>lControl</value>
+  </data>
+  <data name="&gt;&gt;lControl.Type" xml:space="preserve">
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lControl.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;lControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;sControl.Name" xml:space="preserve">
+    <value>sControl</value>
+  </data>
+  <data name="&gt;&gt;sControl.Type" xml:space="preserve">
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;sControl.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;sControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;hControl.Name" xml:space="preserve">
+    <value>hControl</value>
+  </data>
+  <data name="&gt;&gt;hControl.Type" xml:space="preserve">
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;hControl.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;hControl.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>365, 113</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 104</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>HSL</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="lControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -319,7 +451,7 @@
     <value>lControl</value>
   </data>
   <data name="&gt;&gt;lControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lControl.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -343,7 +475,7 @@
     <value>sControl</value>
   </data>
   <data name="&gt;&gt;sControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sControl.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -367,7 +499,7 @@
     <value>hControl</value>
   </data>
   <data name="&gt;&gt;hControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.Helper.ExtendedNumericUpDownControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;hControl.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -537,30 +669,6 @@
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 113</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 104</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>HSL</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="htmlTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -613,7 +721,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="currentColorPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -646,7 +754,7 @@
     <value>0, 0</value>
   </data>
   <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 340</value>
+    <value>349, 396</value>
   </data>
   <data name="colorControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -655,19 +763,19 @@
     <value>colorControl</value>
   </data>
   <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
-    <value>ZetaColorEditor.Runtime.InternalControls.CustomColors.ColorAreaAndSliderUserControl, ZetaColorEditor, Version=1.0.2917.14163, Culture=neutral, PublicKeyToken=null</value>
+    <value>ZetaColorEditor.Runtime.InternalControls.CustomColors.ColorAreaAndSliderUserControl, ZetaColorEditor, Version=1.0.4250.26634, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorControl.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 278</value>
+    <value>365, 331</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 62</value>
@@ -688,7 +796,61 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="clarionTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="clarionTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="clarionTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 20</value>
+  </data>
+  <data name="clarionTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="clarionTextBox.Text" xml:space="preserve">
+    <value>AABBCCh</value>
+  </data>
+  <data name="&gt;&gt;clarionTextBox.Name" xml:space="preserve">
+    <value>clarionTextBox</value>
+  </data>
+  <data name="&gt;&gt;clarionTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clarionTextBox.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;clarionTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>365, 278</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 49</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Clarion code</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -697,7 +859,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 340</value>
+    <value>465, 396</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CustomColorEditorUserControl</value>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+	<release version="0.1" date="28 August 2011">
+		<note type="INFO">Public Release</note>
+    <note type="FEATURE">Toggle IDE QuietMode on/off</note>
+	</release>
+</release_notes>

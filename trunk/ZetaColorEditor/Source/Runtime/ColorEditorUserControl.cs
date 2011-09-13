@@ -97,6 +97,19 @@
 			}
 		}
 
+        [Browsable(false)]
+        public bool SystemColorsTabPageSelected
+        {
+            get
+            {
+                if (tabControl.SelectedTab == systemColorsTabPage)
+                    return true;
+                else
+                    return false;
+            }
+            set { }
+        }
+
 		private static readonly ColorLookupElement[] _defaultLookupOrder =
 			new[]
 			{

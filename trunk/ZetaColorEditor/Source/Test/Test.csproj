@@ -78,7 +78,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Runtime\Runtime.csproj">
+    <ProjectReference Include="..\Runtime\ZetaColorEditor.csproj">
       <Project>{2FACBCB3-E1BA-4BCF-8E0B-B867E7B46D75}</Project>
       <Name>Runtime</Name>
     </ProjectReference>

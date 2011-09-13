@@ -18,6 +18,8 @@ namespace ClarionEdge.MainToolbarExtras
         // It would probably be a good idea to check agains the original code on new updates to make sure it will still work!
 
         private bool _useDebug;
+        private bool _fallbackToStartUp;
+        protected bool withDebugger = true;
 
         public override void Run()
         {
@@ -34,17 +36,19 @@ namespace ClarionEdge.MainToolbarExtras
                 {
                     CompilableProject project2 = (CompilableProject)project;
                     string path = null;
+                    LoggingService.Debug("project2.StartAction=" + project2.StartAction);
                     switch (project2.StartAction)
                     {
                         case StartAction.Project:
-                            if (Path.GetExtension(project2.OutputAssemblyFullPath).ToUpper() == ".EXE")
                             {
-                                path = redFile.OpenName(project2.OutputAssemblyFullPath, project2.Directory);
-                                string startArguments = project2.StartArguments;
-                                Path.GetDirectoryName(path);
+                                if (Path.GetExtension(project2.OutputAssemblyFullPath).ToUpper() == ".EXE")
+                                {
+                                    path = redFile.OpenName(project2.OutputAssemblyFullPath, project2.Directory);
+                                    string startArguments = project2.StartArguments;
+                                    Path.GetDirectoryName(path);
+                                }
+                                break;
                             }
-                            break;
-
                         case StartAction.Program:
                             {
                                 path = redFile.OpenName(project2.StartProgram, "");
@@ -52,33 +56,39 @@ namespace ClarionEdge.MainToolbarExtras
                                 break;
                             }
                         case StartAction.StartURL:
-                            path = project2.StartArguments;
-                            break;
+                            {
+                                path = project2.StartArguments;
+                                break;
+                            }
                     }
                     if (path != null)
                     {
                         project.Start(this.UseDebug);
                     }
+                    else
+                    {
+                        if (this.FallbackToStartUp && ProjectService.OpenSolution != null && ProjectService.OpenSolution.StartupProject != null && project.IdGuid != ProjectService.OpenSolution.StartupProject.IdGuid)
+                        {
+                            this.DoRun(ProjectService.OpenSolution.StartupProject);
+                        }
+                    }
+                    return;
                 }
                 catch (FileNotFoundException exception)
                 {
                     MessageBox.Show(string.Format(ResourceService.GetString("Clarion.Generator.FileNotFoundExceptionMessage"), exception.FileName), ResourceService.GetString("Clarion.Generator.FileNotFoundExceptionCaption"));
+                    return;
                 }
             }
-            else
-            {
-                this.DoRun(project.OutputAssemblyFullPath, null, null);
-            }
+            this.DoRun(project.OutputAssemblyFullPath, null, null);
         }
 
         protected void DoRun(string exeName, string arguments, string workingDir)
         {
             try
             {
-                ProcessStartInfo processStartInfo = new ProcessStartInfo
-                {
-                    FileName = exeName
-                };
+                ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                processStartInfo.FileName = exeName;
                 if ((workingDir != null) && Directory.Exists(workingDir))
                 {
                     processStartInfo.WorkingDirectory = workingDir;
@@ -122,6 +132,18 @@ namespace ClarionEdge.MainToolbarExtras
             set
             {
                 this._useDebug = value;
+            }
+        }
+        
+        public bool FallbackToStartUp
+        {
+            get
+            {
+                return this._fallbackToStartUp;
+            }
+            set
+            {
+                this._fallbackToStartUp = value;
             }
         }
     }
