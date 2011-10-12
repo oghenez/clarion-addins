@@ -1,10 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.Gui;
-using System.Diagnostics;
-using System.Resources;
 using ICSharpCode.SharpDevelop.Project;
 
 namespace ClarionAddins.IdeDebug
@@ -65,14 +61,14 @@ namespace ClarionAddins.IdeDebug
             if (WorkbenchSingleton.Workbench.ActiveContent != null)
             {
                 LoggingService.Debug("  * " + WorkbenchSingleton.Workbench.ActiveContent.GetType().ToString());
-                if (WorkbenchSingleton.Workbench.ActiveContent is SoftVelocity.Generator.Editor.CommonClarionGenDesignerView)
-                {
+                //if (WorkbenchSingleton.Workbench.ActiveContent is SoftVelocity.Generator.Editor.CommonClarionGenDesignerView)
+                //{
                     //LayoutConfiguration.CurrentLayoutName = "Designer";
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     //LayoutConfiguration.CurrentLayoutName = "Default";
-                }
+                //}
             }
         }
 

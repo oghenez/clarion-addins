@@ -11,17 +11,28 @@ namespace ClarionEdge.MainToolbarExtras
     {
         public static void UpdateMainToolbarSize()
         {
-            DefaultWorkbench wbForm;
-            wbForm = (DefaultWorkbench)WorkbenchSingleton.Workbench;
-            foreach (ToolStrip toolBar in wbForm.ToolBars)
+            LoggingService.Debug("About to resize main toolbar");
+            ToolStrip toolBar = GetToolBar();
+            if (toolBar != null)
             {
                 Size tbImageScaling = toolBar.ImageScalingSize;
                 int iconSize = PropertyService.Get("ClarionEdge.MainToolbarExtras.iconSize", tbImageScaling.Height);
                 int toolbarHeight = PropertyService.Get("ClarionEdge.MainToolbarExtras.toolbarHeight", toolBar.Height);
                 toolBar.ImageScalingSize = new Size(iconSize, iconSize);
                 toolBar.Height = toolbarHeight;
-                toolBar.ContextMenuStrip = MenuService.CreateContextMenu(toolBar, "/ClarionEdge/MainToolBarExtras/ContextMenu");
             }
+        }
+
+        private static ToolStrip GetToolBar()
+        {
+            DefaultWorkbench wbForm;
+            wbForm = (DefaultWorkbench)WorkbenchSingleton.Workbench;
+            foreach (ToolStrip toolBar in wbForm.ToolBars)
+            {
+                // At the moment there is only one so just return it
+                return toolBar;
+            }
+            return null;
         }
 
         public static void UpdateOtherToolbars()
@@ -84,6 +95,15 @@ namespace ClarionEdge.MainToolbarExtras
                     }
                 }
             }
+        }
+
+        internal static void AttachContextMenu()
+        {
+            LoggingService.Debug("About to attach context menu to main toolbar");
+            ToolStrip toolBar = GetToolBar();
+            if (toolBar != null)
+                toolBar.ContextMenuStrip = MenuService.CreateContextMenu(toolBar, "/ClarionEdge/MainToolBarExtras/ContextMenu");
+
         }
     }
 }

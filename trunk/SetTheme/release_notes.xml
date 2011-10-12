@@ -25,5 +25,11 @@
   <release version="0.6" date="04 June 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
-
-</release_notes>
+  <release version="0.7" date="27 September 2011">
+    <note type="CHANGE">Added assembly resolve code</note>
+    <note type="CHANGE">Added 8 additional custom themes!</note>
+  </release>
+  <release version="0.8" date="4 October 2011">
+    <note type="CHANGE">Assembly resolve code mode to a separate assembly</note>
+  </release>
+  </release_notes>

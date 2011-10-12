@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.MainToolbarExtras" version="0.4"/>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.7"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -44,12 +44,38 @@
     </Condition>
   </Path>
 
-    <Path name = "/ClarionEdge/MainToolBarExtras/ContextMenu">
+  <Path name = "/SharpDevelop/Workbench/ToolBar/Standard">
+    <Condition name="Compare" string="${property:ClarionEdge.MainToolbarExtras.ShowRunExeNonElevated??True}" equals="True" action="Exclude">
+      <Condition name = "SolutionOpen" action="Disable">
+        <ComplexCondition>
+          <Or>
+            <Condition name="IsProcessRunning" isdebugging = "False"/>
+            <Not>
+              <Condition name="DebuggerSupports" debuggersupports = "ExecutionControl"/>
+            </Not>
+          </Or>
+          <Condition name="IsProcessRunning" isdebugging = "False" action = "Disable">
+              <ToolbarItem id      = "RunWithoutDebuggerNonElevated"
+                           icon    = "Icons.24x24.RunExeNonElevated"
+                           insertbefore = "DebuggerSeparator"
+                           tooltip = "${res:Generator.RunStartUp.Description} - Non-Elevated"
+                           class   = "ClarionEdge.MainToolbarExtras.RunStartUpProjectNonElevated"/>
+          </Condition>
+        </ComplexCondition>
+      </Condition>
+    </Condition>
+  </Path>
+
+  <Path name = "/ClarionEdge/MainToolBarExtras/ContextMenu">
     <MenuItem id="ShowRunStartUpProjectInDebugger"
               label="Show 'Run StartUp Project In Debugger' Button"
               type="CheckBox"
               class="ClarionEdge.MainToolbarExtras.ShowRunStartUpProjectInDebugger"/>
-    <MenuItem id = "SetToolbarSize"
+      <MenuItem id="ShowRunExeNonElevated"
+                label="Show '${res:Generator.RunStartUp.Description} - Non-Elevated' Button"
+                type="CheckBox"
+                class="ClarionEdge.MainToolbarExtras.ShowRunExeNonElevated"/>
+      <MenuItem id = "SetToolbarSize"
               label = "Set Toolbar Size"
               icon = "Icons.famfamfam.silk.page_white_wrench"
               class =" ClarionEdge.MainToolbarExtras.SetToolbarSizeCommand"/>

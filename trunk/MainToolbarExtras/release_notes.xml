@@ -16,4 +16,13 @@
   <release version="0.4" date="21 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
+  <release version="0.5" date="18 September 2011">
+    <note type="FIX">A few adjustments made to the RunStartUpProjectInDebugger code. This is basically a sync to the latest improvements found in SoftVelocity.Generator.Commands.RunProject in the most recent Clarion 8</note>
+  </release>
+  <release version="0.6" date="4 October 2011">
+    <note type="FIX">Context menu and resizing was not being applied until *after* the first view (code/text/app/etc) was opened.</note>
+  </release>
+  <release version="0.7" date="11 October 2011">
+    <note type="FIX">New toolbar item "Run startup project non-elevated. Button is visible by default, you can hide it using the context menu.</note>
+  </release>
 </release_notes>

@@ -100,6 +100,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\delete.png" />
     <None Include="Resources\play.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\record.png" />

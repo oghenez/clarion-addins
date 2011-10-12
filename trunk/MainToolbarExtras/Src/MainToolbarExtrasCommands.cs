@@ -25,8 +25,9 @@ namespace ClarionEdge.MainToolbarExtras
 
         void WorkbenchSingleton_WorkbenchCreated(object sender, System.EventArgs e)
         {
-            WorkbenchSingleton.Workbench.ViewOpened += new ViewContentEventHandler(Workbench_ViewOpened);
             WorkbenchSingleton.Workbench.ActiveWorkbenchWindowChanged += new EventHandler(Workbench_ActiveWorkbenchWindowChanged);
+            ToolbarHelper.AttachContextMenu();
+            ToolbarHelper.UpdateMainToolbarSize();
         }
 
         void Workbench_ActiveWorkbenchWindowChanged(object sender, EventArgs e)
@@ -34,10 +35,6 @@ namespace ClarionEdge.MainToolbarExtras
             ToolbarHelper.UpdateOtherToolbars();
         }
 
-        void Workbench_ViewOpened(object sender, ViewContentEventArgs e)
-        {
-            ToolbarHelper.UpdateMainToolbarSize();
-        }
     }
 
     public class SetToolbarSizeCommand : AbstractCommand
@@ -80,6 +77,21 @@ namespace ClarionEdge.MainToolbarExtras
             set
             {
                 PropertyService.Set("ClarionEdge.MainToolbarExtras.ShowRunStartUpProjectInDebugger", Convert.ToString(value));
+            }
+        }
+    }
+
+    class ShowRunExeNonElevated : AbstractCheckableMenuCommand
+    {
+        public override bool IsChecked
+        {
+            get
+            {
+                return Convert.ToBoolean(PropertyService.Get("ClarionEdge.MainToolbarExtras.ShowRunExeNonElevated", "true"));
+            }
+            set
+            {
+                PropertyService.Set("ClarionEdge.MainToolbarExtras.ShowRunExeNonElevated", Convert.ToString(value));
             }
         }
     }

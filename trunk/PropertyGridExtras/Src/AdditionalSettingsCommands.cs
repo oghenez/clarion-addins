@@ -37,6 +37,21 @@ namespace ClarionEdge.PropertyGridExtras
         }
     }
 
+    class RememberExpandedState : AbstractCheckableMenuCommand
+    {
+        public override bool IsChecked
+        {
+            get
+            {
+                return Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.RememberExpandedState", "true"));
+            }
+            set
+            {
+                PropertyService.Set("ClarionEdge.PropertyGridExtras.RememberExpandedState", Convert.ToString(value));
+            }
+        }
+    }
+
     class UseDefaultDrawManager : AbstractCheckableMenuCommand
     {
         public override bool IsChecked

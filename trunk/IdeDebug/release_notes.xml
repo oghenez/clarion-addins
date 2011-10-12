@@ -4,4 +4,7 @@
 		<note type="INFO">Public Release</note>
     <note type="FEATURE">Toggle IDE QuietMode on/off</note>
 	</release>
+  <release version="0.2" date="20 September 2011">
+    <note type="FIX">Removed some dependencies that I had left in for testing.</note>
+  </release>
 </release_notes>

@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.ProjectBrowserExtras" version="0.3"/>
+    <Identity name="ClarionEdge.ProjectBrowserExtras" version="0.4"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
@@ -25,13 +25,13 @@
       <ToolbarItem id    = "ProjectBrowserExtrasSeparator"
                    type  = "Separator"/>
       <ToolbarItem id = "ProjectBrowserExtrasContract"
-                   tooltip = "Collapse All Tree Nodes..."
-                   icon = "dvDeleteGreen"
-                   class = "ClarionEdge.ProjectBrowserExtras.CollapseTree"/>
-      <ToolbarItem id = "ProjectBrowserExtrasContract"
                    tooltip = "Expand All Tree Nodes..."
                    icon = "dvAddGreen"
                    class = "ClarionEdge.ProjectBrowserExtras.ExpandTree"/>
+      <ToolbarItem id = "ProjectBrowserExtrasContract"
+                   tooltip = "Collapse All Tree Nodes..."
+                   icon = "dvDeleteGreen"
+                   class = "ClarionEdge.ProjectBrowserExtras.CollapseTree"/>
     </Condition>
     <ComplexCondition action="Disable">
       <And>

@@ -12,6 +12,8 @@ using ICSharpCode.TextEditor;
 using ICSharpCode.Core;
 using System.Threading;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using ICSharpCode.SharpDevelop;
 
 namespace ClarionEdge.EditorMacros
 {
@@ -22,13 +24,11 @@ namespace ClarionEdge.EditorMacros
 
         KeyboardHook keyboardHook = new KeyboardHook();
         TextArea textArea;
-        
 
         public EditorMacrosPadControl()
         {
             InitializeComponent();
             //headerGroup.ValuesPrimary.Image = CommonResources.Properties.famfamfam_silk.famfamfam_silk_script_edit;
-            buttonStopRecording.Enabled = false;
             buttonPlayBack.Enabled = false;
 
             listBoxDebug.DataSource = events;
@@ -41,50 +41,42 @@ namespace ClarionEdge.EditorMacros
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-
-            IWorkbenchWindow window = WorkbenchSingleton.Workbench.ActiveWorkbenchWindow;
-            if (window == null) return;
-            ITextEditorControlProvider provider = window.ActiveViewContent as ITextEditorControlProvider;
-            if (provider == null)
+            if (buttonStartRecording.Text == "Stop")
             {
-                MessageBox.Show("Macros can only be recorded when there is an editor window open!");
-                return;
+                buttonStartRecording.Image = ClarionEdge.EditorMacros.Properties.Resources.record;
+                buttonStartRecording.Text = "Start";
+                keyboardHook.Stop();
+                if (events.Count > 0)
+                {
+                    buttonPlayBack.Enabled = true;
+                }
+                if (textArea == null)
+                {
+                    return;
+                }
             }
-
-            buttonPlayBack.Enabled = false;
-            buttonStopRecording.Enabled = true;
-            buttonPlayBack.Enabled = false;
-
-            textArea = provider.TextEditorControl.ActiveTextAreaControl.TextArea;
-            //textArea.KeyEventHandler += new ICSharpCode.TextEditor.KeyEventHandler(textArea_KeyEventHandler);
-            //textArea.KeyDown += new System.Windows.Forms.KeyEventHandler(HandleKeyDown);
-            //textArea.KeyUp += new System.Windows.Forms.KeyEventHandler(HandleKeyUp);
-
-            events.Clear();
-            lastTimeRecorded = Environment.TickCount;
-
-            keyboardHook.Start();
-            WorkbenchSingleton.Workbench.ActiveWorkbenchWindow.SelectWindow();
-
-        }
-
-        private void buttonStop_Click(object sender, EventArgs e)
-        {
-            keyboardHook.Stop();
-            if (events.Count > 0)
+            else
             {
-                buttonPlayBack.Enabled = true;
-            }
+                buttonStartRecording.Image = ClarionEdge.EditorMacros.Properties.Resources.stop;
+                buttonStartRecording.Text = "Stop";
+                IWorkbenchWindow window = WorkbenchSingleton.Workbench.ActiveWorkbenchWindow;
+                if (window == null) return;
+                ITextEditorControlProvider provider = window.ActiveViewContent as ITextEditorControlProvider;
+                if (provider == null)
+                {
+                    MessageBox.Show("Macros can only be recorded when there is an editor window open!");
+                    return;
+                }
 
-            if (textArea == null)
-            {
-                return;
-            }
+                buttonPlayBack.Enabled = false;
+                textArea = provider.TextEditorControl.ActiveTextAreaControl.TextArea;
 
-            //textArea.KeyDown -= HandleKeyDown;
-            //textArea.KeyUp -= HandleKeyUp;
-            buttonStartRecording.Enabled = true;
-            buttonStopRecording.Enabled = false;
+                events.Clear();
+                lastTimeRecorded = Environment.TickCount;
+
+                keyboardHook.Start();
+                WorkbenchSingleton.Workbench.ActiveWorkbenchWindow.SelectWindow();
+            }
         }
 
         void keyboardHook_KeyDown(object sender, KeyEventArgs e)
@@ -142,13 +134,13 @@ namespace ClarionEdge.EditorMacros
 
         private void buttonStartPlayback_Click(object sender, EventArgs e)
         {
+
+            bool originalCC = CodeCompletionOptions.EnableCodeCompletion;
+            CodeCompletionOptions.EnableCodeCompletion = false;
             WorkbenchSingleton.Workbench.ActiveWorkbenchWindow.SelectWindow();
-            LoggingService.Debug("about to start playback");
+
             foreach (MacroEvent macroEvent in events)
             {
-                LoggingService.Debug("event: " + macroEvent.DisplayString);
-                //Thread.Sleep(1000);
-
                 switch (macroEvent.MacroEventType)
                 {
                     case MacroEventType.KeyDown:
@@ -159,20 +151,64 @@ namespace ClarionEdge.EditorMacros
                         break;
                     case MacroEventType.KeyUp:
                         {
-
                             KeyEventArgs keyArgs = (KeyEventArgs)macroEvent.EventArgs;
-
                             KeyboardSimulator.KeyUp(keyArgs.KeyCode);
-
                         }
                         break;
                     default:
                         break;
                 }
-
             }
+            CodeCompletionOptions.EnableCodeCompletion = originalCC;
+        }
 
+        public void GainFocus()
+        {
+            if (buttonPlayBack.Enabled == true)
+            {
+                buttonPlayBack.Select();
+            }
+        }
 
+        private void listBoxDebug_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int indexOfSelection = listBoxDebug.IndexFromPoint(e.X, e.Y);
+                if (indexOfSelection != ListBox.NoMatches)
+                {
+                    listBoxDebug.SelectedIndex = indexOfSelection;
+                }
+            }
+        }
+
+        private void listBoxDebug_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int indexOfSelection = listBoxDebug.IndexFromPoint(e.X, e.Y);
+                if (indexOfSelection != ListBox.NoMatches)
+                {
+                    listBoxDebug.SelectedIndex = indexOfSelection;
+                }
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LoggingService.Debug("remove clicked");
+            try
+            {
+                if (listBoxDebug.SelectedIndex >= 0)
+                {
+                    events.RemoveAt(listBoxDebug.SelectedIndex);
+                    listBoxDebug.ClearSelected();
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggingService.Debug("exception=" + ex.Message);
+            }
         }
     }
 }

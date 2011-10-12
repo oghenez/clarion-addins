@@ -42,12 +42,12 @@ namespace MouseKeyboardLibrary
 
         public static void KeyDown(Keys key)
         {
-            keybd_event(ParseKey(key), 0, 0, 0);
+            keybd_event(ParseKey(key), 0x45, KEYEVENTF_EXTENDEDKEY, 0);
         }
 
         public static void KeyUp(Keys key)
         {
-            keybd_event(ParseKey(key), 0, KEYEVENTF_KEYUP, 0);            
+            keybd_event(ParseKey(key), 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
         }
 
         public static void KeyPress(Keys key)
@@ -115,11 +115,15 @@ namespace MouseKeyboardLibrary
             switch (key)
             {
                 case Keys.Alt:
-                    return (byte)18;
+                    return (byte)0xB8;
                 case Keys.Control:
-                    return (byte)17;
+                case Keys.LControlKey:
+                case Keys.RControlKey:
+                    return (byte)0xA2;
                 case Keys.Shift:
-                    return (byte)16;
+                case Keys.LShiftKey:
+                case Keys.RShiftKey:
+                    return (byte)0xA0;
                 default:
                     return (byte)key;
             }

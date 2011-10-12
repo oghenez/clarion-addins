@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UacHelpers.UserAccountControl", "UacHelpers.CppLibrary\UacHelpers.CppLibrary.vcproj", "{D043A646-FE7A-4334-B23D-E327593C1AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UacHelpers.EmbedManifest", "UacHelpers.EmbedManifest\UacHelpers.EmbedManifest.csproj", "{781B92C7-5D94-453C-A81C-5C38FE7F812C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UacHelpers.ManifestNativeHelpers", "UacHelpers.EnumResources\UacHelpers.EnumResources.vcproj", "{73434F29-7AC5-432C-915A-FC3EAE911C7B}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs06.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = UacHelpers.EmbedManifest\\UacHelpers.EmbedManifest.csproj
+		SccProjectName1 = UacHelpers.EmbedManifest
+		SccLocalPath1 = UacHelpers.EmbedManifest
+		SccProjectUniqueName2 = UacHelpers.CppLibrary\\UacHelpers.CppLibrary.vcproj
+		SccProjectName2 = UacHelpers.CppLibrary
+		SccLocalPath2 = UacHelpers.CppLibrary
+		SccProjectUniqueName3 = UacHelpers.EnumResources\\UacHelpers.EnumResources.vcproj
+		SccProjectName3 = UacHelpers.EnumResources
+		SccLocalPath3 = UacHelpers.EnumResources
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Debug|x64.ActiveCfg = Debug|x64
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Debug|x64.Build.0 = Debug|x64
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Debug|x86.ActiveCfg = Debug|Win32
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Debug|x86.Build.0 = Debug|Win32
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Release|x64.ActiveCfg = Release|x64
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Release|x64.Build.0 = Release|x64
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Release|x86.ActiveCfg = Release|Win32
+		{D043A646-FE7A-4334-B23D-E327593C1AE2}.Release|x86.Build.0 = Release|Win32
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Debug|x64.ActiveCfg = Debug|x64
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Debug|x64.Build.0 = Debug|x64
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Debug|x86.ActiveCfg = Debug|x86
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Debug|x86.Build.0 = Debug|x86
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Release|x64.ActiveCfg = Release|x64
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Release|x64.Build.0 = Release|x64
+		{781B92C7-5D94-453C-A81C-5C38FE7F812C}.Release|x86.ActiveCfg = Release|x86
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Debug|x64.ActiveCfg = Debug|x64
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Debug|x64.Build.0 = Debug|x64
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Debug|x86.ActiveCfg = Debug|Win32
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Debug|x86.Build.0 = Debug|Win32
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Release|x64.ActiveCfg = Release|x64
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Release|x64.Build.0 = Release|x64
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Release|x86.ActiveCfg = Release|Win32
+		{73434F29-7AC5-432C-915A-FC3EAE911C7B}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

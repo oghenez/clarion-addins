@@ -31,18 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonSources">
-      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\CommonSources.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DataDictionary">
-      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\DataDictionary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="FormsDesigner">
-      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\FormsDesigner.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="ICSharpCode.Core">
       <HintPath>..\..\..\..\Clarion7\bin\ICSharpCode.Core.dll</HintPath>
       <Private>False</Private>

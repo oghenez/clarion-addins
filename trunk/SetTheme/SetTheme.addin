@@ -9,12 +9,13 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SetTheme" version="0.6"/>
+    <Identity name="ClarionEdge.SetTheme" version="0.8"/>
   </Manifest>
 
   <Runtime>
     <Import assembly = "ComponentFactory.Krypton.Toolkit.dll"/>
     <Import assembly = "UserControls.Krypton.PaletteSelectors.dll"/>
+    <Import assembly = "AssemblyResolve.dll"/>
     <Import assembly = "SetTheme.dll"/>
   </Runtime>
 
@@ -24,10 +25,15 @@
     </Condition>
   </Path>
 
+  <Path name="/Workspace/Autostart">
+    <Class id="SetThemeAssemblyResolve" class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
+  </Path>
+
   <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ToolsOptions">
     <DialogPanel id = "SetThemeOptionsPanel"
                  label = "Configure IDE Theme"
                  class = "ClarionEdge.SetTheme.SetThemeOptionsPanel"/>
   </Path>
 
+  
 </AddIn>
