@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\RemoveLineCommand.cs" />
-    <Compile Include="Src\AssemblyResolve.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CommonSources">
@@ -110,6 +109,12 @@
     <Content Include="RemoveLine.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AssemblyResolve\AssemblyResolve\AssemblyResolve.csproj">
+      <Project>{5BD25664-ABFE-4560-88F0-F5C3FC4D4C5D}</Project>
+      <Name>AssemblyResolve</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

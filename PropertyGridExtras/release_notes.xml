@@ -16,4 +16,20 @@
   <release version="0.4" date="21 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
+  <release version="0.5" date="4 October 2011">
+    <note type="BLOG">`PropertyPadExtras – Automatic save/restore grid state! &lt;http://www.clarionedge.com/clarion/addins/propertypadextras-automatic-saverestore-grid-state.html&gt;`_</note>
+    <note type="FEATURE">Save and restore expanded state of grid categories</note>
+    <note type="FEATURE">Expand/Contract all buttons added to the grid toolbar</note>
+    <note type="FEATURE">Options button added to the grid toolbar</note>
+    <note type="FEATURE">Grow/Shrink font feature now expanded to allow you to also set the font type. Configuration is available in the Options dialog</note>
+    <note type="FEATURE">Grid ToolStripRenderMode changed to ManagerRenderMode. This means that the toolstrip will be correctly styled if you have the `SetTheme &lt;http://clarionaddins.com/addins/SetTheme.html&gt;`_ addin installed.</note>
+    <note type="CHANGE">Reset font now detects the correct font from the main IDE form</note>
+    <note type="CHANGE">Internal code refactored for easier maintenance and better performance</note>
+    <note type="CHANGE">Screenshot updated</note>
+  </release>
+  <release version="0.6" date="8 October 2011">
+    <note type="FIX">Create temp directory if it doesn't already exist. Normal this is handled by the IDE but only when you first open a text file for editing, not if you go straight to a property grid!</note>
+    <note type="FIX">The property enumerator was not correctly looping over all child properties. This could result in some descendants not being saved/restored.</note>
+    <note type="FIX">The initial load of window and report designers is sending a few extra ExpandAll commands. These appear to now be correctly suppressed allowing the restore to function correctly.</note>
+  </release>
 </release_notes>

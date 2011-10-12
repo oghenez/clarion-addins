@@ -108,6 +108,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AssemblyResolve\AssemblyResolve\AssemblyResolve.csproj">
+      <Project>{5BD25664-ABFE-4560-88F0-F5C3FC4D4C5D}</Project>
+      <Name>AssemblyResolve</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Krypton.PaletteSelectors\Krypton.PaletteSelectors.csproj">
       <Project>{4CAC59BD-B5D4-4475-AD0E-9FD7C903D48C}</Project>
       <Name>Krypton.PaletteSelectors</Name>
@@ -123,13 +127,37 @@
     <Content Include="CustomThemes\Asphalt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomThemes\ax.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\chrome.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\Green.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\GWC_Colors.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CustomThemes\Hazel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\LightGray.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomThemes\McLane.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomThemes\Plastic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\Purple.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\Seven.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CustomThemes\Win7.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SetTheme.jpg">

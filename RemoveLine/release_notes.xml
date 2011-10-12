@@ -26,4 +26,10 @@
   <release version="0.7" date="24 August 2011">
     <note type="FIX">Assembly resolver now uses Directory.GetPath to search the BackendBindings folder for the correct assembly instead of using hard coded values!</note>
   </release>
+  <release version="0.8" date="18 September 2011">
+    <note type="FIX">Another assembly resolving fix. Now the resolver performs a search from the BaseDirectory instead of just the ClarionBinding directory.</note>
+  </release>
+  <release version="0.9" date="4 October 2011">
+    <note type="CHANGE">Assembly resolve code moved to a separate assembly</note>
+  </release>
 </release_notes>

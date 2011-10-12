@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.EditorMacros" version="0.3"/>
+    <Identity name="ClarionEdge.EditorMacros" version="0.5"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
@@ -25,27 +25,8 @@
          category = "Tools"
          title    = "Editor Macros"
          icon     = "ClarionAddins.Icon.MacroEditor"
-         shortcut = ""
+         shortcut = "Control|Oemplus"
          class    = "ClarionEdge.EditorMacros.EditorMacrosPad"/>
   </Path>
-  
-  <!--
-	<Path name = "/Workspace/Tools">
-    <Condition name="Compare" string="${property:EditorMacros.Options.Recording??False}" equals="False">
-      <MenuItem id = "StartRecordMacroCommand"
-                label = "Start Recording"
-                shortcut = "Control|="
-                class = "ClarionEdge.EditorMacros.StartRecordMacroCommand"/>
-    </Condition>>
-    <Condition name="Compare" string="${property:EditorMacros.Options.Recording??False}" equals="True">
-      <MenuItem id = "StopRecordMacroCommand"
-                label = "Stop Recording"
-                shortcut = "Control|="
-                class = "ClarionEdge.EditorMacros.StopRecordMacroCommand"/>
-    </Condition>>
-    <MenuItem id = "PlayMacroCommand"
-		          label = "PlayMacroCommand"
-		          shortcut = "Control|="
-		          class = "ClarionEdge.EditorMacros.PlayMacroCommand"/>	</Path>
-	-->
+
 </AddIn>

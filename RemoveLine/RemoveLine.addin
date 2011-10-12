@@ -10,11 +10,12 @@
 
   <Runtime>
     <Import assembly = "RemoveLine.dll"/>
+    <Import assembly = "AssemblyResolve.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionEdge.RemoveLine" version="0.7"/>
+    <Identity name="ClarionEdge.RemoveLine" version="0.9"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
@@ -30,7 +31,7 @@
     </Path>
 
   <Path name="/Workspace/Autostart">
-     <Class id="RemoveLineAssemblyResolve" class="ClarionEdge.RemoveLine.AssemblyResolve"/>
+     <Class id="RemoveLineAssemblyResolve" class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
   </Path>
   
   
