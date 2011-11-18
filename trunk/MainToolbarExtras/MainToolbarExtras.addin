@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.MainToolbarExtras" version="0.11"/>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.12"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -88,6 +88,10 @@
               label="Re-open StartPage when solution is closed"
               type="CheckBox"
               class="ClarionEdge.MainToolbarExtras.ReOpenStartPage"/>
+    <MenuItem id="AutoRefreshStartPage"
+              label="Automatically refresh StartPage when solution is opened"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.AutoRefreshStartPage"/>
   </Path>
 
   <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">

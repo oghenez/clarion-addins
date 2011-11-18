@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClarionEdge.MainToolbarExtras.Properties {
-    using System;
-    
-    
+namespace ClarionEdge.MainToolbarExtras.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

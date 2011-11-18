@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using ICSharpCode.Core;
-using ICSharpCode.SharpDevelop.Gui;
-using SoftVelocity.Generator.UI;
-using MouseKeyboardLibrary;
-using System.Threading;
-using ICSharpCode.SharpDevelop.Project;
 using ICSharpCode.SharpDevelop.BrowserDisplayBinding;
-using ICSharpCode.SharpDevelop;
+using ICSharpCode.SharpDevelop.Gui;
+using ICSharpCode.SharpDevelop.Project;
+using MouseKeyboardLibrary;
+using SoftVelocity.Generator.UI;
 
 namespace ClarionEdge.MainToolbarExtras
 {
@@ -41,14 +40,15 @@ namespace ClarionEdge.MainToolbarExtras
 
         void ProjectService_SolutionLoaded(object sender, SolutionEventArgs e)
         {
-            if (PropertyService.Get<bool>("SharpDevelop.CloseStartPageOnSolutionOpening", true) == false)
+            if (PropertyService.Get<bool>("SharpDevelop.CloseStartPageOnSolutionOpening", true) == false &&
+                PropertyService.Get<bool>("ClarionEdge.MainToolbarExtras.AutoRefreshStartPage", true) == true)
             {
                 foreach (IViewContent current in WorkbenchSingleton.Workbench.ViewContentCollection)
                 {
                     BrowserPane browserPane = current as BrowserPane;
                     if (browserPane != null && browserPane.Url.Scheme == "startpage")
                     {
-                        current.WorkbenchWindow.RedrawContent();
+                        browserPane.Load("startpage://project/");
                         LoggingService.Debug("attempting to refresh startpage!");
                     }
                 }
@@ -166,6 +166,21 @@ namespace ClarionEdge.MainToolbarExtras
             set
             {
                 PropertyService.Set("ClarionEdge.MainToolbarExtras.ReOpenStartPage", Convert.ToString(value));
+            }
+        }
+    }
+
+    class AutoRefreshStartPage : AbstractCheckableMenuCommand
+    {
+        public override bool IsChecked
+        {
+            get
+            {
+                return Convert.ToBoolean(PropertyService.Get("ClarionEdge.MainToolbarExtras.AutoRefreshStartPage", "true"));
+            }
+            set
+            {
+                PropertyService.Set("ClarionEdge.MainToolbarExtras.AutoRefreshStartPage", Convert.ToString(value));
             }
         }
     }
