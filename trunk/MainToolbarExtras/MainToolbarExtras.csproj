@@ -43,6 +43,14 @@
       <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\ClarionWin\CWBinding.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DataDictionary">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\DataDictionary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Generator">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\Generator.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ICSharpCode.Core">
       <HintPath>..\..\..\..\..\..\Clarion7\bin\ICSharpCode.Core.dll</HintPath>
       <Private>False</Private>
@@ -116,6 +124,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AssemblyResolve\AssemblyResolve\AssemblyResolve.csproj">
+      <Project>{5BD25664-ABFE-4560-88F0-F5C3FC4D4C5D}</Project>
+      <Name>AssemblyResolve</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MouseKeyboardLibrary\MouseKeyboardLibrary.csproj">
+      <Project>{F419622F-4D82-40A6-B4FB-3FE36579F018}</Project>
+      <Name>MouseKeyboardLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UACHelpers\UacHelpers.CppLibrary\UacHelpers.CppLibrary.vcxproj">
       <Project>{D043A646-FE7A-4334-B23D-E327593C1AE2}</Project>
       <Name>UacHelpers.UserAccountControl</Name>

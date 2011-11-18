@@ -105,5 +105,29 @@ namespace ClarionEdge.MainToolbarExtras
                 toolBar.ContextMenuStrip = MenuService.CreateContextMenu(toolBar, "/ClarionEdge/MainToolBarExtras/ContextMenu");
 
         }
+
+        internal static void RunAbstractCommand(string path, string id)
+        {
+            AddInTreeNode treeNode = AddInTree.GetTreeNode(path, false);
+            if (treeNode != null)
+            {
+                AbstractCommand result;
+                foreach (Codon current in treeNode.Codons)
+                {
+                    if (current.Id == id)
+                    {
+                        LoggingService.Debug("Found " + id + ", class=" + current.Properties["class"]);
+
+                        result = current.AddIn.CreateObject(current.Properties["class"]) as AbstractCommand;
+                        if (result == null)
+                            LoggingService.Debug("result is null.");
+                        else
+                            result.Run();
+
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

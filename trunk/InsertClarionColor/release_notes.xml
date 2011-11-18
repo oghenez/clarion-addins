@@ -15,4 +15,7 @@
     <note type="FEATURE">Returned values are converted to clarion equates where available. This includes system color equates.</note>
     <note type="FEATURE">If there is no active editor window found a dialog will offering to copy the selected color to the clipboard.</note>
   </release>
+  <release version="0.4" date="19 October 2011">
+    <note type="FEATURE">Experimental new addition, the color picker is now available from a Pad. See :menuselection:`View --> Tools --> Insert Clarion Color`</note>
+  </release>
 </release_notes>

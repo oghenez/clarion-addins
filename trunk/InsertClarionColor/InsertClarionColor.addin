@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.InsertClarionColor" version="0.3"/>
+    <Identity name="ClarionEdge.InsertClarionColor" version="0.4"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
@@ -42,6 +42,14 @@
                  insertafter = "Delete"
                  insertbefore = "UndoRedoSeparator"
                  class = "ClarionEdge.InsertClarionColor.ShowColorDialog"/>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/Pads">
+    <Pad id       = "InsertClarionColorPad"
+         category = "Tools"
+         title    = "Insert Clarion Color"
+         icon     = "Icons.Silk.color_wheel"
+         class    = "ClarionEdge.InsertClarionColor.ColorDialogPad"/>
   </Path>
 
 </AddIn>

@@ -24,6 +24,7 @@ namespace ClarionEdge.EditorMacros
 
         KeyboardHook keyboardHook = new KeyboardHook();
         TextArea textArea;
+        private Keys _lastKeyDownKeyCode = Keys.None;
 
         public EditorMacrosPadControl()
         {
@@ -81,6 +82,8 @@ namespace ClarionEdge.EditorMacros
 
         void keyboardHook_KeyDown(object sender, KeyEventArgs e)
         {
+            if (SkipRepeatedEvents(e.KeyCode) == true && e.KeyCode == _lastKeyDownKeyCode)
+                return;
 
             events.Add(
                 new MacroEvent(
@@ -90,11 +93,32 @@ namespace ClarionEdge.EditorMacros
                 ));
 
             lastTimeRecorded = Environment.TickCount;
+            _lastKeyDownKeyCode = e.KeyCode;
 
+        }
+
+        private bool SkipRepeatedEvents(Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.LControlKey:
+                case Keys.RControlKey:
+                case Keys.Control:
+                case Keys.ControlKey:
+                case Keys.Shift:
+                case Keys.ShiftKey:
+                case Keys.LShiftKey:
+                case Keys.RShiftKey:
+                case Keys.Alt:
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         void keyboardHook_KeyUp(object sender, KeyEventArgs e)
         {
+            _lastKeyDownKeyCode = Keys.None;
 
             events.Add(
                 new MacroEvent(
@@ -105,31 +129,6 @@ namespace ClarionEdge.EditorMacros
 
             lastTimeRecorded = Environment.TickCount;
 
-        }
-
-        private void HandleKeyDown(object sender, KeyEventArgs e)
-        {
-            LoggingService.Debug("HandleKeyDown: " + e.KeyCode.ToString());
-            events.Add(
-                new MacroEvent(
-                    MacroEventType.KeyDown,
-                    e,
-                    Environment.TickCount - lastTimeRecorded
-                ));
-            lastTimeRecorded = Environment.TickCount;
-
-        }
-
-        private void HandleKeyUp(object sender, KeyEventArgs e)
-        {
-            events.Add(
-                new MacroEvent(
-                    MacroEventType.KeyUp,
-                    e,
-                    Environment.TickCount - lastTimeRecorded
-                ));
-
-            lastTimeRecorded = Environment.TickCount;
         }
 
         private void buttonStartPlayback_Click(object sender, EventArgs e)

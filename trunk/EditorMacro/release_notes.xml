@@ -20,4 +20,7 @@
     <note type="CHANGE">The Stop button has been removed and functionality merged with the start button.</note>
     <note type="FEATURE">You can now right-click on the key events in the list and remove individual items.</note>
   </release>
+  <release version="0.6" date="15 November 2011">
+    <note type="FIX">Stop repeated KeyDown events being recorded for Control, Alt and Shift keys which breaks playback of macro. `Bug #8 &lt;http://support.fushnisoft.net/thebuggenie/clarionaddins/issues/8&gt;`_</note>
+  </release>
 </release_notes>

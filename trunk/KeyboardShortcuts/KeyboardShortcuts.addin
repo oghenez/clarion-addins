@@ -1,0 +1,30 @@
+<AddIn name        = "KeyboardShortcuts"
+       author      = "ClarionAddins"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/KeyboardShortcuts.html"
+       description = "Configure common key bindings for menu and toolbar items."
+       usage       = "See :menuselection:`Tools --> Options --> General --> Keyboard` for a list of available items. Make a selection from the list and use the controls below to create, change or remove an assignment!"
+       screenshot  = "KeyboardShortcuts.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
+
+  <Runtime>
+    <Import assembly = "KeyboardShortcuts.dll"/>
+  </Runtime>
+
+  <Manifest>
+    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.6"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/UIOptions">
+    <DialogPanel id = "KeyboardShortcutsOptionsPanel"
+         label = "Keyboard"
+         class = "ClarionAddins.KeyboardShortcuts.KeyboardShortcutsOptionsPanel"/>
+  </Path>
+
+  <Path name="/Workspace/Autostart">
+    <Class id="KeyboardShortcutsAutoStart" class="ClarionAddins.KeyboardShortcuts.AutoStartCommand"/>
+  </Path>
+  
+</AddIn>

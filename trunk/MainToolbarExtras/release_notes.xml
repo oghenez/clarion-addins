@@ -25,4 +25,16 @@
   <release version="0.7" date="11 October 2011">
     <note type="FIX">New toolbar item "Run startup project non-elevated. Button is visible by default, you can hide it using the context menu.</note>
   </release>
+  <release version="0.8" date="20 October 2011">
+    <note type="INFO">Internal release.</note>
+  </release>
+  <release version="0.9" date="20 October 2011">
+    <note type="FEATURE">This update adds a new menu item, :menuselection:`Edit --> Application Source` with the shotcut key of :kbd:`Alt-s`. When you are in the application procedure view you can now use :kbd:`Alt-s` to go directly to source view!</note>
+  </release>
+  <release version="0.10" date="10 November 2011">
+    <note type="FIX">Run Non-Elevated now detects if it is being used on XP and calls the standard Run code instead of throwing an exception!</note>
+  </release>
+  <release version="0.11" date="17 November 2011">
+    <note type="FEATURE">Automatically re-open the StartPage when the solution is closed. Feature is enabled by default, use the context menu on the main toolbar to disable it.</note>
+  </release>
 </release_notes>
