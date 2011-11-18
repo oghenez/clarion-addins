@@ -9,12 +9,13 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.MainToolbarExtras" version="0.7"/>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.11"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
   <Runtime>
     <Import assembly = "MainToolbarExtras.dll"/>
+    <Import assembly = "AssemblyResolve.dll"/>
     <Import assembly = "$SoftVelocity.Generator/Generator.dll"/>
   </Runtime>
 
@@ -83,11 +84,27 @@
               label="Make ALL toolbars the same size (except Application Editor, sorry!)"
               type="CheckBox"
               class="ClarionEdge.MainToolbarExtras.UpdateOtherToolbars"/>
+    <MenuItem id="ReOpenStartPage"
+              label="Re-open StartPage when solution is closed"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.ReOpenStartPage"/>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
+    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+      <MenuItem id = "OpenAppGenSourceCommand"
+                label = "Application Source"
+                insertafter = "DuplicateLine"
+                insertbefore = "Insert"
+                shortcut = "Alt|S"
+                class = "ClarionEdge.MainToolbarExtras.OpenAppGenSourceCommand"/>
+    </Condition>
   </Path>
 
   <Path name = "/Workspace/Autostart">
     <Class id    = "InitializeMainToolbarExtras"
            class = "ClarionEdge.MainToolbarExtras.StartupCode"/>
+    <Class id="MainToolbarExtrasAssemblyResolve" class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
   </Path>
 
 </AddIn>

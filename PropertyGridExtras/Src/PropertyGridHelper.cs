@@ -151,10 +151,22 @@ namespace ClarionEdge.PropertyGridExtras
 
     internal static void SetFonts()
     {
-      PropertyPad.Grid.Font = FontSelectionPanel.ParseFont(PropertyService.Get(STR_ClarionEdgePropertyGridExtrasFont, WorkbenchSingleton.MainForm.Font.ToString()));
-      PropertyPad.Grid.RefreshProperties();
-      PropertyPad.Grid.Refresh();
-      return;
+        LoggingService.Debug("PropertyGridHelper SetFonts, 1");
+        try
+        {
+            PropertyPad.Grid.Font = FontSelectionPanel.ParseFont(PropertyService.Get(STR_ClarionEdgePropertyGridExtrasFont, WorkbenchSingleton.MainForm.Font.ToString()));
+        }
+        catch (Exception e)
+        {
+            LoggingService.Debug("SetFonts e.message: " + e.Message);
+            LoggingService.Debug("SetFonts e.StackTrace: " + e.StackTrace);
+        }
+        LoggingService.Debug("PropertyGridHelper SetFonts, 2");
+        PropertyPad.Grid.RefreshProperties();
+        LoggingService.Debug("PropertyGridHelper SetFonts, 3");
+        PropertyPad.Grid.Refresh();
+        LoggingService.Debug("PropertyGridHelper SetFonts, 4");
+        return;
     }
 
     internal static void RefreshFont(Font font)

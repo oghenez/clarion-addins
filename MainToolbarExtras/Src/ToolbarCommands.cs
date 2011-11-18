@@ -1,5 +1,6 @@
 ﻿using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.Project;
+using System;
 
 namespace ClarionEdge.MainToolbarExtras
 {
@@ -19,12 +20,19 @@ namespace ClarionEdge.MainToolbarExtras
 
         public override void Run()
         {
-            DoRun doRun = new DoRun();
-            doRun.UseDebug = false;
-            doRun.NonElevated = true;
-            doRun.Run(ProjectService.OpenSolution.StartupProject);
+            if (Environment.OSVersion.Version.Major <= 5)
+            {
+                // This is XP or less!
+                // User the built in "run startup" button
+                ToolbarHelper.RunAbstractCommand("/SharpDevelop/Workbench/ToolBar/Standard", "RunStartUpProject");
+            }
+            else
+            {
+                DoRun doRun = new DoRun();
+                doRun.UseDebug = false;
+                doRun.NonElevated = true;
+                doRun.Run(ProjectService.OpenSolution.StartupProject);
+            }
         }
-
     }
-
 }

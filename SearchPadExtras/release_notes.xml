@@ -11,5 +11,8 @@
   <release version="0.3" date="21 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
+  <release version="0.4" date="19 October 2011">
+    <note type="FEATURE">Added a copy of the "FindComboBox" to the search results pad. This uses the accelerator key :kbd:`Alt-Q`. I have found this convenient to use for quick searches. Hit :kbd:`Alt-q`, type search term and hit enter to find and then hit :kbd:`Escape` **twice** to return focus to the text editor.</note>
+  </release>
 </release_notes>
 

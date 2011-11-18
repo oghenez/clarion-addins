@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.Gui;
 using SearchAndReplace;
+using System;
 
 namespace ClarionEdge.SearchPadExtras
 {

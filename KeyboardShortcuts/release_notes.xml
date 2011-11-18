@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="07 June 2011">
+    <note type="INFO">Development started</note>
+  </release>
+  <release version="0.2" date="16 October 2011">
+    <note type="INFO">Internal build</note>
+  </release>
+  <release version="0.3" date="16 October 2011">
+    <note type="INFO">Internal build</note>
+  </release>
+  <release version="0.4" date="16 October 2011">
+    <note type="INFO">Internal build</note>
+  </release>
+  <release version="0.5" date="19 October 2011">
+    <note type="INFO">First public release!</note>
+    <note type="FEATURE">Instead of a pad the configuration is now in the options dialog.</note>
+    <note type="FEATURE">List available menu and toolbar items with an icon if available and the menu name or toolbar button tooltip.</note>
+    <note type="FEATURE">Assign a new shortcut, override original shortcut with "none" or clear new shortcut.</note>
+    <note type="FEATURE">When specifying a new shortcut a search will be made to see if there is an existing assignment with the same key data</note>
+    <note type="NOTE">There may be issues with some shortcut changes because of the way the AppGen interface passes keystrokes around. Hopefully not though! Let me know if you find any issues with this.</note>
+    <note type="NOTE">Not all menu and toolbar items are currently available. I hope to be able to improve support for others in the future.</note>
+  </release>
+  <release version="0.6" date="20 October 2011">
+    <note type="FIX">Options dialog now ignores menu items that were not detected when the IDE starts up. At the moment it is not possible to reliably re-assign shortcut overrides for these. Support for this will be added in a future release.</note>
+    <note type="NOTE">**If you have installed and used v0.5 it might be best if you reset your keybindings by deleting %appdata%\\SoftVelocity\\Clarion\\8.0\\AddIns\\KeyBindings.xml**</note>
+  </release>
+</release_notes>

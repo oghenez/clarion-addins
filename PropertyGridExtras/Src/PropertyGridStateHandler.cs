@@ -156,6 +156,7 @@ namespace ClarionEdge.PropertyGridExtras
             OptionsCommand.ShowTabbedOptions("Property Grid Options", AddInTree.GetTreeNode("/SharpDevelop/Dialogs/PropertyGridExtras"));
             PropertyGridHelper.SetFonts();
             PropertyGridHelper.ShowAdditionalIndentation();
+            ReloadState();
         }
 
         private void SetToolbarButtons(PropertyGridSV grid)

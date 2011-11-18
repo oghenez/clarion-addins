@@ -57,14 +57,35 @@ namespace ClarionEdge.PropertyGridExtras
 
         public override bool StorePanelContents()
         {
+            LoggingService.Debug("test 1");
             try
             {
+                LoggingService.Debug("test 2");
+                if (fontSelectionPanel == null)
+                    LoggingService.Debug("fontSelectionPanel == null");
+                if (fontSelectionPanel.CurrentFont == null)
+                    LoggingService.Debug("fontSelectionPanel.CurrentFont == null");
+                if (PropertyPad.Grid == null)
+                    LoggingService.Debug("PropertyPad.Grid == null");
+                if (PropertyPad.Grid.Font == null)
+                    LoggingService.Debug("PropertyPad.Grid.Font == null");
+                LoggingService.Debug("test 3");
                 PropertyPad.Grid.Font = fontSelectionPanel.CurrentFont;
+                LoggingService.Debug("test 4");
+            }
+            catch (Exception e)
+            {
+                LoggingService.Debug("ClarionEdge.PropertyGridExtras, 1st save font exception: " + e.Message);
+                LoggingService.Debug("StackTrace: " + e.StackTrace);
+            }
+
+            try
+            {
                 PropertyService.Set("ClarionEdge.PropertyGridExtras.Font", fontSelectionPanel.CurrentFont.ToString());
             }
             catch (Exception e)
             {
-                LoggingService.Debug("ClarionEdge.PropertyGridExtras, save font exception: " + e.Message);
+                LoggingService.Debug("ClarionEdge.PropertyGridExtras, 2nd save font exception: " + e.Message);
             }
 
             PropertyService.Set("ClarionEdge.PropertyGridExtras.AutoAdjustLabelColumn", checkBoxAutoAdjustLabelColumn.Checked);

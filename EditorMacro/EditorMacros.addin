@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.EditorMacros" version="0.5"/>
+    <Identity name="ClarionEdge.EditorMacros" version="0.6"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
