@@ -1,6 +1,6 @@
-﻿using ICSharpCode.Core;
+﻿using System;
+using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.Project;
-using System;
 
 namespace ClarionEdge.MainToolbarExtras
 {
