@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using SoftVelocity.ClarionNet;
 using System.Drawing.Design;
+using ClarionEdge.PropertyGridExtras.Src;
 
 
 namespace ClarionEdge.PropertyGridExtras
@@ -18,49 +19,82 @@ namespace ClarionEdge.PropertyGridExtras
     class PropertyGridStateHandler
     {
         private const int INT_AFTER_EXPAND_ALL_WAIT_PERIOD = 500;
-        Stopwatch wbChanged;
-        bool skipExpandAll = false;
-        ICSharpCode.Core.Properties properties;
-        string propertiesFileName = string.Empty;
-        Int32 extraDesignerSkipCount = 0;
+        private Stopwatch _expandAllStopWatch;
+        private bool _skipExpandAll = false;
+        private Int32 _extraDesignerSkipCount = 0;
+        private bool _eventHandlersRegistered = false;
+        private PropertyGridState _selectedGridState;
+        private PropertyGridToolbar _toolbar;
 
-        internal void ActiveWorkbenchWindowChanged()
+        public PropertyGridStateHandler()
         {
-            if (Enabled() == false)
-                return;
-
-            if (DesignerGridSelected() == true)
+            // Make sure the temp path exists for the property store!
+            String path = Path.Combine(PropertyService.ConfigDirectory, "temp");
+            if (Directory.Exists(path) == false)
             {
-                Log("Setting skipExpandAll in Workbench_ActiveWorkbenchWindowChanged");
-                wbChanged = Stopwatch.StartNew();
-                skipExpandAll = true;
+                Directory.CreateDirectory(path);
             }
-            else
-            {
-                Log("DesignerGridSelected ELSE in Workbench_ActiveWorkbenchWindowChanged");
-            }
+            PropertyGridHelper.Log(path);
+            WorkbenchSingleton.WorkbenchCreated += new EventHandler(WorkbenchSingleton_WorkbenchCreated);
         }
 
-        private void Log(string p)
+        void WorkbenchSingleton_WorkbenchCreated(object sender, EventArgs e)
         {
-            if (Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.EnableLogging", "false")) == true)
-                LoggingService.Debug(p);
+            WorkbenchSingleton.Workbench.ActiveWorkbenchWindowChanged += new EventHandler(Workbench_ActiveWorkbenchWindowChanged);
+        }
+
+        internal void Workbench_ActiveWorkbenchWindowChanged(object sender, System.EventArgs e)
+        {
+            PropertyGridHelper.Log("");
+            if (_toolbar == null && PropertyPad.Grid != null)
+                _toolbar = new PropertyGridToolbar(PropertyPad.Grid);
+
+            if (Enabled() == false)
+            {
+                PropertyGridHelper.Log("not enabled");
+                return;
+            }
+
+            if (_eventHandlersRegistered == false)
+            {
+                RegisterEventHandlers(PropertyPad.Grid);
+                _eventHandlersRegistered = true;
+            }
+
+            SetDesignerGridOverrides();
+            grid_SelectedObjectChanged(null, null);
         }
 
         private bool Enabled()
         {
+            PropertyGridHelper.Log("");
+            if (PropertyPad.Instance == null || PropertyPad.Grid == null || PropertyPad.Grid.SelectedObject == null)
+                return false;
+
+            if (PropertyPad.Grid.DisplayMode != VisualHint.SmartPropertyGrid.PropertyGrid.DisplayModes.Categorized)
+                return false;
+            // TODO: Maybe it would be a good idea to detect a change of DisplayMode and reactivate the RegisterEventHandlers?
+            PropertyEnumerator propEnum = PropertyPad.Grid.SelectedPropertyEnumerator;
+
+            if (propEnum == null)
+                return false;
+
+            if (propEnum.Property != null && propEnum.Property.DisplayName != null && propEnum.Property.DisplayName != "")
+                PropertyGridHelper.Log("DisplayName=" + propEnum.Property.DisplayName);
+
+            //if (propEnum != propEnum.RightBound)
+            //if (PropertyPad.Grid.ContainsFocus == true)
+            //    return false;
             return Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.RememberExpandedState", "true"));
         }
 
         internal void RegisterEventHandlers(PropertyGridSV grid)
         {
-            Log("PropertyGridExtras, RegisterEventHandlers");
+            PropertyGridHelper.Log("");
             grid.PropertyExpanded += new VisualHint.SmartPropertyGrid.PropertyGrid.PropertyExpandedEventHandler(grid_PropertyExpanded);
             grid.PropertyExpanding += new VisualHint.SmartPropertyGrid.PropertyGrid.PropertyExpandingEventHandler(grid_PropertyExpanding);
             grid.SelectedObjectChanged += new VisualHint.SmartPropertyGrid.PropertyGrid.SelectedObjectChangedEventHandler(grid_SelectedObjectChanged);
             grid.Invalidated += new System.Windows.Forms.InvalidateEventHandler(grid_Invalidated);
-
-            SetToolbarButtons(grid);
         }
 
         void grid_Invalidated(object sender, System.Windows.Forms.InvalidateEventArgs e)
@@ -68,7 +102,8 @@ namespace ClarionEdge.PropertyGridExtras
             if (Enabled() == false)
                 return;
 
-            if (skipExpandAll == true)
+            PropertyGridHelper.Log("");
+            if (_skipExpandAll == true)
             {
                 // Restart the stopwatch because we are still inside skipExpandAll=true
                 // Only when there is an expand event AFTER the actual skipExpandAll has completed will the Stopwatch elapsed time be relevant. 
@@ -76,8 +111,8 @@ namespace ClarionEdge.PropertyGridExtras
                 // Probably we can decrease the INT_AFTER_EXPAND_ALL_WAIT_PERIOD, I will see...
                 // The stop watch is started in the ActiveWorkbenchWindowChanged event but I found that on reports there was too big a gap after that event 
                 // Resetting it here seems to be good enough. Who knows what will happen on different systems. I wish I could find a better way than this stopwatch!
-                Log("grid_Invalidated, wbChanged restarted");
-                wbChanged = Stopwatch.StartNew();
+                PropertyGridHelper.Log("Stopwatch restarted");
+                _expandAllStopWatch = Stopwatch.StartNew();
             }
         }
 
@@ -86,30 +121,36 @@ namespace ClarionEdge.PropertyGridExtras
             if (Enabled() == false)
                 return;
 
-            Log("grid_PropertyExpanding id=" + e.PropertyEnum.Property.Id);
-            Log("grid_PropertyExpanding, skipExpandAll=" + skipExpandAll);
-            if (skipExpandAll == true)
+            if (PropertyPad.Grid.ContainsFocus == true && IsBaseDeignerControl(PropertyPad.Grid.SelectedObject) == false)
             {
-                if (wbChanged.ElapsedMilliseconds > INT_AFTER_EXPAND_ALL_WAIT_PERIOD)
+                PropertyGridHelper.Log("Skipping restore while in focus");
+                return;
+            }
+
+
+            PropertyGridHelper.Log("id=" + e.PropertyEnum.Property.Id);
+            PropertyGridHelper.Log("skipExpandAll=" + _skipExpandAll);
+            if (_skipExpandAll == true)
+            {
+                if (_expandAllStopWatch.ElapsedMilliseconds > INT_AFTER_EXPAND_ALL_WAIT_PERIOD)
                 {
-                    Log("grid_PropertyExpanding, wbChanged.ElapsedMilliseconds=" + wbChanged.ElapsedMilliseconds);
-                    skipExpandAll = false;
+                    PropertyGridHelper.Log("ElapsedMilliseconds=" + _expandAllStopWatch.ElapsedMilliseconds);
+                    _skipExpandAll = false;
                     return;
                 }
                 e.Handled = true;
 
                 if (e.PropertyEnum == PropertyPad.Grid.LastProperty)
                 {
-                    Log("grid_PropertyExpanding, Expand all has finished, restore our selections again please!");
-                    if (extraDesignerSkipCount > 0)
+                    PropertyGridHelper.Log("Expand all has finished, restore our selections again please!");
+                    if (_extraDesignerSkipCount > 0)
                     {
-                        extraDesignerSkipCount -= 1;
+                        _extraDesignerSkipCount -= 1;
                     }
                     else
                     {
-                        skipExpandAll = false;
+                        _skipExpandAll = false;
                     }
-                    properties = LoadProperties(propertiesFileName);
                 }
             }
 
@@ -120,161 +161,69 @@ namespace ClarionEdge.PropertyGridExtras
             if (Enabled() == false)
                 return;
 
-            Log("grid_PropertyExpanded, property (" + e.PropertyEnum.Property.Id + ") " + e.PropertyEnum.Property.DisplayName + " state=" + e.Expanded.ToString());
-            properties.Set<bool>("id" + e.PropertyEnum.Property.Id, e.Expanded);
-            properties.Save(propertiesFileName);
+             _selectedGridState.SaveProperty(e);
         }
 
         void grid_SelectedObjectChanged(object sender, SelectedObjectChangedEventArgs e)
         {
+            PropertyGridHelper.Log("");
+            _selectedGridState = new PropertyGridState();
+
             if (Enabled() == false)
                 return;
 
-            Log("grid_SelectedObjectChanged");
-            skipExpandAll = false;
-            ReloadState();
-            if (DesignerGridSelected() == true)
-            {
-                Log("Setting skipExpandAll in grid_SelectedObjectChanged");
-                wbChanged = Stopwatch.StartNew();
-                skipExpandAll = true;
-            }
-        }
+            // What is being shown in the PropertyPad has changed. Lets reload the state from disc
+            _selectedGridState.SetFileName();
 
-        void buttonContract_Click(object sender, System.EventArgs e)
-        {
-            PropertyPad.Grid.ExpandAllProperties(false);
-        }
-
-        void buttonExpand_Click(object sender, System.EventArgs e)
-        {
-            PropertyPad.Grid.ExpandAllProperties(true);
-        }
-
-        void buttonSettings_Click(object sender, System.EventArgs e)
-        {
-            OptionsCommand.ShowTabbedOptions("Property Grid Options", AddInTree.GetTreeNode("/SharpDevelop/Dialogs/PropertyGridExtras"));
-            PropertyGridHelper.SetFonts();
-            PropertyGridHelper.ShowAdditionalIndentation();
-            ReloadState();
-        }
-
-        private void SetToolbarButtons(PropertyGridSV grid)
-        {
-            System.Windows.Forms.ToolStripButton buttonExpand = new System.Windows.Forms.ToolStripButton();
-            buttonExpand.Image = (Image)ClarionEdge.PropertyGridExtras.Properties.Resources.dvAddGreen.ToBitmap();
-            buttonExpand.ToolTipText = "Expand All";
-            buttonExpand.Click += new System.EventHandler(buttonExpand_Click);
-            System.Windows.Forms.ToolStripButton buttonContract = new System.Windows.Forms.ToolStripButton();
-            buttonContract.Image = ClarionEdge.PropertyGridExtras.Properties.Resources.dvDeleteGreen.ToBitmap();
-            buttonContract.ToolTipText = "Contract All";
-            buttonContract.Click += new System.EventHandler(buttonContract_Click);
-            System.Windows.Forms.ToolStripButton buttonOptions = new System.Windows.Forms.ToolStripButton();
-            buttonOptions.Image = ClarionEdge.PropertyGridExtras.Properties.Resources.dvTool.ToBitmap();
-            buttonOptions.ToolTipText = "Options";
-            buttonOptions.Click += new System.EventHandler(buttonSettings_Click);
-
-            grid.Toolbar.Items.Add(buttonExpand);
-            grid.Toolbar.Items.Add(buttonContract);
-            grid.Toolbar.Items.Add(buttonOptions);
-            grid.Toolbar.RenderMode = ToolStripRenderMode.ManagerRenderMode;
-        }
-
-        internal void SelectedObjectChanged(object p)
-        {
-            Log("PropertyGridExtras, SelectedObjectChanged");
+            // It seems that the designers issue a few extra "expand all" commands.
+            // Skipping 2 of them seems to do the trick...
+            object p = PropertyPad.Grid.SelectedObject;
             if (p != null)
             {
-                String path = Path.Combine(PropertyService.ConfigDirectory, "temp");
-                if (Directory.Exists(path) == false)
-                    Directory.CreateDirectory(path);
-
-                propertiesFileName = Path.Combine(Path.Combine(PropertyService.ConfigDirectory, "temp"),
-                    "propertygridextras." + p.GetType().ToString() + ".xml");
-                properties = LoadProperties(propertiesFileName);
-                Log("PropertyPad.Grid.SelectedObject: " + p.GetType().ToString());
-
-                // It seems that the designers issue a few extra "expand all" commands.
-                // Skipping 2 of them seems to do the trick...
-                if (p.GetType().ToString().Contains("SoftVelocity.ClarionNet.WindowDesigner.Window") ||  
-                    p.GetType().ToString().Contains("SoftVelocity.ClarionNet.Designer.SectionControls.BaseDesignerControl"))
+                if (IsBaseDeignerControl(p))
                 {
                     // Reset this counter
-                    extraDesignerSkipCount = 2;
+                    _extraDesignerSkipCount = 2;
                 }
             }
+
+            _skipExpandAll = false;
+            ReloadState();
+            SetDesignerGridOverrides();
         }
 
-        private bool DesignerGridSelected()
+        private static bool IsBaseDeignerControl(object p)
         {
-            if (PropertyPad.Grid == null)
-                return false;
+            return p.GetType().ToString().Contains("SoftVelocity.ClarionNet.WindowDesigner.Window") ||
+                                p.GetType().ToString().Contains("SoftVelocity.ClarionNet.Designer.SectionControls.BaseDesignerControl");
+        }
 
-            if (PropertyPad.Grid.SelectedObject == null)
-                return false;
-
-            if (PropertyPad.Grid.SelectedObject.GetType().ToString().Contains("SoftVelocity.ClarionNet.Window") == true || 
+        private void SetDesignerGridOverrides()
+        {
+            PropertyGridHelper.Log("");
+            if (PropertyPad.Grid.SelectedObject.GetType().ToString().Contains("SoftVelocity.ClarionNet.Window") == true ||
                 PropertyPad.Grid.SelectedObject.GetType().ToString().Contains("SoftVelocity.ClarionNet.Reports") == true ||
                 PropertyPad.Grid.SelectedObject.GetType().ToString().Contains("SoftVelocity.ClarionNet.Designer") == true)
-                return true;
-
-            return false;
+            {
+                PropertyGridHelper.Log("Setting skipExpandAll in SetDesignerGridOverrides");
+                _expandAllStopWatch = Stopwatch.StartNew();
+                _skipExpandAll = true;
+            }
         }
 
         private void ReloadState()
         {
-            if (Enabled() == false)
+            if (Enabled() == false || _selectedGridState == null)
                 return;
 
-            Log("PropertyGridExtras, ReloadState");
+            PropertyGridHelper.Log("");
             PropertyEnumerator propEnum = PropertyPad.Grid.FirstProperty;
             while (propEnum != propEnum.RightBound)
             {
-                if (properties.Get("id" + propEnum.Property.Id) != null)
-                {
-                    // currently by default all categories are expanded. So w only perform an action on those that need to be contracted
-                    Log("ReloadState: Restoring property (" + propEnum.Property.DisplayName + ") id=" + propEnum.Property.Id);
-                    PropertyPad.Grid.ExpandProperty(propEnum, (bool)properties.Get("id" + propEnum.Property.Id, true));
-                }
-                else {
-                    Log("ReloadState: Property (" + propEnum.Property.DisplayName + ") not found id=" + propEnum.Property.Id);
-                }
-
+                PropertyPad.Grid.ExpandProperty(propEnum, _selectedGridState.GetPropertyState(propEnum));
                 propEnum.MoveNext();
             }
         }
         
-
-        private ICSharpCode.Core.Properties LoadProperties(string fileName)
-        {
-            Log("PropertyGridExtras, LoadProperties");
-            if (!File.Exists(fileName))
-            {
-                Log("properties File not found");
-                ICSharpCode.Core.Properties properties = new ICSharpCode.Core.Properties();
-                return properties;
-            }
-            using (XmlTextReader reader = new XmlTextReader(fileName))
-            {
-                while (reader.Read())
-                {
-                    if (reader.IsStartElement())
-                    {
-                        switch (reader.LocalName)
-                        {
-                            case "Properties":
-                                ICSharpCode.Core.Properties properties = new ICSharpCode.Core.Properties();
-                                properties.ReadProperties(reader, "Properties");
-                                Log("returning previous properties contents");
-                                return properties;
-                        }
-                    }
-                }
-            }
-            Log("returning null!");
-            return null;
-
-        }
-
     }
 }

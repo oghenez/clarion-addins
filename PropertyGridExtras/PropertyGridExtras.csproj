@@ -58,11 +58,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PropertTestFeel.cs" />
-    <Compile Include="Src\AdditionalSettingsCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\CustomLightColorDrawManager.cs" />
     <Compile Include="Src\FontSizeCommands.cs" />
+    <Compile Include="Src\MenuCommands.cs" />
     <Compile Include="Src\OptionsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,7 +70,9 @@
     </Compile>
     <Compile Include="Src\PropertyGridHelper.cs" />
     <Compile Include="Src\PropertyGridStateHandler.cs" />
+    <Compile Include="Src\PropertyGridToolbar.cs" />
     <Compile Include="Src\StartupCode.cs" />
+    <Compile Include="Src\PropertyGridState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertyGridExtras.addin">

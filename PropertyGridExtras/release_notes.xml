@@ -32,4 +32,17 @@
     <note type="FIX">The property enumerator was not correctly looping over all child properties. This could result in some descendants not being saved/restored.</note>
     <note type="FIX">The initial load of window and report designers is sending a few extra ExpandAll commands. These appear to now be correctly suppressed allowing the restore to function correctly.</note>
   </release>
-</release_notes>
+  <release version="0.7" date="26 February 2012">
+    <note type="INFO">Initial Release</note>
+  </release>
+  <release version="0.8" date="27 February 2012">
+    <note type="INFO">Initial Release</note>
+  </release>
+  <release version="0.9" date="28 February 2012">
+    <note type="FIX">Fingers crossed this is the definitive fix for the issues plaguing the restire tree state feature! It looks like I have found the correct way to override the default *expand all* on opening as well as when the grid has focus.</note>
+    <note type="FIX">Well... there is **one** catch with the above fix. If you select a control in the designer and move it using the cursor keys then the grid state becomes fully expanded. The good news is that as soon as you move focus away from that selected control the saved state is restored :)</note>
+  </release>
+  <release version="0.10" date="29 February 2012">
+    <note type="FIX">Possible fix for NullReferenceException with C8 build 8973</note>
+  </release>
+  </release_notes>

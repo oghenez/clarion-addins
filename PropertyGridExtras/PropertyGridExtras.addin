@@ -3,16 +3,20 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/PropertyGridExtras.html"
-       description = "Enhancements to the default Property Grid."
-       usage       = "Right click on the Property Grid in the Property Pad to access some new options. Change font size, set grid style."
+       description = "Styling and functional enhancements for the default Property Grid."
+       usage       = "Once installed use the context menu or the :guilabel:`Tool` button on the toolbar to configure the additional options.&#xD;"
+       features    = "&#xD;
+* Set grid font type and size.&#xD;
+* Show additional indentation.&#xD;
+* Auto adjust label column.&#xD;
+* Remember expanded state.&#xD;
+* Set grid theme (original, basic, light, dark).&#xD;"
        screenshot  = "PropertyGridExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.PropertyGridExtras"
-              version="0.6"/>
-    <Dependency addin = "SharpDevelop"
-                version = "2.1"/>
+    <Identity name="ClarionEdge.PropertyGridExtras" version="0.10"/>
+    <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
   <Runtime>
@@ -23,55 +27,11 @@
   <StringResources file="Resources\StringResources.resources"/>
 
   <Path name = "/SharpDevelop/Views/PropertyPad/ContextMenu">
-    <MenuItem id = "Separator"
-              type = "Separator" />
-
-    <MenuItem id    = "GrowPropertyGridFont"
-              label = "${res:ClarionEdge.PropertyGridExtras.GrowFont}"
-              icon = "Icons.Silk.font_add"
-              class = "ClarionEdge.PropertyGridExtras.GrowFont"/>
-
-    <MenuItem id    = "ShrinkPropertyGridFont"
-              label = "${res:ClarionEdge.PropertyGridExtras.ShrinkFont}"
-              icon = "Icons.Silk.font_delete"
-              class = "ClarionEdge.PropertyGridExtras.ShrinkFont"/>
-
-    <MenuItem id    = "ResetPropertyGridFont"
-              label = "${res:ClarionEdge.PropertyGridExtras.ResetFont}"
-              icon = "Icons.Silk.font"
-              class = "ClarionEdge.PropertyGridExtras.ResetFont"/>
-
-    <MenuItem id="PropertyGridAdditionalSettings"
-              label="${res:ClarionEdge.PropertyGridExtras.AdditionalSettings}"
-              type="Menu">
-      <MenuItem id="ShowAdditionalIndentation"
-                label="${res:ClarionEdge.PropertyGridExtras.ShowAdditionalIndentation}"
-                type="CheckBox"
-                class="ClarionEdge.PropertyGridExtras.ShowAdditionalIndentation"/>
-      <MenuItem id="AutoAdjustLabelColumn"
-                label="${res:ClarionEdge.PropertyGridExtras.AutoAdjustLabelColumn}"
-                type="CheckBox"
-                class="ClarionEdge.PropertyGridExtras.AutoAdjustLabelColumn"/>
-      <MenuItem id="RememberExpandedState"
-                label="${res:ClarionEdge.PropertyGridExtras.RememberExpandedState}"
-                type="CheckBox"
-                class="ClarionEdge.PropertyGridExtras.RememberExpandedState"/>
-
-      <MenuItem id = "Separator"
-                type = "Separator" />
-      <MenuItem id="UseDefaultDrawManager"
-                label="${res:ClarionEdge.PropertyGridExtras.UseDefaultDrawManager}"
-                type="CheckBox"
-                class="ClarionEdge.PropertyGridExtras.UseDefaultDrawManager"/>
-      <MenuItem id="UseLightDrawManager"
-                label="${res:ClarionEdge.PropertyGridExtras.UseLightDrawManager}"
-                type="CheckBox"
-                class="ClarionEdge.PropertyGridExtras.UseLightDrawManager"/>
-      <MenuItem id="UseCustomDrawManager"
-                label="${res:ClarionEdge.PropertyGridExtras.UseCustomDrawManager}"
-                type="CheckBox"
-                class="ClarionEdge.PropertyGridExtras.UseCustomDrawManager"/>
-    </MenuItem>
+    <MenuItem id = "PropertyGridExtras.Separator" type = "Separator" />
+    <MenuItem id    = "PropertyGridExtras.Options"
+              label = "${res:ClarionEdge.PropertyGridExtras.Options}"
+              icon = "Icons.dvTool"
+              class = "ClarionEdge.PropertyGridExtras.ShowOptions"/>
   </Path>
 
   <Path name = "/SharpDevelop/Dialogs/PropertyGridExtras">
