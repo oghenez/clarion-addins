@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using ICSharpCode.SharpDevelop.Gui;
 using ICSharpCode.Core;
+using System.Threading;
 
 namespace ClarionEdge.EditorMacros
 {
@@ -16,13 +17,18 @@ namespace ClarionEdge.EditorMacros
 
         void Workbench_ActiveWorkbenchWindowChanged(object sender, System.EventArgs e)
         {
-            if (WorkbenchSingleton.Workbench.ActiveContent != null &&
-                WorkbenchSingleton.Workbench.ActiveContent is EditorMacrosPad)
-                macroPad.GainFocus();
+            //if (WorkbenchSingleton.Workbench.ActiveContent != null &&
+            //    WorkbenchSingleton.Workbench.ActiveContent is EditorMacrosPad)
+                //macroPad.GainFocus();
         }
         public override Control Control
         {
             get { return macroPad; }
+        }
+
+        internal void PlayCurrentMacro()
+        {
+            macroPad.PlayCurrentMacro();
         }
     }
 }

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Src\MacroRecording.cs" />
+    <Compile Include="Src\MenuCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -64,7 +66,7 @@
     <Compile Include="Src\EditorMacrosPadControl.Designer.cs">
       <DependentUpon>EditorMacrosPadControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Src\Macro.cs" />
+    <Compile Include="Src\MacroEvent.cs" />
     <Compile Include="Src\StartRecordMacroCommand.cs" />
   </ItemGroup>
   <ItemGroup>

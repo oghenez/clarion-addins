@@ -35,12 +35,14 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPlayBack = new System.Windows.Forms.Button();
             this.buttonStartRecording = new System.Windows.Forms.Button();
+            this.cbDisableCCWhileRecording = new System.Windows.Forms.CheckBox();
             this.groupBoxAll.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxAll
             // 
+            this.groupBoxAll.Controls.Add(this.cbDisableCCWhileRecording);
             this.groupBoxAll.Controls.Add(this.listBoxDebug);
             this.groupBoxAll.Controls.Add(this.buttonPlayBack);
             this.groupBoxAll.Controls.Add(this.buttonStartRecording);
@@ -60,11 +62,11 @@
             this.listBoxDebug.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxDebug.FormattingEnabled = true;
             this.listBoxDebug.ItemHeight = 14;
-            this.listBoxDebug.Location = new System.Drawing.Point(6, 53);
+            this.listBoxDebug.Location = new System.Drawing.Point(6, 81);
             this.listBoxDebug.Margin = new System.Windows.Forms.Padding(10);
             this.listBoxDebug.Name = "listBoxDebug";
             this.listBoxDebug.ScrollAlwaysVisible = true;
-            this.listBoxDebug.Size = new System.Drawing.Size(407, 424);
+            this.listBoxDebug.Size = new System.Drawing.Size(407, 396);
             this.listBoxDebug.TabIndex = 4;
             this.listBoxDebug.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxDebug_MouseDown);
             this.listBoxDebug.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBoxDebug_MouseUp);
@@ -110,6 +112,17 @@
             this.buttonStartRecording.UseVisualStyleBackColor = true;
             this.buttonStartRecording.Click += new System.EventHandler(this.buttonStart_Click);
             // 
+            // cbDisableCCWhileRecording
+            // 
+            this.cbDisableCCWhileRecording.AutoSize = true;
+            this.cbDisableCCWhileRecording.Location = new System.Drawing.Point(6, 50);
+            this.cbDisableCCWhileRecording.Name = "cbDisableCCWhileRecording";
+            this.cbDisableCCWhileRecording.Size = new System.Drawing.Size(218, 17);
+            this.cbDisableCCWhileRecording.TabIndex = 5;
+            this.cbDisableCCWhileRecording.Text = "Disable Code Completion while recording";
+            this.cbDisableCCWhileRecording.UseVisualStyleBackColor = true;
+            this.cbDisableCCWhileRecording.CheckedChanged += new System.EventHandler(this.cbDisableCCWhileRecording_CheckedChanged);
+            // 
             // EditorMacrosPadControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,6 +131,7 @@
             this.Name = "EditorMacrosPadControl";
             this.Size = new System.Drawing.Size(419, 497);
             this.groupBoxAll.ResumeLayout(false);
+            this.groupBoxAll.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -131,6 +145,7 @@
         private System.Windows.Forms.ListBox listBoxDebug;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.CheckBox cbDisableCCWhileRecording;
 
 
 

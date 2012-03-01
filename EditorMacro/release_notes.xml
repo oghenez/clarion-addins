@@ -23,4 +23,14 @@
   <release version="0.6" date="15 November 2011">
     <note type="FIX">Stop repeated KeyDown events being recorded for Control, Alt and Shift keys which breaks playback of macro. `Bug #8 &lt;http://support.fushnisoft.net/thebuggenie/clarionaddins/issues/8&gt;`_</note>
   </release>
+  <release version="0.7" date="25 February 2012">
+    <note type="FEATURE">Added save/restore of last recorded macro</note>
+    <note type="FEATURE">Added :menuselection:`Edit --> Playback Current Macro` menu item with :kbd:`Alt-=` as the shortcut</note>
+    <note type="FEATURE">Debug window now shows up/down arrow characters for a cleaner display</note>
+    <note type="FIX">Improved playback stability and fixed some problems with multiple playback when using the keyboard</note>
+    <note type="FIX">Code completion is now turned off during plaback. This gives a significant improvment in playback speed and reliability!</note>
+  </release>
+  <release version="0.8" date="28 February 2012">
+    <note type="FEATURE">Option to automatically disable Code Completion while recording a new macro.</note>
+  </release>
 </release_notes>
