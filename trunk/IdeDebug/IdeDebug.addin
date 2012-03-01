@@ -3,8 +3,14 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/IdeDebug.html"
-       description = "Toggle QuietMode and Enable IDE Debugging."
-       usage       = "This is still in the early stages. Currenty this only has an option to toggle QuietMode but eventually it will allow you to configure IDE Debug output and optionally send the results to someone."
+       description = "Toggle QuietMode and Enable IDE Debugging and embed a view for OutputDebugString."
+       usage       = "Configuration is found in :menuselection:`Tools --> Options --> General --> Ide Debugging`.&#xD;"
+       features    = "&#xD;
+* Turn OFF 'quiet mode' - this causes error messages to show instead of being written to XLOG files.&#xD;
+* Generate Extra Debug Information - useful messages when developing addins.&#xD;
+* List and view XLOG files.&#xD;
+* Send IDE Debug information to OutputDebugString. Instead of editing the Clarion.exe.config file to do this it is now enabled by this addin on startup!&#xD;
+* Embed DbgView from SysInternals directly in an IDE Pad! (or you can select your own viewer instead)&#xD;"
        screenshot  = "IdeDebug.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
@@ -13,10 +19,12 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionAddins.IdeDebug" version="0.2"/>
+    <Identity name="ClarionAddins.IdeDebug" version="0.5"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+  
   <Path name = "/SharpDevelop/Dialogs/OptionsDialog/UIOptions">
     <DialogPanel id = "IdeDebugOptionsPanel"
                  label = "Ide Debugging"
@@ -28,6 +36,14 @@
       <MenuItem id = "IdeDebugQuietMode" label = "*QuietMode OFF*" type="Menu">
       </MenuItem>
     </Condition>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/Pads">
+    <Pad id       = "DebugView"
+         category = "Tools"
+         title    = "DebugView"
+         icon     = "Icons.Silk.Bug"
+         class    = "ClarionAddins.IdeDebug.DebugViewPad"/>
   </Path>
 
   <Path name="/Workspace/Autostart">
