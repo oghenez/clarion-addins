@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using ICSharpCode.Core;
+using ICSharpCode.SharpDevelop.Commands;
 using ICSharpCode.SharpDevelop.Gui;
 using VisualHint.SmartPropertyGrid;
 
@@ -179,6 +181,27 @@ namespace ClarionEdge.PropertyGridExtras
     {
       Font font = WorkbenchSingleton.MainForm.Font;
       RefreshFont(font);
+    }
+
+    internal static void ShowOptionsDialog()
+    {
+        OptionsCommand.ShowTabbedOptions("Property Grid Options", AddInTree.GetTreeNode("/SharpDevelop/Dialogs/PropertyGridExtras"));
+        PropertyGridHelper.SetFonts();
+        PropertyGridHelper.ShowAdditionalIndentation();
+    }
+
+    internal static void Log(string p)
+    {
+        if (Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.EnableLogging", "false")) == true)
+        {
+            StackTrace stackTrace = new StackTrace();
+            string whoCalledMe = stackTrace.GetFrame(1).GetMethod().Name;
+            string whoCalledThem = stackTrace.GetFrame(2).GetMethod().Name;
+            if (whoCalledMe != null && whoCalledMe != "" && whoCalledThem != null && whoCalledThem != "")
+                LoggingService.Debug("(PGH)[" + whoCalledThem + "-->" + whoCalledMe + "] " + p);
+            else
+                LoggingService.Debug("(PGH)" + p);
+        }
     }
   }
 }

@@ -9,25 +9,28 @@ namespace ClarionEdge.PropertyGridExtras
     class StartupCode : AbstractCommand
     {
 
-        bool _startupDone = false;
-        PropertyGridStateHandler gridState = new PropertyGridStateHandler();
+        private bool _startupDone = false;
+        private PropertyGridStateHandler _gridState;
 
         public override void Run()
         {
+             _gridState = new PropertyGridStateHandler();
             WorkbenchSingleton.WorkbenchCreated += new System.EventHandler(WorkbenchSingleton_WorkbenchCreated);
         }
 
         void WorkbenchSingleton_WorkbenchCreated(object sender, System.EventArgs e)
         {
-
-            WorkbenchSingleton.Workbench.ActiveWorkbenchWindowChanged += new System.EventHandler(Workbench_ActiveWorkbenchWindowChanged);
+           WorkbenchSingleton.Workbench.ActiveWorkbenchWindowChanged += new System.EventHandler(Workbench_ActiveWorkbenchWindowChanged);
         }
 
         void Workbench_ActiveWorkbenchWindowChanged(object sender, System.EventArgs e)
         {
-            gridState.ActiveWorkbenchWindowChanged();
 
-            if (_startupDone == true || PropertyPad.Grid == null)
+            if (PropertyPad.Instance == null || PropertyPad.Grid == null)
+                return;
+
+            // This other stuff only happens the first time
+            if (_startupDone == true)
                 return;
 
             // This event is handy for doing things when focus or pad instance changes
@@ -39,15 +42,11 @@ namespace ClarionEdge.PropertyGridExtras
             PropertyGridHelper.SetDrawManager();
             PropertyGridHelper.SetFonts();
 
-            gridState.RegisterEventHandlers(PropertyPad.Grid);
             _startupDone = true;
         }
 
         void PropertyPad_SelectedObjectChanged(object sender, System.EventArgs e)
         {
-            //LoggingService.Debug("PropertyPad_SelectedObjectChanged");
-
-            gridState.SelectedObjectChanged(PropertyPad.Grid.SelectedObject);
             
             //if (PropertyPad.Grid.Site != null)
             //    LoggingService.Debug("PropertyPad.Grid.Site=" + PropertyPad.Grid.Site.Name);
