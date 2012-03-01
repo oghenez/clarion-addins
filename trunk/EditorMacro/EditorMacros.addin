@@ -3,13 +3,21 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/EditorMacros.html"
-       description = "Provides Macro support to the text editor!"
-       usage       = "Everything happens in the Editor Macros Pad. Use the Start/Stop buttons in the Record Macro group to record keystrokes. The keystrokes recorded will be displayed in the list control. Use the Start button in the Playback group to play them back!&#xD;&#xD;  * The Pad is not visible by default, you open it from the View/Tools menu"
+       description = "Record and Playback keystrokes!"
+       usage       = "Everything happens in the :guilabel:`Editor Macros Pad`.&#xD;
+Use the buttons to Start/Stop keystroke recording and the :guilabel:`Play` button, or :kbd:`Alt-=` shortcut` to replay your recording.&#xD;
+Open the pad from the :menuselection:`View --> Tools` menu or use the :kbd:`Control-=` shortcut.&#xD;"
+       features    = "
+* Use the :guilabel:`Editor Macros Pad` for all available functions. Shortcut :kbd:`Control-=`&#xD;
+* The last recorded macro is saved on IDE exit and restored on startup.&#xD;
+* Quick playback using the shortcut :kbd:`Alt-=`&#xD;
+* View and edit the recorded keystrokes in the :guilabel:`Editor Macros Pad`. Right-click on an event to open the :menuselection:`Delete` context menu.&#xD;
+* Option to automatically disable Code Completion while recording a new macro.&#xD;"
        screenshot  = "EditorMacros.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.EditorMacros" version="0.6"/>
+    <Identity name="ClarionEdge.EditorMacros" version="0.8"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
@@ -28,5 +36,18 @@
          shortcut = "Control|Oemplus"
          class    = "ClarionEdge.EditorMacros.EditorMacrosPad"/>
   </Path>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
+    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+      <MenuItem 
+        id = "PlayBackCurrentMacro"
+        label = "Playback Current Macro"
+        insertafter = "DuplicateLine"
+        insertbefore = "Insert"
+        shortcut = "Alt|Oemplus"
+        class    = "ClarionEdge.EditorMacros.PlayCurrentMacro"/>
+    </Condition>
+  </Path>
+
 
 </AddIn>
