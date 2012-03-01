@@ -4,12 +4,23 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/MainToolbarExtras.html"
        description = "Some new buttons and other enhancements to the main IDE toolbar."
-       usage       = "Adds a new icon for 'Run Startup Project in Debugger' as well as a Right Click context menu to allow you to set the toolbar/icon size.&#xD;&#xD;  * Right click on the Main Toolbar (anywhere) to get a context menu"
+       usage       = ".. note:: Right-Click on the Main IDE toolbar to access options.&#xD;&#xD;"
+
+       features    = "
+* Automatically refresh the startpage after a solution is loaded.&#xD;
+* Automatically re-open the StartPage when the solution is closed.&#xD;
+* :menuselection:`Edit --> Application Source` with the shotcut key of :kbd:`Alt-s`&#xD;
+* Set the size of the main toolbar and icons!&#xD;
+* Optionally set the size for ALL accessible toolbars in the IDE!&#xD;
+* Toolbar button - Run startup project Non-Elevated
+* Toolbar button - Run startUp project in the debugger&#xD;
+* Expand/Collapse all code folds. See :menuselection:`Edit --> Folding`&#xD;
+* Editor Font Size - Increase/Decrease/Reset (Reset to the font size found at IDE startup). See :menuselection:`View --> Editor Font Size`.&#xD;"
        screenshot  = "MainToolbarExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.MainToolbarExtras" version="0.12"/>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.15"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -21,6 +32,11 @@
 
   <BitmapResources file="Resources\BitmapResources.resources"/>
 
+  <!-- 
+  ===================================================================================
+  New toolbar buttons 
+  ===================================================================================
+  -->
   <Path name = "/SharpDevelop/Workbench/ToolBar/Standard">
     <Condition name="Compare" string="${property:ClarionEdge.MainToolbarExtras.ShowRunStartUpProjectInDebugger??True}" equals="True" action="Exclude">
       <Condition name = "SolutionOpen" action="Disable">
@@ -67,16 +83,84 @@
     </Condition>
   </Path>
 
+  <!-- 
+  ===================================================================================
+  Main (edit) menu item
+  ===================================================================================
+  -->
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
+    <Condition name="Compare" string="${property:ClarionEdge.MainToolbarExtras.ShowOpenAppGenSourceItem??True}" equals="True" action="Exclude">
+      <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+        <MenuItem id = "OpenAppGenSourceCommand"
+                  label = "Application Source"
+                  insertafter = "DuplicateLine"
+                  insertbefore = "Insert"
+                  shortcut = "Alt|S"
+                  class = "ClarionEdge.MainToolbarExtras.OpenAppGenSourceCommand"/>
+      </Condition>
+    </Condition>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit/Folding">
+    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+      <MenuItem id          = "CollapseAll"
+          label       = "Collapse All"
+          shortcut    = "Control|Shift|Subtract"
+          class       = "ClarionEdge.MainToolbarExtras.Folding.CollapseAll"/>
+      <MenuItem id          = "ExpandAll"
+          label       = "Expand All"
+          shortcut    = "Control|Shift|Add"
+          class       = "ClarionEdge.MainToolbarExtras.Folding.ExpandAll"/>
+    </Condition>
+  </Path>
+
+  <!-- 
+  ===================================================================================
+  Main (view) menu item
+  ===================================================================================
+  -->
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/View">
+    <MenuItem insertafter = "DataDictionary" insertbefore = "ViewItemsSeparator" id = "EditorFontSize" label = "Editor Font Size" type="Menu">
+      <MenuItem id ="IncreaseFont"
+                label ="Increase Font Size"
+                shortcut ="Control|Add"
+                class ="ClarionEdge.MainToolbarExtras.EditorFontSize.Increase"/>
+      <MenuItem id ="DecreaseFont"
+                label ="Decrease Font Size"
+                shortcut ="Control|Subtract"
+                class ="ClarionEdge.MainToolbarExtras.EditorFontSize.Decrease"/>
+      <MenuItem id ="ResetFont"
+                label ="Reset Font Size"
+                shortcut ="Control|NumPad0"
+                class ="ClarionEdge.MainToolbarExtras.EditorFontSize.Reset"/>
+    </MenuItem>
+  </Path>
+  
+  <!-- 
+  ===================================================================================
+  Main Toolbar Context menu items
+  ===================================================================================
+  -->
+
   <Path name = "/ClarionEdge/MainToolBarExtras/ContextMenu">
     <MenuItem id="ShowRunStartUpProjectInDebugger"
               label="Show 'Run StartUp Project In Debugger' Button"
               type="CheckBox"
               class="ClarionEdge.MainToolbarExtras.ShowRunStartUpProjectInDebugger"/>
-      <MenuItem id="ShowRunExeNonElevated"
-                label="Show '${res:Generator.RunStartUp.Description} - Non-Elevated' Button"
-                type="CheckBox"
-                class="ClarionEdge.MainToolbarExtras.ShowRunExeNonElevated"/>
-      <MenuItem id = "SetToolbarSize"
+    <MenuItem id="ShowRunExeNonElevated"
+              label="Show '${res:Generator.RunStartUp.Description} - Non-Elevated' Button"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.ShowRunExeNonElevated"/>
+    <MenuItem id="ShowOpenAppGenSourceItem"
+              label="Show Application Source Menu Shortcut"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.ShowOpenAppGenSourceItem"/>
+
+    <MenuItem id = "MTESeparator1" type = "Separator" />
+    
+    <MenuItem id = "SetToolbarSize"
               label = "Set Toolbar Size"
               icon = "Icons.famfamfam.silk.page_white_wrench"
               class =" ClarionEdge.MainToolbarExtras.SetToolbarSizeCommand"/>
@@ -84,6 +168,9 @@
               label="Make ALL toolbars the same size (except Application Editor, sorry!)"
               type="CheckBox"
               class="ClarionEdge.MainToolbarExtras.UpdateOtherToolbars"/>
+
+    <MenuItem id = "MTESeparator2" type = "Separator" />
+    
     <MenuItem id="ReOpenStartPage"
               label="Re-open StartPage when solution is closed"
               type="CheckBox"
@@ -94,21 +181,12 @@
               class="ClarionEdge.MainToolbarExtras.AutoRefreshStartPage"/>
   </Path>
 
-  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
-    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
-      <MenuItem id = "OpenAppGenSourceCommand"
-                label = "Application Source"
-                insertafter = "DuplicateLine"
-                insertbefore = "Insert"
-                shortcut = "Alt|S"
-                class = "ClarionEdge.MainToolbarExtras.OpenAppGenSourceCommand"/>
-    </Condition>
-  </Path>
-
   <Path name = "/Workspace/Autostart">
     <Class id    = "InitializeMainToolbarExtras"
-           class = "ClarionEdge.MainToolbarExtras.StartupCode"/>
-    <Class id="MainToolbarExtrasAssemblyResolve" class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
+           class = "ClarionEdge.MainToolbarExtras.AutoStart"/>
+
+    <Class id="MainToolbarExtrasAssemblyResolve" 
+           class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
   </Path>
 
 </AddIn>

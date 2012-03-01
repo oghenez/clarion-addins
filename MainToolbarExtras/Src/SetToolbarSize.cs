@@ -8,14 +8,14 @@ namespace ClarionEdge.MainToolbarExtras
         public SetToolbarSize()
         {
             InitializeComponent();
-            tbIconSize.Text = PropertyService.Get("ClarionEdge.MainToolbarExtras.iconSize", 24).ToString();
-            tbToolbarHeight.Text = PropertyService.Get("ClarionEdge.MainToolbarExtras.toolbarHeight", 42).ToString();
+            spinIconSize.Value = PropertyService.Get("ClarionEdge.MainToolbarExtras.iconSize", 24);
+            spinHeight.Value = PropertyService.Get("ClarionEdge.MainToolbarExtras.toolbarHeight", 42);
         }
 
         private void buttonOK_Click(object sender, System.EventArgs e)
         {
-            PropertyService.Set("ClarionEdge.MainToolbarExtras.iconSize", tbIconSize.Text);
-            PropertyService.Set("ClarionEdge.MainToolbarExtras.toolbarHeight", tbToolbarHeight.Text);
+            PropertyService.Set("ClarionEdge.MainToolbarExtras.iconSize", spinIconSize.Value.ToString());
+            PropertyService.Set("ClarionEdge.MainToolbarExtras.toolbarHeight", spinHeight.Value.ToString());
         }
 
         private void buttonHelp_Click(object sender, System.EventArgs e)
@@ -27,6 +27,18 @@ namespace ClarionEdge.MainToolbarExtras
                 "(Clarion 8)\n" + 
                 "Icon Size = 24\n" + 
                 "ToolBar Height = 42");
+        }
+
+        private void buttonSetSizeC7_Click(object sender, System.EventArgs e)
+        {
+            spinIconSize.Value = 16;
+            spinHeight.Value = 24;
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            spinIconSize.Value = 24;
+            spinHeight.Value = 42;
         }
     }
 }

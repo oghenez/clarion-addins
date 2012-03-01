@@ -40,4 +40,16 @@
   <release version="0.12" date="18 November 2011">
     <note type="FEATURE">Automatically refresh the startpage after a solution is loaded.&#xD;&#xD;  * Feature is only active when "Close StartPage when loading a solution is checked off.&#xD;  * Feature is enabled by default, use the context menu on the main toolbar to disable it.</note>
   </release>
+  <release version="0.13" date="15 December 2011">
+    <note type="INFO">Initial Release</note>
+  </release>
+  <release version="0.14" date="29 December 2011">
+    <note type="CHANGE">Code refactored for easier development and maintenance (and helped a lot in debugging!)</note>
+    <note type="FIX">UpdateOtherToolbars feature was crashing, particularly on multi core machines because of the way the toolbars were being set on Pad items. This now appears to be fixed completely</note>
+    <note type="CHANGE">Set Toolbars form now has spin controls and buttons for setting the size to the C7/C8 defaults automatically</note>
+  </release>
+  <release version="0.15" date="28 February 2012">
+    <note type="FEATURE">Expand/Collapse all code folds. See :menuselection:`Edit --> Folding`</note>
+    <note type="FEATURE">Editor Font Size - Increase/Decrease/Reset (Reset to the font size found at IDE startup). See :menuselection:`View --> Editor Font Size`.</note>
+  </release>
 </release_notes>

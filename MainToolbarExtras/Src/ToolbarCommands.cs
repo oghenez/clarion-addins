@@ -1,9 +1,12 @@
 ﻿using System;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.Project;
+using System.Windows.Forms;
+using ICSharpCode.SharpDevelop.Gui;
 
 namespace ClarionEdge.MainToolbarExtras
 {
+
     public class RunStartUpProjectInDebugger : AbstractMenuCommand
     {
 
