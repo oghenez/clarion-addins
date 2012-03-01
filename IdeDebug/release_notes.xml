@@ -7,4 +7,14 @@
   <release version="0.2" date="20 September 2011">
     <note type="FIX">Removed some dependencies that I had left in for testing.</note>
   </release>
+  <release version="0.3" date="13 January 2012">
+    <note type="FEATURE">List and view XLOG files!</note>
+  </release>
+  <release version="0.4" date="26 February 2012">
+    <note type="FEATURE">Enable IDE Debug output programatically instead of by editing the Clarion.exe.config file.</note>
+    <note type="FEATURE">Embed DbgView.exe in a Pad.</note>
+  </release>
+  <release version="0.5" date="28 February 2012">
+    <note type="CHANGE">DbgView.exe is now launched with the '/f' argument to not show the filter dialog. Without this, if you had a filter configured then DbgView would not be attached to the pad</note>
+  </release>
 </release_notes>
