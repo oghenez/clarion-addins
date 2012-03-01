@@ -19,7 +19,6 @@ namespace ClarionEdge.MainToolbarExtras
         // It has been stripped down a little as it is only needed to run the debugger.
         // It would probably be a good idea to check against the original code on new updates to make sure it will still work!
 
-
         private bool _useDebug;
         private bool _fallbackToStartUp;
         private bool _nonElevated;

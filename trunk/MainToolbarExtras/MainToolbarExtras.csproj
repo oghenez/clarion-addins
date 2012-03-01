@@ -59,6 +59,10 @@
       <HintPath>..\..\..\..\..\..\Clarion7\bin\ICSharpCode.SharpDevelop.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ICSharpCode.TextEditor">
+      <HintPath>..\..\..\..\Clarion7\bin\ICSharpCode.TextEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -69,7 +73,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Src\AutoStart.cs" />
+    <Compile Include="Src\EditorFontSize\Commands.cs" />
+    <Compile Include="Src\Folding\Actions.cs" />
     <Compile Include="Src\DoRun.cs" />
+    <Compile Include="Src\Folding\Commands.cs" />
+    <Compile Include="Src\StartPageCommands.cs" />
     <Compile Include="Src\ToolbarCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\SetToolbarSize.cs">
@@ -78,7 +87,7 @@
     <Compile Include="Src\SetToolbarSize.Designer.cs">
       <DependentUpon>SetToolbarSize.cs</DependentUpon>
     </Compile>
-    <Compile Include="Src\MainToolbarExtrasCommands.cs" />
+    <Compile Include="Src\ContextMenuCommands.cs" />
     <Compile Include="Src\ToolbarHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +125,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Clarion8_16x16.png" />
+    <None Include="Resources\Clarion7_16x16.png" />
+    <None Include="Resources\Clarion7_16x16.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AssemblyResolve\AssemblyResolve\AssemblyResolve.csproj">

@@ -20,6 +20,7 @@ namespace ClarionEdge.MainToolbarExtras
                 int toolbarHeight = PropertyService.Get("ClarionEdge.MainToolbarExtras.toolbarHeight", toolBar.Height);
                 toolBar.ImageScalingSize = new Size(iconSize, iconSize);
                 toolBar.Height = toolbarHeight;
+                UpdateOtherToolbars();
             }
         }
 
@@ -40,28 +41,37 @@ namespace ClarionEdge.MainToolbarExtras
             if (PropertyService.Get("ClarionEdge.MainToolbarExtras.updateOtherToolbars", false) == false)
                 return;
 
-            foreach (IViewContent view in WorkbenchSingleton.Workbench.ViewContentCollection)
-            {
-                List<ToolStrip> toolBars = new List<ToolStrip>();
-                FindAllToolbars(view.Control.Controls, ref toolBars);
-                foreach (ISecondaryViewContent sv in view.SecondaryViewContents)
-                {
-                    FindAllToolbars(sv.Control.Controls, ref toolBars);
-                }
-                foreach (PadDescriptor pd in WorkbenchSingleton.Workbench.PadContentCollection)
-                {
-                    FindAllToolbars(pd.PadContent.Control.Controls, ref toolBars);
-                }
+            List<ToolStrip> toolBars = new List<ToolStrip>();
 
-                foreach (ToolStrip ts in toolBars)
+            foreach (PadDescriptor pad in WorkbenchSingleton.Workbench.PadContentCollection)
+            {
+                if (pad.PadContent != null)
                 {
-                    Size tbImageScaling = ts.ImageScalingSize;
-                    int iconSize = PropertyService.Get("ClarionEdge.MainToolbarExtras.iconSize", tbImageScaling.Height);
-                    int toolbarHeight = PropertyService.Get("ClarionEdge.MainToolbarExtras.toolbarHeight", ts.Height);
-                    ts.ImageScalingSize = new Size(iconSize, iconSize);
-                    ts.Height = toolbarHeight;
+                    FindAllToolbars(pad.PadContent.Control.Controls, ref toolBars);
                 }
             }
+
+            foreach (IViewContent view in WorkbenchSingleton.Workbench.ViewContentCollection)
+            {
+                if (view.Control != null && view.Control.Controls != null)
+                    FindAllToolbars(view.Control.Controls, ref toolBars);
+                
+                foreach (ISecondaryViewContent sv in view.SecondaryViewContents)
+                {
+                    if (sv.Control != null && sv.Control.Controls != null)
+                    FindAllToolbars(sv.Control.Controls, ref toolBars);
+                }
+            }
+
+            foreach (ToolStrip ts in toolBars)
+            {
+                Size tbImageScaling = ts.ImageScalingSize;
+                int iconSize = PropertyService.Get("ClarionEdge.MainToolbarExtras.iconSize", tbImageScaling.Height);
+                int toolbarHeight = PropertyService.Get("ClarionEdge.MainToolbarExtras.toolbarHeight", ts.Height);
+                ts.ImageScalingSize = new Size(iconSize, iconSize);
+                ts.Height = toolbarHeight;
+            }
+
         }
 
         private static void FindAllToolbars(Control.ControlCollection controlCollection, ref List<ToolStrip> toolBars)
