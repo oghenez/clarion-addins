@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <release_notes>
-	<release version="0.1" date="16 Oct 2010">
-		<note type="INFO">Public Release</note>
-		<note type="BLOG">`Insert Clarion Color addin &lt;http://www.clarionedge.com/clarion/addins/insert-clarion-color-addin.html&gt;`_</note>
-	</release>
-	<release version="0.2" date="04 June 2011">
+  <release version="0.1" date="16 Oct 2010">
+    <note type="INFO">Public Release</note>
+    <note type="BLOG">`Insert Clarion Color addin &lt;http://www.clarionedge.com/clarion/addins/insert-clarion-color-addin.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="04 June 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
     <note type="INFO">`This project requires the ZetaColorEditor &lt;http://www.codeproject.com/KB/miscctrl/ZetaColorEditor.aspx&gt;`_</note>
   </release>
@@ -17,5 +17,12 @@
   </release>
   <release version="0.4" date="19 October 2011">
     <note type="FEATURE">Experimental new addition, the color picker is now available from a Pad. See :menuselection:`View --> Tools --> Insert Clarion Color`</note>
+  </release>
+  <release version="0.5" date="26 February 2012">
+    <note type="FIX">Removed trace output from ZetaColorEditor.</note>
+  </release>
+  <release version="0.6" date="1 March 2012">
+    <note type="FIX">Detection of active text editor now works for clarion window definition editor and is generally improved for other areas.</note>
+    <note type="FIX">Color lists are now docked inside their container correctly</note>
   </release>
 </release_notes>

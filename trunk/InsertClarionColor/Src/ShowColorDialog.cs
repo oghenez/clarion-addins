@@ -1,11 +1,10 @@
-﻿using System.IO;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor;
 using ICSharpCode.SharpDevelop.Gui;
 using ICSharpCode.TextEditor;
 using ZetaColorEditor.Runtime;
-using System.Drawing;
 
 namespace ClarionEdge.InsertClarionColor
 {
@@ -28,11 +27,19 @@ namespace ClarionEdge.InsertClarionColor
                         colorstr = GetClarionColorEquate(cd.SelectedColor);
 
                     PropertyService.Set("ClarionEdge.InsertClarionColor.LastSelectedColor", cc.ConvertToString(cd.SelectedColor));
+
                     IWorkbenchWindow window = WorkbenchSingleton.Workbench.ActiveWorkbenchWindow;
-                    if (window == null || !(window.ViewContent is ITextEditorControlProvider) || (window.Title.Contains(".app")))
+                    if (window == null || 
+                        !(window.ViewContent is ITextEditorControlProvider) || 
+                        window.ActiveViewContent is SoftVelocity.Generator.UI.ApplicationMainWindowControl_ViewContent ||
+                        window.ActiveViewContent is SoftVelocity.Generator.Editor.CommonClarionGenDesignerView)
                     {
                         if (MessageService.AskQuestion("No active editor window found, copy selected color (" + colorstr + ") to the clipboard?"))
                             Clipboard.SetText(colorstr);
+
+                        // This also works except it is not much use because all the dialogs it would be handy in are modal
+                        // Oh and the property grid loses focus so it doesn't work there either.
+                        //SendKeys.Send(colorstr);
                     }
                     else
                     {
