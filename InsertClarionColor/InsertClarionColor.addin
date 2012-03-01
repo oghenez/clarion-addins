@@ -4,12 +4,17 @@
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
        description = "Insert a clarion color into the text area!"
-       usage       = "When you are editing clarion source, use the menu item in :menuselection:`Edit --> Insert --> Insert Clarion Color...` or the icon on the toolbar to insert a clarion color code."
+       usage       = "When you are editing clarion source, use the menu item in :menuselection:`Edit --> Insert --> Insert Clarion Color...` or the icon on the toolbar to insert a clarion color code.&#xD;"
+       features    = "&#xD;
+* Advanced color picker for clarion source code.&#xD;
+* Converts RGB, HSL and HTML color values to clarion color codes.&#xD;
+* Select colors using a large *color well* or from lists of pre-defined :guilabel:`Web`, :guilabel:`Browser-Safe` and :guilabel:`System` colors.&#xD;
+* Pastes directly into the source editor or if there is no editor active then the clarion color code is optionally copied to the clipboard.&#xD;"
        screenshot  = "InsertClarionColor.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.InsertClarionColor" version="0.4"/>
+    <Identity name="ClarionEdge.InsertClarionColor" version="0.6"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
