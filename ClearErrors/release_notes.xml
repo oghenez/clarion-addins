@@ -13,5 +13,11 @@
   <release version="0.4" date="20 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
+  <release version="0.5" date="24 February 2012">
+    <note type="FEATURE">New toolbar item :guilabel:`Cut All`</note>
+  </release>
+  <release version="0.6" date="2 March 2012">
+    <note type="FEATURE">:guilabel:`Clear Errors` button removed. This is now available by default in C8.</note>
+  </release>
 </release_notes>
 

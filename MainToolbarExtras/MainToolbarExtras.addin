@@ -12,15 +12,16 @@
 * :menuselection:`Edit --> Application Source` with the shotcut key of :kbd:`Alt-s`&#xD;
 * Set the size of the main toolbar and icons!&#xD;
 * Optionally set the size for ALL accessible toolbars in the IDE!&#xD;
-* Toolbar button - Run startup project Non-Elevated
+* Toolbar button - Run startup project Non-Elevated&#xD;
 * Toolbar button - Run startUp project in the debugger&#xD;
 * Expand/Collapse all code folds. See :menuselection:`Edit --> Folding`&#xD;
-* Editor Font Size - Increase/Decrease/Reset (Reset to the font size found at IDE startup). See :menuselection:`View --> Editor Font Size`.&#xD;"
+* Editor Font Size - Increase/Decrease/Reset (Reset to the font size found at IDE startup). See :menuselection:`View --> Editor Font Size`.&#xD;
+* Toolbar buttons for common edit actions on the **Embeditor/Embed Editor** toolbar (Cut/Copy/Paste/Delete|Undo/Redo)&#xD;"
        screenshot  = "MainToolbarExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.MainToolbarExtras" version="0.15"/>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.17"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -28,6 +29,7 @@
     <Import assembly = "MainToolbarExtras.dll"/>
     <Import assembly = "AssemblyResolve.dll"/>
     <Import assembly = "$SoftVelocity.Generator/Generator.dll"/>
+    <Import assembly=":ICSharpCode.SharpDevelop"/>
   </Runtime>
 
   <BitmapResources file="Resources\BitmapResources.resources"/>
@@ -81,6 +83,47 @@
         </ComplexCondition>
       </Condition>
     </Condition>
+  </Path>
+
+  <!-- 
+  ===================================================================================
+  New Embeditor/Embed Editor toolbar buttons 
+  ===================================================================================
+  -->
+  <Path name ="/SoftVelocity/Clarion/ToolBar/EmbedEditor">
+    <ToolbarItem id = "Separator1" type = "Separator"/>
+
+    <MenuItem id = "Cut"
+                 icon = "Icons.dvEditCut"
+                 tooltip = "${res:XML.MainMenu.EditMenu.Cut.Description}"
+                 loadclasslazy = "false"
+                 class = "ICSharpCode.SharpDevelop.Commands.Cut"/>
+    <MenuItem id = "Copy"
+                 icon = "Icons.dvEditCopy"
+                 tooltip = "${res:XML.MainMenu.EditMenu.Copy.Description}"
+                 loadclasslazy = "false"
+                 class = "ICSharpCode.SharpDevelop.Commands.Copy"/>
+    <MenuItem id = "Paste"
+                 icon = "Icons.dvEditPaste"
+                 tooltip = "${res:XML.MainMenu.EditMenu.Paste.Description}"
+                 loadclasslazy = "false"
+                 class = "ICSharpCode.SharpDevelop.Commands.Paste"/>
+    <MenuItem id = "Delete"
+                 icon = "Icons.dvEditDelete"
+                 tooltip = "${res:XML.MainMenu.EditMenu.Delete.Description}"
+                 loadclasslazy = "false"
+                 class = "ICSharpCode.SharpDevelop.Commands.Delete"/>
+    <MenuItem id = "UndoRedoSeparator"  type = "Separator"/>
+    <MenuItem id      = "Undo"
+                 icon    = "Icons.dvUndoBlue"
+                 tooltip = "${res:XML.MainMenu.EditMenu.Undo.Description}"
+                 loadclasslazy = "false"
+                 class   = "ICSharpCode.SharpDevelop.Commands.Undo"/>
+    <MenuItem id      = "Redo"
+                 icon    = "Icons.dvRedoBlue"
+                 tooltip = "${res:XML.MainMenu.EditMenu.Redo.Description}"
+                 loadclasslazy = "false"
+                 class   = "ICSharpCode.SharpDevelop.Commands.Redo"/>
   </Path>
 
   <!-- 
@@ -164,6 +207,10 @@
               label = "Set Toolbar Size"
               icon = "Icons.famfamfam.silk.page_white_wrench"
               class =" ClarionEdge.MainToolbarExtras.SetToolbarSizeCommand"/>
+    <MenuItem id="DisableSetToolbarSize"
+              label="Disable Set Toolbar Size"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.DisableSetToolbarSize"/>
     <MenuItem id="UpdateOtherToolbars"
               label="Make ALL toolbars the same size (except Application Editor, sorry!)"
               type="CheckBox"

@@ -439,18 +439,18 @@
 							ColorTranslator.FromHtml( @"#FFFFFF" )
 						} );
 
-				Trace.WriteLine( @"About to sort colors." );
+				//Trace.WriteLine( @"About to sort colors." );
 
 				var index = 0;
 
 				colors.Sort(
 					delegate( Color c1, Color c2 )
 					{
-						Trace.WriteLine( string.Format(
-							@"[{0}.] Sorting color '{1}' and '{2}'.",
-							index + 1,
-							c1,
-							c2 ) );
+						//Trace.WriteLine( string.Format(
+						//	@"[{0}.] Sorting color '{1}' and '{2}'.",
+						//	index + 1,
+						//	c1,
+						//	c2 ) );
 
 						index++;
 
@@ -496,7 +496,7 @@
 						}
 					} );
 
-				Trace.WriteLine( @"Finished sorting colors." );
+				//Trace.WriteLine( @"Finished sorting colors." );
 
 				// --
 

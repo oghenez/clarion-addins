@@ -4,7 +4,19 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/KeyboardShortcuts.html"
        description = "Configure common key bindings for menu and toolbar items."
-       usage       = "See :menuselection:`Tools --> Options --> General --> Keyboard` for a list of available items. Make a selection from the list and use the controls below to create, change or remove an assignment!"
+       usage       = ".. note:: See :menuselection:`Tools --> Options --> General --> Keyboard` for a list of available items. Make a selection from the list and use the controls below to create, change or remove an assignment!&#xD;"
+       features    = "
+* Re-assign top level menu accelerator keys.&#xD;
+* Re-assign menu item shortcut keys.&#xD;
+* Re-assign toolbar shortcut keys.&#xD;&#xD;
+**Some Example of my favourites:**&#xD;&#xD;
+* Change the :menuselection:`Edit` menu accelerator from :kbd:`Alt-E` to :kbd:`Alt-I`. This frees :kbd:`Alt+E` to open the embed editor from the Application Tree.&#xD;
+* Same as above for the :menuselection:`Project` menu.&#xD;
+* I also adjust :menuselection:`Search` to work in conjunction with the :menuselection:`Open Source` feature of the :doc:`MainToolbarExtras` addin&#xD;
+* Remove the shortcut assigned to :menuselection:`Reload File` allows :menuselection:`Debug --> Make and Run All` to work!&#xD;
+* Change :menuselection:`Next Filled Embed` shortcut from :kbd:`Control-J` to :kbd:`Control-Alt-J` to allow snippets to work. More info `here &lt;http://support.fushnisoft.com/thebuggenie/wiki/CodeSnippets&gt;`_&#xD;
+* Assign :kbd:`Control-Tab` and :kbd:`Control-Shift-Tab` for :menuselection:`Window --> Next Window` and :menuselection:`Window --> Prev Window`"
+
        screenshot  = "KeyboardShortcuts.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
@@ -13,7 +25,7 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.6"/>
+    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.8"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 

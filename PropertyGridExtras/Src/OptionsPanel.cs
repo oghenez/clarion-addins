@@ -29,6 +29,9 @@ namespace ClarionEdge.PropertyGridExtras
             checkBoxRememberExpandedState.Text = ResourceService.GetString(checkBoxRememberExpandedState.Text);
             checkBoxRememberExpandedState.Checked = Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.RememberExpandedState", "true"));
 
+            checkBoxRememberSelectedProperty.Text = ResourceService.GetString(checkBoxRememberSelectedProperty.Text);
+            checkBoxRememberSelectedProperty.Checked = Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.RememberSelectedProperty", "true"));
+
             checkBoxEnableLogging.Checked = Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.EnableLogging", "false"));
 
             dropDownTheme.Items.Add(ResourceService.GetString("ClarionEdge.PropertyGridExtras.UseOriginalDrawManager"));
@@ -91,10 +94,11 @@ namespace ClarionEdge.PropertyGridExtras
             PropertyService.Set("ClarionEdge.PropertyGridExtras.AutoAdjustLabelColumn", checkBoxAutoAdjustLabelColumn.Checked);
             PropertyService.Set("ClarionEdge.PropertyGridExtras.ShowAdditionalIndentation", checkBoxShowAdditionalIndentation.Checked);
             PropertyService.Set("ClarionEdge.PropertyGridExtras.RememberExpandedState", checkBoxRememberExpandedState.Checked);
+            PropertyService.Set("ClarionEdge.PropertyGridExtras.RememberSelectedProperty", checkBoxRememberSelectedProperty.Checked);
             PropertyService.Set("ClarionEdge.PropertyGridExtras.EnableLogging", checkBoxEnableLogging.Checked);
 
             SetSelectedTheme(dropDownTheme.SelectedIndex);
-            PropertyGridHelper.SetDrawManager();
+            PGHelper.SetDrawManager();
             return true;
         }
 

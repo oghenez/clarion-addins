@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Gui;
+using System;
 
 namespace ClarionEdge.MainToolbarExtras
 {
@@ -11,6 +12,9 @@ namespace ClarionEdge.MainToolbarExtras
     {
         public static void UpdateMainToolbarSize()
         {
+            if (Convert.ToBoolean(PropertyService.Get("ClarionEdge.MainToolbarExtras.DisableSetToolbarSize", "false")) == true)
+                return;
+
             LoggingService.Debug("About to resize main toolbar");
             ToolStrip toolBar = GetToolBar();
             if (toolBar != null)
@@ -38,7 +42,8 @@ namespace ClarionEdge.MainToolbarExtras
 
         public static void UpdateOtherToolbars()
         {
-            if (PropertyService.Get("ClarionEdge.MainToolbarExtras.updateOtherToolbars", false) == false)
+            if (PropertyService.Get("ClarionEdge.MainToolbarExtras.updateOtherToolbars", false) == false ||
+                Convert.ToBoolean(PropertyService.Get("ClarionEdge.MainToolbarExtras.DisableSetToolbarSize", "false")) == true)
                 return;
 
             List<ToolStrip> toolBars = new List<ToolStrip>();
@@ -132,8 +137,16 @@ namespace ClarionEdge.MainToolbarExtras
                         if (result == null)
                             LoggingService.Debug("result is null.");
                         else
-                            result.Run();
-
+                        {
+                            try
+                            {
+                                result.Run();
+                            }
+                            catch (Exception e)
+                            {
+                                LoggingService.Debug("Problem trying to run command e=" + e.ToString());
+                            }
+                        }
                         break;
                     }
                 }

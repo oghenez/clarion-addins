@@ -22,6 +22,21 @@ namespace ClarionEdge.MainToolbarExtras
         }
     }
 
+    class DisableSetToolbarSize : AbstractCheckableMenuCommand
+    {
+        public override bool IsChecked
+        {
+            get
+            {
+                return Convert.ToBoolean(PropertyService.Get("ClarionEdge.MainToolbarExtras.DisableSetToolbarSize", "false"));
+            }
+            set
+            {
+                PropertyService.Set("ClarionEdge.MainToolbarExtras.DisableSetToolbarSize", Convert.ToString(value));
+            }
+        }
+    }
+
     class UpdateOtherToolbars : AbstractCheckableMenuCommand
     {
         public override bool IsChecked

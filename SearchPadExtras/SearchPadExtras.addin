@@ -4,12 +4,19 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/SearchPadExtras.html"
        description = "Adds some enhancements to the default search pad."
-       usage       = "Buttons added to the toolbar of the search results pad:&#xD;&#xD;  * Copy to Clipboard&#xD;&#xD;  * Find&#xD;&#xD;  * Find Next&#xD;&#xD;  * Replace "
+       usage       = "Buttons added to the toolbar of the search results pad.&#xD;"
+       features    = "&#xD;
+* Copy to Clipboard&#xD;
+* Find&#xD;
+* Find Next&#xD;
+* Replace&#xD;
+* Quick Find: use :kbd:`Alt-Q` to move focus into quick find combo box on the **search pad** toolbar.&#xD;
+* Quick Find: use :kbd:`Alt-Q` to move focus into quick find combo box on the **Embeditor/Embed Editor** toolbar.&#xD;"
        screenshot  = "SearchPadExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SearchPadExtras" version="0.4"/>
+    <Identity name="ClarionEdge.SearchPadExtras" version="0.5"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
@@ -19,6 +26,30 @@
     <Import assembly=":ICSharpCode.TextEditor"/>
   </Runtime>
 
+  <Path name ="/SoftVelocity/Clarion/ToolBar/EmbedEditor">
+    <ToolbarItem id = "SearchPadExtrasSeparator" type  = "Separator"/>
+    <!-- These are duplicates of those found in the file clarion.addin 
+    Put here following a request from Bob Roos on the newsgroups  -->
+    <ToolbarItem id      = "SearchPadExtras.SearchTermLabel"
+                 type    = "Label"
+                 label = "&amp;Quick Find" />
+    <ToolbarItem id = "SearchPadExtrasSeparator2" type  = "Separator"/>
+    <ToolbarItem id      = "SearchPadExtras.SearchTerm"
+                 type    = "ComboBox"
+                 shortcut = "Control|Shift|F"
+                 class   = "SearchAndReplace.FindComboBox"/>
+    <ToolbarItem id = "Find"
+              label = "${res:XML.MainMenu.SearchMenu.Find}"
+              icon = "Icons.16x16.FindIcon"
+              shortcut = "Control|F"
+              class = "SearchAndReplace.Find"/>
+    <ToolbarItem id = "Replace"
+              label = "${res:XML.MainMenu.SearchMenu.Replace}"
+              icon = "Icons.16x16.ReplaceIcon"
+              shortcut = "Control|R"
+              class = "SearchAndReplace.Replace"/>
+  </Path>
+  
   <Path name = "/SharpDevelop/Pads/SearchResultPanel/Toolbar">
     <ToolbarItem id    = "SearchPadExtrasSeparator"
                  type  = "Separator"

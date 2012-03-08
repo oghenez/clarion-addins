@@ -32,16 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorEditorUserControl));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.customColorsTabPage = new System.Windows.Forms.TabPage();
-            this.webColorsTabPage = new System.Windows.Forms.TabPage();
-            this.browserSafeColorsTabPage = new System.Windows.Forms.TabPage();
-            this.systemColorsTabPage = new System.Windows.Forms.TabPage();
-            this.schemeColorsTabPage = new System.Windows.Forms.TabPage();
-            this.tabPagesImageList = new System.Windows.Forms.ImageList(this.components);
             this.customColorEditorControl = new ZetaColorEditor.Runtime.InternalControls.CustomColorEditorUserControl();
+            this.webColorsTabPage = new System.Windows.Forms.TabPage();
             this.webColorEditorControl = new ZetaColorEditor.Runtime.InternalControls.WebColorEditorUserControl();
+            this.browserSafeColorsTabPage = new System.Windows.Forms.TabPage();
             this.browserSafeColorEditorControl = new ZetaColorEditor.Runtime.InternalControls.BrowserSafeColorEditorUserControl();
+            this.systemColorsTabPage = new System.Windows.Forms.TabPage();
             this.systemColorEditorControl = new ZetaColorEditor.Runtime.InternalControls.SystemColorEditorUserControl();
+            this.schemeColorsTabPage = new System.Windows.Forms.TabPage();
             this.schemesColorEditorControl = new ZetaColorEditor.Runtime.InternalControls.SchemesColorEditorUserControl();
+            this.tabPagesImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabControl.SuspendLayout();
             this.customColorsTabPage.SuspendLayout();
             this.webColorsTabPage.SuspendLayout();
@@ -70,12 +70,26 @@
             this.customColorsTabPage.Name = "customColorsTabPage";
             this.customColorsTabPage.UseVisualStyleBackColor = true;
             // 
+            // customColorEditorControl
+            // 
+            resources.ApplyResources(this.customColorEditorControl, "customColorEditorControl");
+            this.customColorEditorControl.Name = "customColorEditorControl";
+            this.customColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
+            this.customColorEditorControl.NeedUpdateUI += new System.EventHandler(this.customColorEditorControl_NeedUpdateUI);
+            // 
             // webColorsTabPage
             // 
             this.webColorsTabPage.Controls.Add(this.webColorEditorControl);
             resources.ApplyResources(this.webColorsTabPage, "webColorsTabPage");
             this.webColorsTabPage.Name = "webColorsTabPage";
             this.webColorsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // webColorEditorControl
+            // 
+            resources.ApplyResources(this.webColorEditorControl, "webColorEditorControl");
+            this.webColorEditorControl.Name = "webColorEditorControl";
+            this.webColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
+            this.webColorEditorControl.NeedUpdateUI += new System.EventHandler(this.webColorEditorControl_NeedUpdateUI);
             // 
             // browserSafeColorsTabPage
             // 
@@ -84,6 +98,13 @@
             this.browserSafeColorsTabPage.Name = "browserSafeColorsTabPage";
             this.browserSafeColorsTabPage.UseVisualStyleBackColor = true;
             // 
+            // browserSafeColorEditorControl
+            // 
+            resources.ApplyResources(this.browserSafeColorEditorControl, "browserSafeColorEditorControl");
+            this.browserSafeColorEditorControl.Name = "browserSafeColorEditorControl";
+            this.browserSafeColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
+            this.browserSafeColorEditorControl.NeedUpdateUI += new System.EventHandler(this.browserSafeColorEditorControl_NeedUpdateUI);
+            // 
             // systemColorsTabPage
             // 
             this.systemColorsTabPage.Controls.Add(this.systemColorEditorControl);
@@ -91,12 +112,26 @@
             this.systemColorsTabPage.Name = "systemColorsTabPage";
             this.systemColorsTabPage.UseVisualStyleBackColor = true;
             // 
+            // systemColorEditorControl
+            // 
+            resources.ApplyResources(this.systemColorEditorControl, "systemColorEditorControl");
+            this.systemColorEditorControl.Name = "systemColorEditorControl";
+            this.systemColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
+            this.systemColorEditorControl.NeedUpdateUI += new System.EventHandler(this.systemColorEditorControl_NeedUpdateUI);
+            // 
             // schemeColorsTabPage
             // 
             this.schemeColorsTabPage.Controls.Add(this.schemesColorEditorControl);
             resources.ApplyResources(this.schemeColorsTabPage, "schemeColorsTabPage");
             this.schemeColorsTabPage.Name = "schemeColorsTabPage";
             this.schemeColorsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // schemesColorEditorControl
+            // 
+            resources.ApplyResources(this.schemesColorEditorControl, "schemesColorEditorControl");
+            this.schemesColorEditorControl.Name = "schemesColorEditorControl";
+            this.schemesColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
+            this.schemesColorEditorControl.NeedUpdateUI += new System.EventHandler(this.schemesColorEditorControl_NeedUpdateUI);
             // 
             // tabPagesImageList
             // 
@@ -107,41 +142,6 @@
             this.tabPagesImageList.Images.SetKeyName(2, "window_colors.png");
             this.tabPagesImageList.Images.SetKeyName(3, "monitor_rgb.png");
             this.tabPagesImageList.Images.SetKeyName(4, "earth.png");
-            // 
-            // customColorEditorControl
-            // 
-            resources.ApplyResources(this.customColorEditorControl, "customColorEditorControl");
-            this.customColorEditorControl.Name = "customColorEditorControl";
-            this.customColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
-            this.customColorEditorControl.NeedUpdateUI += new System.EventHandler(this.customColorEditorControl_NeedUpdateUI);
-            // 
-            // webColorEditorControl
-            // 
-            resources.ApplyResources(this.webColorEditorControl, "webColorEditorControl");
-            this.webColorEditorControl.Name = "webColorEditorControl";
-            this.webColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
-            this.webColorEditorControl.NeedUpdateUI += new System.EventHandler(this.webColorEditorControl_NeedUpdateUI);
-            // 
-            // browserSafeColorEditorControl
-            // 
-            resources.ApplyResources(this.browserSafeColorEditorControl, "browserSafeColorEditorControl");
-            this.browserSafeColorEditorControl.Name = "browserSafeColorEditorControl";
-            this.browserSafeColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
-            this.browserSafeColorEditorControl.NeedUpdateUI += new System.EventHandler(this.browserSafeColorEditorControl_NeedUpdateUI);
-            // 
-            // systemColorEditorControl
-            // 
-            resources.ApplyResources(this.systemColorEditorControl, "systemColorEditorControl");
-            this.systemColorEditorControl.Name = "systemColorEditorControl";
-            this.systemColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
-            this.systemColorEditorControl.NeedUpdateUI += new System.EventHandler(this.systemColorEditorControl_NeedUpdateUI);
-            // 
-            // schemesColorEditorControl
-            // 
-            resources.ApplyResources(this.schemesColorEditorControl, "schemesColorEditorControl");
-            this.schemesColorEditorControl.Name = "schemesColorEditorControl";
-            this.schemesColorEditorControl.SelectedColor = System.Drawing.Color.Empty;
-            this.schemesColorEditorControl.NeedUpdateUI += new System.EventHandler(this.schemesColorEditorControl_NeedUpdateUI);
             // 
             // ColorEditorUserControl
             // 

@@ -33,10 +33,10 @@
     <note type="FIX">The initial load of window and report designers is sending a few extra ExpandAll commands. These appear to now be correctly suppressed allowing the restore to function correctly.</note>
   </release>
   <release version="0.7" date="26 February 2012">
-    <note type="INFO">Initial Release</note>
+    <note type="INFO">Internal Release</note>
   </release>
   <release version="0.8" date="27 February 2012">
-    <note type="INFO">Initial Release</note>
+    <note type="INFO">Internal Release</note>
   </release>
   <release version="0.9" date="28 February 2012">
     <note type="FIX">Fingers crossed this is the definitive fix for the issues plaguing the restire tree state feature! It looks like I have found the correct way to override the default *expand all* on opening as well as when the grid has focus.</note>
@@ -45,4 +45,18 @@
   <release version="0.10" date="29 February 2012">
     <note type="FIX">Possible fix for NullReferenceException with C8 build 8973</note>
   </release>
-  </release_notes>
+  <release version="0.11" date="7 March 2012">
+    <note type="FIX">Possible fix for All state handling issues. Restore state on initial grid loading, on TAB to next property, on moving controls with cursor keys, on multiple selections, etc</note>
+    <note type="FEATURE">Option (on by default) to save/restore the property selection. This includes focusing the selected property within the grid!</note>
+  </release>
+  <release version="0.12" date="7 March 2012">
+    <note type="INFO">Internal Beta Release</note>
+  </release>
+  <release version="0.13" date="7 March 2012">
+    <note type="INFO">Internal Beta Release</note>
+  </release>
+  <release version="0.14" date="8 March 2012">
+    <note type="FIX">Remember Selected Property feature now also saves and restores child properties correctly.</note>
+    <note type="CHANGE">Toolbar icons are now 24x24 so they look better with default toolbar size</note>
+  </release>
+</release_notes>

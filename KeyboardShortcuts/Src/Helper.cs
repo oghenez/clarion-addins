@@ -66,6 +66,8 @@ namespace ClarionAddins.KeyboardShortcuts
                 if (o is ICSharpCode.Core.Menu)
                 {
                     ToolStripMenuItem menuItem = (ToolStripMenuItem)o;
+                    SetTopMenuTableRow(menuItem, dt);
+
                     foreach (ToolStripItem tsi in menuItem.DropDownItems)
                     {
                         if (tsi is MenuCommand)
@@ -75,6 +77,14 @@ namespace ClarionAddins.KeyboardShortcuts
                     }
                 }
             }
+            /*
+            DataRow row = dt.NewRow();
+            row[ColumnName.Image.ToString()] = new Bitmap(16, 16);
+            row[ColumnName.Label.ToString()] = "          ============ Toolbar ============";
+            row[ColumnName.Name.ToString()] = "";
+            row[ColumnName.Original.ToString()] = System.DBNull.Value;
+            row[ColumnName.New.ToString()] = System.DBNull.Value;
+            dt.Rows.Add(row);
 
             foreach (ToolStrip toolBar in wbForm.ToolBars)
             {
@@ -86,8 +96,36 @@ namespace ClarionAddins.KeyboardShortcuts
                     }
                 }
             }
+            */
             Properties.Save(Helper.PropertiesFileName);
             return dt;
+        }
+
+        private static void SetTopMenuTableRow(ToolStripMenuItem menuItem, DataTable dt)
+        {
+
+            DataRow row = dt.NewRow();
+            row[ColumnName.Image.ToString()] = new Bitmap(16, 16);
+            row[ColumnName.Label.ToString()] = "          ============ Menu ============";
+            row[ColumnName.Name.ToString()] = "";
+            row[ColumnName.Original.ToString()] = System.DBNull.Value;
+            row[ColumnName.New.ToString()] = System.DBNull.Value;
+            dt.Rows.Add(row);
+
+            string menuName = "*TL*" + menuItem.Text;
+            ICSharpCode.Core.Properties newMenuProps = Properties.Get(menuName, new ICSharpCode.Core.Properties());
+            string newMenuLabel = newMenuProps.Get("newLabel", menuItem.Text);
+            if (newMenuLabel != String.Empty && _ApplyKeys == true)
+            {
+                menuItem.Text = newMenuLabel;
+            }
+            row = dt.NewRow();
+            row[ColumnName.Image.ToString()] = new Bitmap(16, 16);
+            row[ColumnName.Label.ToString()] = menuItem.Text;
+            row[ColumnName.Name.ToString()] = menuName;
+            row[ColumnName.Original.ToString()] = System.DBNull.Value;
+            row[ColumnName.New.ToString()] = System.DBNull.Value;
+            dt.Rows.Add(row);
         }
 
         private static void SetTableRow(object command, DataTable dt)
@@ -158,7 +196,7 @@ namespace ClarionAddins.KeyboardShortcuts
             ICSharpCode.Core.Properties newKeyProps = Properties.Get(codonID, new ICSharpCode.Core.Properties());
             string savedKeysStr = newKeyProps.Get(ColumnName.Original.ToString(), String.Empty);
 
-            if (_StoreOriginalKeys == true) // || savedKeysStr == "")
+            if (_StoreOriginalKeys == true) 
             {
                 newKeyProps.Set(ColumnName.Original.ToString(), _KeysConverter.ConvertToString(tsi.ShortcutKeys));
                 Properties.Set(codonID, newKeyProps);
@@ -166,15 +204,13 @@ namespace ClarionAddins.KeyboardShortcuts
             }
             else if (savedKeysStr == "")
             {
-                // This happens if the current menu/toolbar item was NOT included during startup (_StoreOriginalKeys == true_
+                // This happens if the current menu/toolbar item was NOT included during start up (_StoreOriginalKeys == true_)
                 // At the moment we will NOT display or handle those items
                 return System.DBNull.Value;
             }
-            {
-                
-                string newKeysStr = newKeyProps.Get(ColumnName.Original.ToString(), _KeysConverter.ConvertToString(Keys.None));
-                return (Keys)_KeysConverter.ConvertFromString(newKeysStr);
-            }
+            
+            string newKeysStr = newKeyProps.Get(ColumnName.Original.ToString(), _KeysConverter.ConvertToString(Keys.None));
+            return (Keys)_KeysConverter.ConvertFromString(newKeysStr);
 
         }
 

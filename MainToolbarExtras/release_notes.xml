@@ -52,4 +52,11 @@
     <note type="FEATURE">Expand/Collapse all code folds. See :menuselection:`Edit --> Folding`</note>
     <note type="FEATURE">Editor Font Size - Increase/Decrease/Reset (Reset to the font size found at IDE startup). See :menuselection:`View --> Editor Font Size`.</note>
   </release>
+  <release version="0.16" date="2 March 2012">
+    <note type="FEATURE">Toolbar buttons for common edit actions on the **Embeditor/Embed Editor** toolbar (Cut/Copy/Paste/Delete|Undo/Redo)</note>
+  </release>
+  <release version="0.17" date="7 March 2012">
+    <note type="FIX">Handled exception better in RunAbstractCommand. In C8.8973 the termination timing must have changed slightly which exposed an error in this code.</note>
+    <note type="CHANGE">Toolbar icons are now 24x24 so they look better with default toolbar size</note>
+  </release>
 </release_notes>
