@@ -31,8 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClarionNetReport">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\ClarionNetReport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="CommonControl">
       <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\Controls\CommonControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CommonSources">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\CommonSources.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.Core">
@@ -88,10 +96,10 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\1317629949_document-properties.png" />
     <None Include="Resources\dvTool.ico" />
     <None Include="Resources\dvDeleteGreen.ico" />
     <None Include="Resources\dvAddGreen.ico" />
+    <None Include="Resources\1317629949_document-properties.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BitmapResources.resources">

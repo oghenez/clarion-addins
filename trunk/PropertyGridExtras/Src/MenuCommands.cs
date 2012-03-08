@@ -10,7 +10,7 @@ namespace ClarionEdge.PropertyGridExtras
     {
         public override void Run()
         {
-            PropertyGridHelper.ShowOptionsDialog();
+            PGHelper.ShowOptionsDialog();
         }
     }
 }

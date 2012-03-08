@@ -3,13 +3,18 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/ClearErrors.html"
-       description = "Adds a few new buttons to the Error Pad"
-       usage       = "New Buttons: Clear Errors, Select All Errors and Copy All Errors"
+       description = "Adds some useful buttons to the Error Pad"
+       usage       = "No configuration necessary, just install the adding and start using the new buttons!&#xD;"
+       features    = "
+* New Toolbar Item - :guilabel:`Clear Errors`.&#xD;
+* New Toolbar Item - :guilabel:`Select All`.&#xD;
+* New Toolbar Item - :guilabel:`Copy All`.&#xD;
+* New Toolbar Item - :guilabel:`Cut All`.&#xD;"
        screenshot  = "ClearErrors.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.ClearErrors" version="0.4"/>
+    <Identity name="ClarionEdge.ClearErrors" version="0.6"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -21,11 +26,6 @@
 
   <Path name = "/SharpDevelop/Pads/ErrorList/Toolbar">
     <ToolbarItem id    = "ClearErrorsSeparator" type  = "Separator"/>
-    <ToolbarItem id      = "ClearErrors"
-                 tooltip = "${res:ClarionEdge.ClearErrors.ButtonTooltip}"
-                 icon    = "Icons.16x16.BrowserRefresh"
-                 label   = "${res:ClarionEdge.ClearErrors.ButtonLabel}"
-                 class   = "ClarionEdge.ClearErrors.ClearErrors"/>
     <ToolbarItem id      = "SelectAllErrors"
                  tooltip = "${res:ClarionEdge.SelectAllErrors.ButtonTooltip}"
                  icon    = "PadIcons.Output"
@@ -36,5 +36,10 @@
                  icon    = "Icons.16x16.CopyIcon"
                  label   = "${res:ClarionEdge.CopyAllErrors.ButtonLabel}"
                  class   = "ClarionEdge.ClearErrors.CopyAllErrors"/>
+    <ToolbarItem id      = "CutAllErrors"
+                 tooltip = "${res:ClarionEdge.CutAllErrors.ButtonTooltip}"
+                 icon    = "Icons.16x16.CutIcon"
+                 label   = "${res:ClarionEdge.CutAllErrors.ButtonLabel}"
+                 class   = "ClarionEdge.ClearErrors.CutAllErrors"/>
   </Path>                 
 </AddIn>

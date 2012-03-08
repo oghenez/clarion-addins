@@ -11,7 +11,7 @@ namespace ClarionEdge.PropertyGridExtras
         {
             PropertyGridSV grid = PropertyPad.Grid;
             grid.Font = new Font(grid.Font.Name, grid.Font.Size + 1.0f, grid.Font.Style, grid.Font.Unit);
-            PropertyGridHelper.RefreshFont(grid.Font);
+            PGHelper.RefreshFont(grid.Font);
         }
     }
 
@@ -21,7 +21,7 @@ namespace ClarionEdge.PropertyGridExtras
         {
             PropertyGridSV grid = PropertyPad.Grid;
             grid.Font = new Font(grid.Font.Name, grid.Font.Size - 1.0f, grid.Font.Style, grid.Font.Unit);
-            PropertyGridHelper.RefreshFont(grid.Font);
+            PGHelper.RefreshFont(grid.Font);
         }
     }
 
@@ -29,7 +29,7 @@ namespace ClarionEdge.PropertyGridExtras
     {
         public override void Run()
         {
-            PropertyGridHelper.RestoreOriginalFont();
+            PGHelper.RestoreOriginalFont();
         }
     }
 

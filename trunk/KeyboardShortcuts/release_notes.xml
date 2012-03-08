@@ -25,4 +25,10 @@
     <note type="FIX">Options dialog now ignores menu items that were not detected when the IDE starts up. At the moment it is not possible to reliably re-assign shortcut overrides for these. Support for this will be added in a future release.</note>
     <note type="NOTE">**If you have installed and used v0.5 it might be best if you reset your keybindings by deleting %appdata%\\SoftVelocity\\Clarion\\8.0\\AddIns\\KeyBindings.xml**</note>
   </release>
+  <release version="0.7" date="11 January 2012">
+    <note type="FEATURE">Now supports changing the text of the top level menu labels. This allows you to adjust the accelerator key used!</note>
+  </release>
+  <release version="0.8" date="3 March 2012">
+    <note type="FIX">Toolbar items have been excluded. This is a temporary situation until I can work out how to handle them correctly.</note>
+  </release>
 </release_notes>

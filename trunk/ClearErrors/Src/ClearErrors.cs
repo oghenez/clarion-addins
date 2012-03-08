@@ -41,4 +41,21 @@ namespace ClarionEdge.ClearErrors
 
         }
     }
+
+    public class CutAllErrors : AbstractMenuCommand
+    {
+
+        public override void Run()
+        {
+            PadDescriptor index = WorkbenchSingleton.Workbench.GetPad(typeof(ErrorListPad));
+            if (index != null)
+            {
+                index.BringPadToFront();
+                ((ErrorListPad)index.PadContent).SelectAll();
+                ((ErrorListPad)index.PadContent).Copy();
+                TaskService.Clear();
+            }
+
+        }
+    }
 }

@@ -10,12 +10,13 @@
 * Show additional indentation.&#xD;
 * Auto adjust label column.&#xD;
 * Remember expanded state.&#xD;
+* Remember selected property.&#xD;
 * Set grid theme (original, basic, light, dark).&#xD;"
        screenshot  = "PropertyGridExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.PropertyGridExtras" version="0.10"/>
+    <Identity name="ClarionEdge.PropertyGridExtras" version="0.14"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 

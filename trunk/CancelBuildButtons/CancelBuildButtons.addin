@@ -3,14 +3,17 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
-       description = "This addin will put two buttons, cancel build and cancel generation, on the toolbar of the output pad."
-       usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog."
+       description = "Adds two buttons, Cancel Build and Cancel Generation, on the toolbar of the output pad."
+       usage       = "Aside from clicking the buttons to perform their assigned actions, you can configure the appearance of the button labels (show/hide) from the IDE options dialog.&#xD;"
+       features    = "
+* Output pad toolbar button :guilabel:`Cancel Build`.&#xD;
+* Output pad toolbar button :guilabel:`Cancel Generation`.&#xD;
+* Optionally hide button labels, see :menuselection:`Tools --> Options` then in the :menuselection:`Tools` section there is a new item for :menuselection:`Cancel Build/Generate Buttons`.&#xD;"
        screenshot  = "CancelBuildButtons.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
-      
 
   <Manifest>
-    <Identity name="ClarionEdge.CancelBuildButtons" version="0.7"/>
+    <Identity name="ClarionEdge.CancelBuildButtons" version="0.8"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
     <Dependency addin = "SoftVelocity.ClarionBinding"/>
   </Manifest>
@@ -18,45 +21,56 @@
   <Runtime>
     <Import assembly = "CancelBuildButtons.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/Generator.dll"/>
-    <Import assembly = "$SoftVelocity.ClarionBinding/clarion.gen.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
-    <Import assembly = ":ICSharpCode.SharpDevelop">
-      <ConditionEvaluator name="IsBuildRunning2" class="ICSharpCode.SharpDevelop.IsBuildRunningConditionEvaluator"/>
-    </Import>
-    <Import assembly = ":ICSharpCode.Core"/>
   </Runtime>
 
   <BitmapResources file="Resources\BitmapResources.resources"/>
 
+  <!-- ***************************
+      Note that these are MenuItems and not ToolbarItems. 
+      For some reason a ToolbarItem does not respond to the Conditions, or at least doesn't refresh!
+      However, this means that the tooltips will not be displayed.
+      ***************************
+      -->
   <Path name = "/SharpDevelop/Pads/CompilerMessageView/Toolbar">
     <ToolbarItem id    = "CancelBuildButtonsSeparator" type  = "Separator"/>
     <Condition name="Compare" string="${property:CancelBuildButtons.Options.HideButtonLabels??false}" equals="False">
-      <Condition name = "IsBuildRunning2" isbuildrunning="False" action = "Disable">
-        <ToolbarItem id    = "CancelBuild"
+      <Condition name = "IsBuildRunning" action = "Disable">
+        <MenuItem
+          id    = "CancelBuild1"
           label = "${res:SoftVelocity.Common.Commands.CancelBuild}"
           icon  = "Icons.Silk.cross"
           tooltip = "Cancel active build"
+          shortcut = "Control|Cancel"
           class = "SoftVelocity.Common.Project.Commands.CancelBuild"/>
       </Condition>
-      <Condition name="GeneratingApplication" isgenerationrunning="True" action = "Disable">
-        <MenuItem id    = "CancelGeneration"
+      <Condition name="GeneratingApplication" action = "Disable">
+        <MenuItem
+          id    = "CancelGeneration2"
           label = "${res:Clarion.Generator.Menu.CancelGeneration}"
           icon  = "Icons.Silk.stop"
           tooltip = "Cancel generation"
+          shortcut = "Control|Cancel"
           class   = "SoftVelocity.Generator.Commands.CancelGeneration"/>
       </Condition>
     </Condition>
     <Condition name="Compare" string="${property:CancelBuildButtons.Options.HideButtonLabels??false}" equals="True">
-      <ToolbarItem id    = "CancelBuild"
-        label = ""
-        icon  = "Icons.Silk.cross"
-        tooltip = "Cancel active build"
-        class = "SoftVelocity.Common.Project.Commands.CancelBuild"/>
-      <Condition name="GeneratingApplication" isgenerationrunning="True" action = "Disable">
-        <MenuItem id    = "CancelGeneration"
+      <Condition name = "IsBuildRunning" action = "Disable">
+        <MenuItem
+          id    = "CancelBuild3"
+          label = ""
+          icon  = "Icons.Silk.cross"
+          tooltip = "Cancel active build"
+          shortcut = "Control|Cancel"
+          class = "SoftVelocity.Common.Project.Commands.CancelBuild"/>
+      </Condition>
+      <Condition name="GeneratingApplication" action = "Disable">
+        <MenuItem
+          id    = "CancelGeneration4"
           label = ""
           icon  = "Icons.Silk.stop"
           tooltip = "Cancel generation"
+          shortcut = "Control|Cancel"
           class   = "SoftVelocity.Generator.Commands.CancelGeneration"/>
       </Condition>
     </Condition>

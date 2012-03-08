@@ -4,7 +4,10 @@
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
        description = "Configure your IDE with a colourful theme!"
-       usage       = "Applies themed elements to many parts of the IDE. Includes several built in themes as well as a PaletteDesigner so you can make your own themes."
+       usage       = "Applies themed elements to many parts of the IDE. Includes several built in themes as well as a PaletteDesigner so you can make your own themes.&#xD;"
+       features    = "&#xD;
+* Choose from a selection of themes to apply to the IDE!&#xD;
+* Includes a palette designer to design your own theme too.&#xD;"
        screenshot  = "SetTheme.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 

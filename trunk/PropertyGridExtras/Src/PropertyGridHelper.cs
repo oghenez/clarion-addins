@@ -8,7 +8,7 @@ using VisualHint.SmartPropertyGrid;
 
 namespace ClarionEdge.PropertyGridExtras
 {
-  public static class PropertyGridHelper
+  public static class PGHelper
   {
     private const string STR_ClarionEdgePropertyGridExtrasOriginalFont = "ClarionEdge.PropertyGridExtras.OriginalFont";
     private const string STR_ClarionEdgePropertyGridExtrasFont = "ClarionEdge.PropertyGridExtras.Font";
@@ -186,8 +186,8 @@ namespace ClarionEdge.PropertyGridExtras
     internal static void ShowOptionsDialog()
     {
         OptionsCommand.ShowTabbedOptions("Property Grid Options", AddInTree.GetTreeNode("/SharpDevelop/Dialogs/PropertyGridExtras"));
-        PropertyGridHelper.SetFonts();
-        PropertyGridHelper.ShowAdditionalIndentation();
+        PGHelper.SetFonts();
+        PGHelper.ShowAdditionalIndentation();
     }
 
     internal static void Log(string p)

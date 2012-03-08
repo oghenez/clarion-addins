@@ -4,7 +4,9 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/SolutionIcons.html"
        description = "This will add some icons that SV forgot..."
-       usage       = "Display only, this addin has no options."
+       usage       = "Display only, this addin has no options.&#xD;"
+       features    = "&#xD;
+* Gives the solution tree a more complete look.&#xD;"
        screenshot  = "SolutionIcons.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 

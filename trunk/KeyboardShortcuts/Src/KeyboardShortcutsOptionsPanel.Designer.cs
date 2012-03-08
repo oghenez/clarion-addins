@@ -31,13 +31,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonNone = new System.Windows.Forms.Button();
             this.labelUsedBy = new System.Windows.Forms.Label();
             this.labelCurrentSelection = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelEntryPrompt = new System.Windows.Forms.Label();
             this.tbNewShortcut = new System.Windows.Forms.TextBox();
             this.buttonAssign = new System.Windows.Forms.Button();
-            this.buttonNone = new System.Windows.Forms.Button();
-            this.buttonRemove = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,7 +72,7 @@
             this.panel1.Controls.Add(this.buttonNone);
             this.panel1.Controls.Add(this.labelUsedBy);
             this.panel1.Controls.Add(this.labelCurrentSelection);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.labelEntryPrompt);
             this.panel1.Controls.Add(this.tbNewShortcut);
             this.panel1.Controls.Add(this.buttonAssign);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -80,6 +80,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(417, 98);
             this.panel1.TabIndex = 6;
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Image = global::ClarionAddins.KeyboardShortcuts.Properties.Resources.dvCancelRed;
+            this.buttonRemove.Location = new System.Drawing.Point(384, 35);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(23, 23);
+            this.buttonRemove.TabIndex = 8;
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // buttonNone
+            // 
+            this.buttonNone.Location = new System.Drawing.Point(303, 35);
+            this.buttonNone.Name = "buttonNone";
+            this.buttonNone.Size = new System.Drawing.Size(75, 23);
+            this.buttonNone.TabIndex = 7;
+            this.buttonNone.Text = "None";
+            this.buttonNone.UseVisualStyleBackColor = true;
+            this.buttonNone.Click += new System.EventHandler(this.buttonNone_Click);
             // 
             // labelUsedBy
             // 
@@ -109,14 +129,14 @@
             this.labelCurrentSelection.Text = "Current Selection Label";
             this.labelCurrentSelection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // labelEntryPrompt
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "New shortcut key:";
+            this.labelEntryPrompt.AutoSize = true;
+            this.labelEntryPrompt.Location = new System.Drawing.Point(3, 40);
+            this.labelEntryPrompt.Name = "labelEntryPrompt";
+            this.labelEntryPrompt.Size = new System.Drawing.Size(93, 13);
+            this.labelEntryPrompt.TabIndex = 2;
+            this.labelEntryPrompt.Text = "New shortcut key:";
             // 
             // tbNewShortcut
             // 
@@ -139,26 +159,6 @@
             this.buttonAssign.UseVisualStyleBackColor = true;
             this.buttonAssign.Click += new System.EventHandler(this.buttonAssign_Click);
             // 
-            // buttonNone
-            // 
-            this.buttonNone.Location = new System.Drawing.Point(303, 35);
-            this.buttonNone.Name = "buttonNone";
-            this.buttonNone.Size = new System.Drawing.Size(75, 23);
-            this.buttonNone.TabIndex = 7;
-            this.buttonNone.Text = "None";
-            this.buttonNone.UseVisualStyleBackColor = true;
-            this.buttonNone.Click += new System.EventHandler(this.buttonNone_Click);
-            // 
-            // buttonRemove
-            // 
-            this.buttonRemove.Image = global::ClarionAddins.KeyboardShortcuts.Properties.Resources.dvCancelRed;
-            this.buttonRemove.Location = new System.Drawing.Point(384, 35);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(23, 23);
-            this.buttonRemove.TabIndex = 8;
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
-            // 
             // KeyboardShortcutsOptionsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,7 +180,7 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button buttonAssign;
         private System.Windows.Forms.TextBox tbNewShortcut;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelEntryPrompt;
         private System.Windows.Forms.Label labelCurrentSelection;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelUsedBy;

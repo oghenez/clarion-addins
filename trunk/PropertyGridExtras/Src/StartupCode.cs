@@ -37,10 +37,10 @@ namespace ClarionEdge.PropertyGridExtras
             PropertyPad.SelectedObjectChanged += new System.EventHandler(PropertyPad_SelectedObjectChanged);
 
             // Init all the additional properties
-            PropertyGridHelper.AutoAdjustLabelColumn();
-            PropertyGridHelper.ShowAdditionalIndentation();
-            PropertyGridHelper.SetDrawManager();
-            PropertyGridHelper.SetFonts();
+            PGHelper.AutoAdjustLabelColumn();
+            PGHelper.ShowAdditionalIndentation();
+            PGHelper.SetDrawManager();
+            PGHelper.SetFonts();
 
             _startupDone = true;
         }
@@ -51,7 +51,7 @@ namespace ClarionEdge.PropertyGridExtras
             //if (PropertyPad.Grid.Site != null)
             //    LoggingService.Debug("PropertyPad.Grid.Site=" + PropertyPad.Grid.Site.Name);
 
-            PropertyGridHelper.AutoAdjustLabelColumn();
+            PGHelper.AutoAdjustLabelColumn();
         }
 
     }

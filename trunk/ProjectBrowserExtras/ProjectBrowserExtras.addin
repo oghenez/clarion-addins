@@ -3,13 +3,17 @@
        copyright   = "Copyright (c) 2011, Brahn Partridge"
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/ProjectBrowserExtras.html"
-       description = "Adds some ehancements to the default project browser pad"
-       usage       = "New buttons available are: &#xD;&#xD;  * Expand/Collapse Tree&#xD;&#xD;  * Close Solution"
+       description = "Adds some ehancements to the default project browser ( *Solution Explorer* ) pad."
+       usage       = "Once the addin is installed you will see some new items on the toolbar.&#xD;"
+       features    = "&#xD;
+* Expand/Collapse Tree&#xD;&#xD;
+* Close Solution&#xD;
+* Starts with locator. Enter a 'starts with' term and hit enter to locate it withing the solution tree."
        screenshot  = "ProjectBrowserExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.ProjectBrowserExtras" version="0.4"/>
+    <Identity name="ClarionEdge.ProjectBrowserExtras" version="0.6"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
@@ -48,6 +52,14 @@
                 icon ="dvCancelRed"
                 class = "ICSharpCode.SharpDevelop.Project.Commands.CloseSolution"/>
     </ComplexCondition>
+    <ToolbarItem id = "FindNodeStartsWithLabel"
+                 type ="Label"
+                 label ="Find:"/>
+    <ToolbarItem id = "FindNodeStartsWith"
+              tooltip = "Find a node that starts with..."
+              label = ""
+              type ="TextBox"
+              class = "ClarionEdge.ProjectBrowserExtras.FindNodeStartsWith"/>
   </Path>
 
 </AddIn>

@@ -11,7 +11,8 @@ namespace ClarionAddins.KeyboardShortcuts
 {
     public partial class KeyboardShortcutsOptionsPanel : AbstractOptionPanel
     {
-        KeysConverter _KeysConverter = new KeysConverter();
+        private KeysConverter _KeysConverter = new KeysConverter();
+        private bool _editingMenu;
 
         public KeyboardShortcutsOptionsPanel()
         {
@@ -44,6 +45,7 @@ namespace ClarionAddins.KeyboardShortcuts
             }
             dataGridView.Columns[Helper.ColumnName.Image.ToString()].HeaderText = "";
             dataGridView.Columns[Helper.ColumnName.Image.ToString()].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView.Columns[Helper.ColumnName.Label.ToString()].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         public override void LoadPanelContents()
@@ -56,17 +58,27 @@ namespace ClarionAddins.KeyboardShortcuts
             // save any changes to the "new" column into the properties file
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                string codonID = (string)row.Cells[Helper.ColumnName.Name.ToString()].Value;
-                ICSharpCode.Core.Properties newKeyProps = Helper.Properties.Get(codonID, new ICSharpCode.Core.Properties());
-
-                if (row.Cells[Helper.ColumnName.New.ToString()].Value == System.DBNull.Value)
-                    newKeyProps.Set(Helper.ColumnName.New.ToString(), String.Empty);
+                if (row.Cells[Helper.ColumnName.Name.ToString()].Value.ToString().Contains("*TL*"))
+                {
+                    string menuName = (string)row.Cells[Helper.ColumnName.Name.ToString()].Value;
+                    ICSharpCode.Core.Properties newMenuProps = Helper.Properties.Get(menuName, new ICSharpCode.Core.Properties());
+                    newMenuProps.Set("newLabel", (string)row.Cells[Helper.ColumnName.Label.ToString()].Value);
+                    Helper.Properties.Set(menuName, newMenuProps);
+                }
                 else
                 {
-                    Keys newKey = (Keys)row.Cells[Helper.ColumnName.New.ToString()].Value;
-                    newKeyProps.Set(Helper.ColumnName.New.ToString(), _KeysConverter.ConvertToString(newKey));
+                    string codonID = (string)row.Cells[Helper.ColumnName.Name.ToString()].Value;
+                    ICSharpCode.Core.Properties newKeyProps = Helper.Properties.Get(codonID, new ICSharpCode.Core.Properties());
+
+                    if (row.Cells[Helper.ColumnName.New.ToString()].Value == System.DBNull.Value)
+                        newKeyProps.Set(Helper.ColumnName.New.ToString(), String.Empty);
+                    else
+                    {
+                        Keys newKey = (Keys)row.Cells[Helper.ColumnName.New.ToString()].Value;
+                        newKeyProps.Set(Helper.ColumnName.New.ToString(), _KeysConverter.ConvertToString(newKey));
+                    }
+                    Helper.Properties.Set(codonID, newKeyProps);
                 }
-                Helper.Properties.Set(codonID, newKeyProps);
             }
             Helper.Properties.Save(Helper.PropertiesFileName);
             Helper.ApplyShortcutKeys();
@@ -78,7 +90,26 @@ namespace ClarionAddins.KeyboardShortcuts
             DataGridView dgv = (DataGridView)sender;
             if (dgv.SelectedRows.Count > 0)
             {
-                labelCurrentSelection.Text = "Re-Assign Shortcut: " + dgv.SelectedRows[0].Cells[Helper.ColumnName.Label.ToString()].Value.ToString();
+                if (dgv.SelectedRows[0].Cells[Helper.ColumnName.Name.ToString()].Value.ToString().Contains("*TL*"))
+                {
+                    _editingMenu = true;
+                    labelCurrentSelection.Text = "Edit Menu Label";
+                    labelEntryPrompt.Text = "Menu Label:";
+                    buttonNone.Enabled = false;
+                    buttonRemove.Enabled = false;
+                    labelUsedBy.Visible = false;
+                    tbNewShortcut.Text = dgv.SelectedRows[0].Cells[Helper.ColumnName.Label.ToString()].Value.ToString();
+                }
+                else
+                {
+                    _editingMenu = false;
+                    labelCurrentSelection.Text = "Re-Assign Shortcut: " + dgv.SelectedRows[0].Cells[Helper.ColumnName.Label.ToString()].Value.ToString();
+                    labelEntryPrompt.Text = "New shortcut key:";
+                    buttonNone.Enabled = true;
+                    buttonRemove.Enabled = true;
+                    labelUsedBy.Visible = true;
+                    tbNewShortcut.Text = "";
+                }
             }
 
         }
@@ -87,14 +118,22 @@ namespace ClarionAddins.KeyboardShortcuts
         {
             if (dataGridView.SelectedRows.Count > 0)
             {
-                if (tbNewShortcut.Text == "")
+                if (_editingMenu == false)
                 {
-                    dataGridView.SelectedRows[0].Cells[Helper.ColumnName.New.ToString()].Value = System.DBNull.Value;
+                    if (tbNewShortcut.Text == "")
+                    {
+                        dataGridView.SelectedRows[0].Cells[Helper.ColumnName.New.ToString()].Value = System.DBNull.Value;
+                    }
+                    else
+                    {
+                        dataGridView.SelectedRows[0].Cells[Helper.ColumnName.New.ToString()].Value =
+                            _KeysConverter.ConvertFromString(tbNewShortcut.Text);
+                    }
                 }
                 else
                 {
-                    dataGridView.SelectedRows[0].Cells[Helper.ColumnName.New.ToString()].Value = 
-                        _KeysConverter.ConvertFromString(tbNewShortcut.Text);
+                    if (tbNewShortcut.Text != "")
+                        dataGridView.SelectedRows[0].Cells[Helper.ColumnName.Label.ToString()].Value = tbNewShortcut.Text;
                 }
                 dataGridView.Refresh();
             }
@@ -102,22 +141,25 @@ namespace ClarionAddins.KeyboardShortcuts
 
         private void tbNewShortcut_KeyDown(object sender, KeyEventArgs e)
         {
-           e.Handled = true;
+            if (_editingMenu == false)
+                e.Handled = true;
         }
 
         private void tbNewShortcut_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            tbNewShortcut.Text = _KeysConverter.ConvertToString(e.KeyData);
+            if (_editingMenu == false)
+                tbNewShortcut.Text = _KeysConverter.ConvertToString(e.KeyData);
         }
 
         private void tbNewShortcut_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            if (_editingMenu == false)
+                e.Handled = true;
         }
 
         private void tbNewShortcut_TextChanged(object sender, EventArgs e)
         {
-            if (dataGridView.Rows.Count > 0)
+            if (_editingMenu == false && dataGridView.Rows.Count > 0)
             {
                 string label = MatchColumnCell(Helper.ColumnName.New, tbNewShortcut.Text);
                 if (label == String.Empty)
