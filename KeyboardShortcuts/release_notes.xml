@@ -31,4 +31,7 @@
   <release version="0.8" date="3 March 2012">
     <note type="FIX">Toolbar items have been excluded. This is a temporary situation until I can work out how to handle them correctly.</note>
   </release>
+  <release version="0.9" date="3 March 2012">
+    <note type="FIX">The assignment of new shortcuts now handles exceptions quietly so as to not stop the IDE from loading in case of a problem!</note>
+  </release>
 </release_notes>
