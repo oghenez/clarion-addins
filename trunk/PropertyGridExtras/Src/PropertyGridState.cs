@@ -95,6 +95,11 @@ namespace ClarionEdge.PropertyGridExtras
                 {
                     _properties.Set<int>("SelectedPropertyParentID", propEnum.Parent.Property.Id);
                     _properties.Set<string>("SelectedPropertyName", propEnum.Property.Name);
+                    if (propEnum.Parent.Property.Id == 0 && propEnum.Parent.HasParent == true)
+                    {
+                        _properties.Set<string>("SelectedPropertyParentName", propEnum.Parent.Property.Name);
+                        _properties.Set<int>("SelectedPropertyGrandParentID", propEnum.Parent.Parent.Property.Id);
+                    }
                 }
                 _properties.Save(_propertiesFileName);
             }
@@ -116,8 +121,7 @@ namespace ClarionEdge.PropertyGridExtras
         {
             PGHelper.Log("");
             SetFileName(grid);
-            //int selectedPropertyID = GetSelected();
-
+            grid.BeginUpdate();
             PropertyDeepEnumerator selectedPropEnum = null;
             PropertyDeepEnumerator propEnum = grid.FirstProperty.GetDeepEnumerator();
             while (propEnum != propEnum.RightBound)
@@ -126,7 +130,6 @@ namespace ClarionEdge.PropertyGridExtras
                 grid.ExpandProperty(propEnum, GetPropertyState(propEnum));
                 stateHandler.AllowExpand = false;
                 if (IsLastSelectedProperty(propEnum) == true)
-                //if (propEnum.Property.Id > 0 && propEnum.Property.Id == selectedPropertyID)
                 {
                     PGHelper.Log("selectedPropEnum has been set");
                     selectedPropEnum = (PropertyDeepEnumerator)propEnum.Clone();
@@ -142,23 +145,42 @@ namespace ClarionEdge.PropertyGridExtras
 
                 grid.SelectProperty(selectedPropEnum);
                 grid.EnsureVisible(selectedPropEnum);
-                //_allowSelection = false;
+
             }
             else
             {
                 PGHelper.Log("selectedPropEnum is null!");
             }
+            grid.EndUpdate();
         }
 
         private bool IsLastSelectedProperty(PropertyDeepEnumerator propEnum)
         {
+            //Yes, it would probably be better to do this by some kind of recursion but right now I could not be bothered... this should work well enough.
+
+            // normal properties
             if (propEnum.Property.Id != 0 && propEnum.Property.Id == GetSelected())
             {
                 return true;
             }
+
+            // First level child properties
             if (propEnum.Property.Id == GetSelected() &&
                 propEnum.HasParent == true &&
+                propEnum.Parent.Property.Id != 0 && // <-- this one skips grandchildren for now...
                 propEnum.Parent.Property.Id == _properties.Get<int>("SelectedPropertyParentID", 0) &&
+                propEnum.Property.Name == _properties.Get<string>("SelectedPropertyName", ""))
+            {
+                return true;
+            }
+
+            //Grandchild properties
+            if (propEnum.Property.Id == GetSelected() &&
+                propEnum.HasParent == true &&
+                propEnum.Parent.Property.Id == 0 &&
+                propEnum.Parent.HasParent == true &&
+                propEnum.Parent.Property.Name == _properties.Get<string>("SelectedPropertyParentName", "") &&
+                propEnum.Parent.Parent.Property.Id == _properties.Get<int>("SelectedPropertyGrandParentID", 0) &&
                 propEnum.Property.Name == _properties.Get<string>("SelectedPropertyName", ""))
             {
                 return true;

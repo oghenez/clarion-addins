@@ -32,6 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.FontGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxRememberSelectedProperty = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableLogging = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoAdjustLabelColumn = new System.Windows.Forms.CheckBox();
             this.checkBoxShowAdditionalIndentation = new System.Windows.Forms.CheckBox();
@@ -39,10 +40,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dropDownTheme = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBoxRememberSelectedProperty = new System.Windows.Forms.CheckBox();
+            this.spinDelay = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +61,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ClarionEdge.PropertyGridExtras.Properties.Resources._1317629949_document_properties;
+            this.pictureBox1.Image = global::ClarionEdge.PropertyGridExtras.Properties.Resources.properties;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 48);
@@ -80,6 +83,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.spinDelay);
             this.groupBox1.Controls.Add(this.checkBoxRememberSelectedProperty);
             this.groupBox1.Controls.Add(this.checkBoxEnableLogging);
             this.groupBox1.Controls.Add(this.checkBoxAutoAdjustLabelColumn);
@@ -94,14 +99,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Additional Settings";
             // 
+            // checkBoxRememberSelectedProperty
+            // 
+            this.checkBoxRememberSelectedProperty.AutoSize = true;
+            this.checkBoxRememberSelectedProperty.Location = new System.Drawing.Point(60, 114);
+            this.checkBoxRememberSelectedProperty.Name = "checkBoxRememberSelectedProperty";
+            this.checkBoxRememberSelectedProperty.Size = new System.Drawing.Size(308, 17);
+            this.checkBoxRememberSelectedProperty.TabIndex = 6;
+            this.checkBoxRememberSelectedProperty.Text = "ClarionEdge.PropertyGridExtras.RememberSelectedProperty";
+            this.checkBoxRememberSelectedProperty.UseVisualStyleBackColor = true;
+            // 
             // checkBoxEnableLogging
             // 
             this.checkBoxEnableLogging.AutoSize = true;
-            this.checkBoxEnableLogging.Location = new System.Drawing.Point(58, 143);
+            this.checkBoxEnableLogging.Location = new System.Drawing.Point(60, 164);
             this.checkBoxEnableLogging.Name = "checkBoxEnableLogging";
-            this.checkBoxEnableLogging.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxEnableLogging.Size = new System.Drawing.Size(159, 17);
             this.checkBoxEnableLogging.TabIndex = 5;
-            this.checkBoxEnableLogging.Text = "Enable Logging";
+            this.checkBoxEnableLogging.Text = "Enable debug event logging";
             this.checkBoxEnableLogging.UseVisualStyleBackColor = true;
             // 
             // checkBoxAutoAdjustLabelColumn
@@ -137,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 118);
+            this.label2.Location = new System.Drawing.Point(6, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 3;
@@ -147,7 +162,7 @@
             // 
             this.dropDownTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropDownTheme.FormattingEnabled = true;
-            this.dropDownTheme.Location = new System.Drawing.Point(58, 116);
+            this.dropDownTheme.Location = new System.Drawing.Point(60, 137);
             this.dropDownTheme.Name = "dropDownTheme";
             this.dropDownTheme.Size = new System.Drawing.Size(163, 21);
             this.dropDownTheme.TabIndex = 2;
@@ -164,15 +179,26 @@
             this.panel1.Size = new System.Drawing.Size(415, 406);
             this.panel1.TabIndex = 0;
             // 
-            // checkBoxRememberSelectedProperty
+            // spinDelay
             // 
-            this.checkBoxRememberSelectedProperty.AutoSize = true;
-            this.checkBoxRememberSelectedProperty.Location = new System.Drawing.Point(60, 88);
-            this.checkBoxRememberSelectedProperty.Name = "checkBoxRememberSelectedProperty";
-            this.checkBoxRememberSelectedProperty.Size = new System.Drawing.Size(308, 17);
-            this.checkBoxRememberSelectedProperty.TabIndex = 6;
-            this.checkBoxRememberSelectedProperty.Text = "ClarionEdge.PropertyGridExtras.RememberSelectedProperty";
-            this.checkBoxRememberSelectedProperty.UseVisualStyleBackColor = true;
+            this.spinDelay.Location = new System.Drawing.Point(60, 88);
+            this.spinDelay.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.spinDelay.Name = "spinDelay";
+            this.spinDelay.Size = new System.Drawing.Size(82, 20);
+            this.spinDelay.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Delay";
             // 
             // OptionsPanel
             // 
@@ -187,6 +213,7 @@
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinDelay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,5 +232,7 @@
         private System.Windows.Forms.CheckBox checkBoxRememberExpandedState;
         private System.Windows.Forms.CheckBox checkBoxEnableLogging;
         private System.Windows.Forms.CheckBox checkBoxRememberSelectedProperty;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown spinDelay;
     }
 }

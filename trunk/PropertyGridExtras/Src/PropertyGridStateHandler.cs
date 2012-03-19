@@ -5,6 +5,10 @@ using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Gui;
 using VisualHint.SmartPropertyGrid;
+using CWBinding.ClarionEditor;
+using System.Diagnostics;
+using SoftVelocity.Generator.Editor;
+using System.Threading;
 
 
 namespace ClarionEdge.PropertyGridExtras
@@ -15,6 +19,7 @@ namespace ClarionEdge.PropertyGridExtras
         private PropertyGridState _selectedGridState;
         private PropertyGridToolbar _toolbar;
         private bool _allowExpand;
+        private Stopwatch _designerSW = new Stopwatch();
 
         public bool AllowExpand
         {
@@ -101,6 +106,7 @@ namespace ClarionEdge.PropertyGridExtras
             {
                 // For some reason the built in "restore" is really nasty. 
                 // Each time the complete grid is restored automatically we are going to _force_ it to be restored our way.
+                PGHelper.Log("");
                 grid_SelectedObjectChanged(null, null);
             }
         }
@@ -127,6 +133,24 @@ namespace ClarionEdge.PropertyGridExtras
         {
             if (Enabled() == false)
                 return;
+
+            PGHelper.Log("ClarionEdge.PropertyGridExtras.spinDelay=" + PropertyService.Get<int>("ClarionEdge.PropertyGridExtras.spinDelay", 1000).ToString());
+            PGHelper.Log("_designerSW.IsRunning=" + _designerSW.IsRunning);
+            PGHelper.Log("_designerSW.ElapsedMilliseconds=" + _designerSW.ElapsedMilliseconds);
+
+            if (_designerSW.IsRunning == true && 
+                _designerSW.ElapsedMilliseconds < PropertyService.Get<int>("ClarionEdge.PropertyGridExtras.spinDelay", 1000)
+                && _allowExpand == false)
+            {
+                PGHelper.Log("skip because of _designerSW");
+                Thread.Sleep(10);
+                _designerSW.Reset();
+                _designerSW.Start();
+                e.Handled = true;
+                return;
+            }
+
+            _designerSW.Reset();
 
             PGHelper.Log("");
             if (PropertyPad.Grid.InternalGrid.Focused == false && _allowExpand == false) 
@@ -158,6 +182,25 @@ namespace ClarionEdge.PropertyGridExtras
 
             // What is being shown in the PropertyPad has changed. Lets reload the state from disc
             _selectedGridState.ReloadState(PropertyPad.Grid, this);
+            //PropertyPad.Grid.s
+
+            PGHelper.Log("WorkbenchSingleton.Workbench.ActiveContent=" + WorkbenchSingleton.Workbench.ActiveContent.ToString());
+            PGHelper.Log("PropertyPad.Grid.SelectedObject=" + PropertyPad.Grid.SelectedObject.ToString());
+            if (WorkbenchSingleton.Workbench.ActiveContent == null ||
+                WorkbenchSingleton.Workbench.ActiveContent is ClarionDesignerView)
+            {
+                _designerSW.Reset();
+                _designerSW.Start();
+            }
+
+            if (sender == null ||
+                PropertyPad.Grid.SelectedObject is SoftVelocity.ClarionNet.WindowDesigner.Window ||
+                PropertyPad.Grid.SelectedObject is SoftVelocity.ClarionNet.Designer.SectionControls.BaseDesignerControl)
+            {
+                _designerSW.Reset();
+                _designerSW.Start();
+            }
+
 
         }
 

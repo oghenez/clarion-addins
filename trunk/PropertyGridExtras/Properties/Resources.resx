@@ -127,8 +127,11 @@
   <data name="dvTool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dvTool.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="1317629949_document-properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1317629949_document-properties.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dvInfoBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dvInfoBlue.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
