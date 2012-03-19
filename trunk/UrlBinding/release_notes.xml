@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+  <release version="0.1" date="12 March 2012">
+    <note type="INFO">Beta Release</note>
+  </release>
+  <release version="0.2" date="14 March 2012">
+    <note type="INFO">First public release</note>
+  </release>
+</release_notes>
