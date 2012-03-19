@@ -25,7 +25,7 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.8"/>
+    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.9"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 

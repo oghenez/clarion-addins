@@ -218,23 +218,29 @@ namespace ClarionAddins.KeyboardShortcuts
         {
             ICSharpCode.Core.Properties newKeyProps = Properties.Get(codonID, new ICSharpCode.Core.Properties());
             string newKeysStr = newKeyProps.Get(ColumnName.New.ToString(), String.Empty);
-
-            if (newKeysStr != String.Empty)
+            try
             {
-                Keys newKeys = (Keys)_KeysConverter.ConvertFromString(newKeysStr);
-                row[ColumnName.New.ToString()] = newKeys;
-                if (_ApplyKeys == true)
+                if (newKeysStr != String.Empty)
                 {
-                    tsi.ShortcutKeys = newKeys;
+                    Keys newKeys = (Keys)_KeysConverter.ConvertFromString(newKeysStr);
+                    row[ColumnName.New.ToString()] = newKeys;
+                    if (_ApplyKeys == true)
+                    {
+                        tsi.ShortcutKeys = newKeys;
+                    }
+                }
+                else
+                {
+                    row[ColumnName.New.ToString()] = System.DBNull.Value;
+                    if (_ApplyKeys == true)
+                    {
+                        tsi.ShortcutKeys = (Keys)row[ColumnName.Original.ToString()];
+                    }
                 }
             }
-            else
+            catch (Exception e)
             {
-                row[ColumnName.New.ToString()] = System.DBNull.Value;
-                if (_ApplyKeys == true)
-                {
-                    tsi.ShortcutKeys = (Keys)row[ColumnName.Original.ToString()];
-                }
+                LoggingService.Debug("Exception trying to apply shortcut key! e=" + e.ToString());
             }
         }
 
