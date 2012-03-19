@@ -1,0 +1,50 @@
+﻿<AddIn name = "UrlBinding"
+       author      = "ClarionAddins"
+       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/UrlBinding.html"
+       description = "Adds support for opening \*.url files into an embedded browser window from the Solution Explorer"
+       usage       = ":kbd:`Right-click` on a project and select :menuselection:`Add Existing`.&#xD;&#xD;
+From there, select a windows shortcut file (extension \*.url) to be added to your project.&#xD;
+Double clicking on this file from the solution explorer will open the URL contained in the shortcut into an embedded browser!&#xD;"
+       features    = "&#xD;
+* Open windows shortcut files (\*.url) from the Solution Explorer into an IDE browser.&#xD;
+* Browser windows that are open when the solution is closed will re-open when you next open the solution.&#xD;"
+       screenshot  = "UrlBinding.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
+
+  <Manifest>
+    <Identity name="ClarionAddins.UrlBinding" version="0.2"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+  
+  <Runtime>
+    <Import assembly = "UrlBinding.dll"/>
+    <Import assembly=":ICSharpCode.SharpDevelop"/>
+  </Runtime>
+
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <Path name="/SharpDevelop/Workbench/FileFilter">
+    <FileFilter id   = "UrlFilter"
+                name = "Urls"
+                extensions   = "*.url"
+                insertbefore = "Boo"/>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/DisplayBindings">
+    <DisplayBinding id    = "UrlViewer"
+                    class = "ClarionAddins.UrlBinding.UrlViewerDisplayBinding"
+                    insertbefore    = "Text"
+                    fileNamePattern = "\.(url)$"
+                    languagePattern = "^Urls$"/>
+  </Path>
+
+  <!-- Extra project browser icons -->
+  <Path name = "/Workspace/Icons">
+    <Icon id = "ClarionURLIcon"
+          extensions = ".url"
+          resource   = "Icons.Silk.url" />
+  </Path>
+  
+  </AddIn>
