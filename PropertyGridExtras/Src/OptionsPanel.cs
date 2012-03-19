@@ -11,6 +11,19 @@ namespace ClarionEdge.PropertyGridExtras
         public OptionsPanel()
         {
             InitializeComponent();
+            ToolTip tip = new ToolTip();
+            tip.ToolTipTitle = "Set Expand All Delay";
+            tip.UseAnimation = true;
+            tip.UseFading = true;
+            tip.IsBalloon = true;
+            tip.Active = true;
+            tip.ToolTipIcon = ToolTipIcon.Info;
+            tip.SetToolTip(spinDelay, 
+@"This delay value (in milliseconds) is used to override 
+the 'Expand All' that occurs when opening the window/report designer.
+
+1000 (1 second) seems to work well but there may be a more 
+suitable value for different systems.");
         }
 
         public override void LoadPanelContents()
@@ -33,6 +46,7 @@ namespace ClarionEdge.PropertyGridExtras
             checkBoxRememberSelectedProperty.Checked = Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.RememberSelectedProperty", "true"));
 
             checkBoxEnableLogging.Checked = Convert.ToBoolean(PropertyService.Get("ClarionEdge.PropertyGridExtras.EnableLogging", "false"));
+            spinDelay.Value = PropertyService.Get<int>("ClarionEdge.PropertyGridExtras.spinDelay", 1000);
 
             dropDownTheme.Items.Add(ResourceService.GetString("ClarionEdge.PropertyGridExtras.UseOriginalDrawManager"));
             dropDownTheme.Items.Add(ResourceService.GetString("ClarionEdge.PropertyGridExtras.UseDefaultDrawManager"));
@@ -96,6 +110,7 @@ namespace ClarionEdge.PropertyGridExtras
             PropertyService.Set("ClarionEdge.PropertyGridExtras.RememberExpandedState", checkBoxRememberExpandedState.Checked);
             PropertyService.Set("ClarionEdge.PropertyGridExtras.RememberSelectedProperty", checkBoxRememberSelectedProperty.Checked);
             PropertyService.Set("ClarionEdge.PropertyGridExtras.EnableLogging", checkBoxEnableLogging.Checked);
+            PropertyService.Set<int>("ClarionEdge.PropertyGridExtras.spinDelay", (int)spinDelay.Value);
 
             SetSelectedTheme(dropDownTheme.SelectedIndex);
             PGHelper.SetDrawManager();

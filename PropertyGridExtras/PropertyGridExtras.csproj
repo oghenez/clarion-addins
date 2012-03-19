@@ -35,12 +35,32 @@
       <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\ClarionNetReport.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ClarionNetWindow">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\ClarionNetWindow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="CommonControl">
       <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\Controls\CommonControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="CommonSources">
       <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\CommonSources.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CWBinding">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\ClarionWin\CWBinding.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DataDictionary">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\DataDictionary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FormsDesigner">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\FormsDesigner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Generator">
+      <HintPath>..\..\..\..\Clarion7\bin\Addins\BackendBindings\ClarionBinding\Common\Generator.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.Core">
@@ -96,6 +116,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\dvInfoBlue.ico" />
     <None Include="Resources\dvTool.ico" />
     <None Include="Resources\dvDeleteGreen.ico" />
     <None Include="Resources\dvAddGreen.ico" />
