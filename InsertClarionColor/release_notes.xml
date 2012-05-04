@@ -25,4 +25,10 @@
     <note type="FIX">Detection of active text editor now works for clarion window definition editor and is generally improved for other areas.</note>
     <note type="FIX">Color lists are now docked inside their container correctly</note>
   </release>
+  <release version="0.7" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.8" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
 </release_notes>

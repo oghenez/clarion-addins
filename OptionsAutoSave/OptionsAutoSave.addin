@@ -13,7 +13,7 @@
 	</Runtime>
 
   <Manifest>
-    <Identity name="ClarionEdge.OptionsAutoSave" version="0.2"/>
+    <Identity name="ClarionEdge.OptionsAutoSave" version="0.4"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 

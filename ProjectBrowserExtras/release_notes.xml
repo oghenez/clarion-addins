@@ -22,5 +22,11 @@
   <release version="0.6" date="7 March 2012">
     <note type="CHANGE">Locator now falls back to a contains search if the starts-with fails.</note>
   </release>
+  <release version="0.7" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.8" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
 </release_notes>
 

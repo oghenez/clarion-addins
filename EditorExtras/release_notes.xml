@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<release_notes>
+	<release version="0.1" date="09 Nov 2010" component="EditorMacros">
+		<note type="INFO">Public Release</note>
+		<note type="BLOG">`Editor Macros addin &lt;http://www.clarionedge.com/clarion/addins/editor-macros-addin.html&gt;`_</note>
+	</release>
+	<release version="0.2" date="04 June 2011" component="EditorMacros">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
+    <note type="INFO">This project still has some dependencies on the Krypton Toolkit which I will sort out soon</note>
+  </release>
+  <release version="0.3" date="27 June 2011" component="EditorMacros">
+    <note type="CHANGE">Removed the Krypton dependency</note>
+    <note type="CHANGE">Added icons to buttons and menu item</note>
+  </release>
+  <release version="0.4" date="19 September 2011" component="EditorMacros">
+    <note type="CHANGE">Fixed the problem with Control, Alt and Shift keys!</note>
+    <note type="CHANGE">Added Control+= as the Menu/Pad shortcut key</note>
+  </release>
+  <release version="0.5" date="20 September 2011" component="EditorMacros">
+    <note type="CHANGE">The Stop button has been removed and functionality merged with the start button.</note>
+    <note type="FEATURE">You can now right-click on the key events in the list and remove individual items.</note>
+  </release>
+  <release version="0.6" date="15 November 2011" component="EditorMacros">
+    <note type="FIX">Stop repeated KeyDown events being recorded for Control, Alt and Shift keys which breaks playback of macro. `Bug #8 &lt;http://support.fushnisoft.net/thebuggenie/clarionaddins/issues/8&gt;`_</note>
+  </release>
+  <release version="0.7" date="25 February 2012" component="EditorMacros">
+    <note type="FEATURE">Added save/restore of last recorded macro</note>
+    <note type="FEATURE">Added :menuselection:`Edit --> Playback Current Macro` menu item with :kbd:`Alt-=` as the shortcut</note>
+    <note type="FEATURE">Debug window now shows up/down arrow characters for a cleaner display</note>
+    <note type="FIX">Improved playback stability and fixed some problems with multiple playback when using the keyboard</note>
+    <note type="FIX">Code completion is now turned off during plaback. This gives a significant improvment in playback speed and reliability!</note>
+  </release>
+  <release version="0.8" date="28 February 2012" component="EditorMacros">
+    <note type="FEATURE">Option to automatically disable Code Completion while recording a new macro.</note>
+  </release>
+  <release version="0.9" date="18 April 2012" component="EditorMacros">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.10" date="25 April 2012" component="EditorMacros">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.1" date="16 Oct 2010" component="RemoveLine">
+    <note type="INFO">Initial Release</note>
+    <note type="BLOG">`Bringing back Remove Line to C7 &lt;http://www.clarionedge.com/clarion/addins/bringing-back-remove-line-to-c7.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="20 May 2011" component="RemoveLine">
+    <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
+  </release>
+  <release version="0.3" date="04 June 2011" component="RemoveLine">
+    <note type="CHANGE">No longer messes up the editor if you try and delete the last line of an embed when in source view</note>
+    <note type="FEATURE">Now supports undo</note>
+    <note type="FEATURE">Now supports all text editor controls (clw, inc, tpw, tpl, etc) not just the clarion Embeditor/Embed editor</note>
+    <note type="CHANGE">Menu item moved into the Edit menu. Seems to make more sense here</note>
+    <note type="CHANGE">Menu item is only active when a text editor is open</note>
+  </release>
+  <release version="0.4" date="11 June 2011" component="RemoveLine">
+    <note type="FEATURE">Added a new Autostart command to do an AssemblyResolve when the correct assembly version for CommonSources.dll is not found. This means the same addin will for for C7 and C8!</note>
+  </release>
+  <release version="0.5" date="30 June 2011" component="RemoveLine">
+    <note type="FEATURE">ResolveEventHandler was causing an exception in C8 when loading the window designer. The ResolveEventHandler now also resolves CommonControl and ClarionNetWindow</note>
+  </release>
+  <release version="0.6" date="15 August 2011" component="RemoveLine">
+    <note type="FEATURE">Another assembly resolver.</note>
+  </release>
+  <release version="0.7" date="24 August 2011" component="RemoveLine">
+    <note type="FIX">Assembly resolver now uses Directory.GetPath to search the BackendBindings folder for the correct assembly instead of using hard coded values!</note>
+  </release>
+  <release version="0.8" date="18 September 2011" component="RemoveLine">
+    <note type="FIX">Another assembly resolving fix. Now the resolver performs a search from the BaseDirectory instead of just the ClarionBinding directory.</note>
+  </release>
+  <release version="0.9" date="4 October 2011" component="RemoveLine">
+    <note type="CHANGE">Assembly resolve code moved to a separate assembly</note>
+  </release>
+  <release version="0.10" date="18 April 2012" component="RemoveLine">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.11" date="25 April 2012" component="RemoveLine">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="1.0" date="29 April 2012">
+    <note type="INFO">First combined release</note>
+    <note type="CHANGE">Renamed from EditorMacros to EditorExtras</note>
+    <note type="CHANGE">Added RemoveLine feature.</note>
+    <note type="CHANGE">Added CodeSnippets feature.</note>
+  </release>
+  <release version="1.1" date="4 May 2012">
+    <note type="FEATURE">Added support for PROMPT_VALUE code snippet tag. Use this after a PROMPT tag to insert the value entered in the prompt.</note>
+  </release>
+  
+</release_notes>

@@ -108,6 +108,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ClarionAddins\Common\Common.csproj">
+      <Project>{836559D7-CBB6-40F6-85C7-09DE994EDAE6}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AssemblyResolve\AssemblyResolve\AssemblyResolve.csproj">
       <Project>{5BD25664-ABFE-4560-88F0-F5C3FC4D4C5D}</Project>
       <Name>AssemblyResolve</Name>

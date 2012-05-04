@@ -34,4 +34,12 @@
   <release version="0.9" date="3 March 2012">
     <note type="FIX">The assignment of new shortcuts now handles exceptions quietly so as to not stop the IDE from loading in case of a problem!</note>
   </release>
+  <release version="0.10" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+    <note type="CHANGE">Options panel is now in ClarionAddins options section!</note>
+  </release>
+  <release version="0.11" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+    <note type="CHANGE">Will now build the option dialog node if the global ClarionAddins addin is not found.</note>
+  </release>
 </release_notes>

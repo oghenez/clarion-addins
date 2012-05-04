@@ -22,14 +22,28 @@
 
   <Runtime>
     <Import assembly = "KeyboardShortcuts.dll"/>
+    <Import assembly = "Common.dll">
+      <ConditionEvaluator name = "KeyboardShortcuts.AddinExists" class = "ClarionAddins.Common.AddinExistsCondition"/>
+    </Import>
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.9"/>
+    <Identity name="ClarionAddins.KeyboardShortcuts" version="0.11"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
-  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/UIOptions">
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog">
+    <ComplexCondition>
+      <Not>
+        <Condition name = "KeyboardShortcuts.AddinExists" addin="AboutClarionAddins"/>
+      </Not>
+      <DialogPanel id    = "ClarionAddinsDialog"
+                   label = "Clarion Addins"/>
+    </ComplexCondition>
+  </Path>
+
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionAddinsDialog">
     <DialogPanel id = "KeyboardShortcutsOptionsPanel"
          label = "Keyboard"
          class = "ClarionAddins.KeyboardShortcuts.KeyboardShortcutsOptionsPanel"/>

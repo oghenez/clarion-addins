@@ -66,4 +66,11 @@
     <note type="FIX">`Bug#43 &lt;http://support.fushnisoft.com/thebuggenie/clarionaddins/issues/43&gt;`_ Selection is now restored correctly for all properties.</note>
     <note type="FIX">`Bug#43 &lt;http://support.fushnisoft.com/thebuggenie/clarionaddins/issues/43&gt;`_ As mentioned in the comments, there is now a workaround implemented for restoring the grid state when opening the window/report designer. The workaround is using a **delay** value for the restoration when opening the designer. The default value is 1000 milliseconds (1 Second) which seems to be OK in my testing but it is configurable from the grid options if you have any issues or just want to play with it.</note>
   </release>
+  <release version="0.17" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.18" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
+
 </release_notes>

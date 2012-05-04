@@ -1,0 +1,113 @@
+<AddIn name        = "EditorExtras"
+       author      = "ClarionAddins"
+       copyright   = "Copyright (c) 2012, Brahn Partridge"
+       license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
+       url         = "http://www.clarionaddins.com/addins/EditorExtras.html"
+       description = "EditorMacros, RemoveLine, Additional snippet support"
+       usage       = "
+**EditorMacros**&#xD;
+&#xD;
+Everything happens in the :guilabel:`Editor Macros Pad`.&#xD;
+Use the buttons to Start/Stop keystroke recording and the :guilabel:`Play` button, or :kbd:`Alt-=` shortcut` to replay your recording.&#xD;
+Open the pad from the :menuselection:`View --> Tools` menu or use the :kbd:`Control-=` shortcut.&#xD;
+&#xD;
+**RemoveLine**&#xD;
+&#xD;
+When in the Embeditor or Embed Editor use :kbd:`Control-Shift-Y` to remove the current line.&#xD;
+&#xD;
+**CodeSnippets**&#xD;
+&#xD;
+Adding ${PROMPT} to a snippet will cause a dialog to be opened and you can enter a value to be used for replacement in the code snippet.&#xD;
+Subsequently using $PROMPT_VALUE will replace with the text entered in the ${PROMPT}&#xD;"
+       features    = "
+**EditorMacros**&#xD;
+&#xD;
+* Use the :guilabel:`Editor Macros Pad` for all available functions. Shortcut :kbd:`Control-=`&#xD;
+* The last recorded macro is saved on IDE exit and restored on startup.&#xD;
+* Quick playback using the shortcut :kbd:`Alt-=`&#xD;
+* View and edit the recorded keystrokes in the :guilabel:`Editor Macros Pad`. Right-click on an event to open the :menuselection:`Delete` context menu.&#xD;
+* Option to automatically disable Code Completion while recording a new macro.&#xD;
+&#xD;
+**RemoveLine**&#xD;&#xD;
+* Keyboard shortcut to remove current line.&#xD;
+&#xD;
+**CodeSnippets**&#xD;
+&#xD;
+* Adds support for ${PROMPT} and ${PROMPT_VALUE} in code snippets.&#xD;
+* :doc:`Video Demonstration of PROMPT snippet &lt;../articles/video_promptsnippet&gt;`&#xD;"
+       screenshot  = "EditorExtras.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
+
+  <Manifest>
+    <Identity name="ClarionAddins.EditorExtras" version="1.1"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+
+  <Runtime>
+    <Import assembly = "MouseKeyboardLibrary.dll"/>
+    <Import assembly = "EditorExtras.dll"/>
+    <Import assembly = "AssemblyResolve.dll"/>
+    <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
+  </Runtime>
+
+  <BitmapResources file="Resources\BitmapResources.resources"/>
+
+  <!-- 
+  ==================================================================
+  EditorMacros Addin
+  ==================================================================
+  -->
+
+  <Path name = "/SharpDevelop/Workbench/Pads">
+    <Pad id       = "EditorMacrosPad"
+         category = "Tools"
+         title    = "Editor Macros"
+         icon     = "ClarionAddins.Icon.MacroEditor"
+         shortcut = "Control|Oemplus"
+         class    = "ClarionAddins.EditorMacros.EditorMacrosPad"/>
+  </Path>
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
+    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+      <MenuItem 
+        id = "PlayBackCurrentMacro"
+        label = "Playback Current Macro"
+        insertafter = "DuplicateLine"
+        insertbefore = "Insert"
+        shortcut = "Alt|Oemplus"
+        class    = "ClarionAddins.EditorMacros.PlayCurrentMacro"/>
+    </Condition>
+  </Path>
+
+  <!-- 
+  ==================================================================
+  RemoveLine Addin
+  ==================================================================
+  -->
+
+  <Path name = "/SharpDevelop/Workbench/MainMenu/Edit">
+    <Condition name = "WindowActive" activewindow="ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor.ITextEditorControlProvider" action="Disable">
+      <MenuItem id = "RemoveLineCommand"
+                label = "Remove Line"
+                insertafter = "DuplicateLine"
+                insertbefore = "Insert"
+                shortcut = "Control|Shift|Y"
+                class = "ClarionAddins.RemoveLine.RemoveLineCommand"/>
+    </Condition>
+  </Path>
+
+  <Path name="/Workspace/Autostart">
+    <Class id="RemoveLineAssemblyResolve" class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
+  </Path>
+
+  <!-- 
+  ==================================================================
+  CodeSnippets Addin
+  ==================================================================
+  -->
+
+  <Path name="/Workspace/Autostart">
+    <Class id="ClarionAddins.CodeSnippets" class="ClarionAddins.CodeSnippets.RegisterStringTagProvider"/>
+  </Path>
+  
+</AddIn>

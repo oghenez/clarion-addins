@@ -1,0 +1,41 @@
+﻿<AddIn name        = "ImageViewer"
+       author      = "ClarionAddins"
+       copyright   = "Copyright (c) 2012, Brahn Partridge"
+       license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
+       url         = "http://www.clarionaddins.com/addins/ImageViewer.html"
+       description = "View image files inside the IDE."
+       usage       = "Open image files from the solution tree or from the file open menu.&#xD;"
+       features    = "&#xD;
+* Supports BMP, GIF, JPG, and PNG file extensions.&#xD;
+* Open image file from IDE File -- > Open menu&#xD;
+* Add image files to solution and view directly from there&#xD;
+* Open image from viewer into windows associated program&#xD;"
+       screenshot  = "ImageViewer.jpg"
+       source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
+
+  <Manifest>
+    <Identity name="ClarionAddins.ImageViewer" version="1.0"/>
+    <Dependency addin="SharpDevelop" version="2.1"/>
+  </Manifest>
+  
+  <Runtime>
+    <Import assembly = "ImageViewer.dll"/>
+    <Import assembly=":ICSharpCode.SharpDevelop"/>
+  </Runtime>
+  
+  <Path name="/SharpDevelop/Workbench/FileFilter">
+    <FileFilter id   = "ImageFileFilter"
+                name = "Images"
+                extensions   = "*.bmp;*.gif;*.jpg;*.jpeg;*.png"
+                insertbefore = "Boo"/>
+  </Path>
+  
+  <Path name = "/SharpDevelop/Workbench/DisplayBindings">
+    <DisplayBinding id    = "ImageViewer"
+                    class = "ClarionAddins.ImageViewer.ImageViewerDisplayBinding"
+                    insertbefore    = "Text"
+                    fileNamePattern = "\.(bmp|gif|jpe?g|png)$"
+                    languagePattern = "^ImagesFiles$"/>
+  </Path>
+
+</AddIn>

@@ -7,5 +7,11 @@
   <release version="0.2" date="21 May 2011">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
   </release>
+  <release version="0.3" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.4" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
 </release_notes>
 

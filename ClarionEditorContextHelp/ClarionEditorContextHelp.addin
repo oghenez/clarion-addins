@@ -9,7 +9,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.ClarionEditorContextHelp" version="0.3"/>
+    <Identity name="ClarionEdge.ClarionEditorContextHelp" version="0.5"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
     <Dependency addin = "SoftVelocity.ClarionBinding"/>
   </Manifest>
