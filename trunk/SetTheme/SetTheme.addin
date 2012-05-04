@@ -12,7 +12,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SetTheme" version="0.8"/>
+    <Identity name="ClarionEdge.SetTheme" version="0.10"/>
   </Manifest>
 
   <Runtime>
@@ -20,6 +20,9 @@
     <Import assembly = "UserControls.Krypton.PaletteSelectors.dll"/>
     <Import assembly = "AssemblyResolve.dll"/>
     <Import assembly = "SetTheme.dll"/>
+    <Import assembly = "Common.dll">
+      <ConditionEvaluator name = "SetTheme.AddinExists" class = "ClarionAddins.Common.AddinExistsCondition"/>
+    </Import>
   </Runtime>
 
   <Path name="/Workspace/Autostart">
@@ -32,9 +35,19 @@
     <Class id="SetThemeAssemblyResolve" class="ClarionAddins.AssemblyResolve.RegisterHandler"/>
   </Path>
 
-  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ToolsOptions">
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog">
+    <ComplexCondition>
+      <Not>
+        <Condition name = "SetTheme.AddinExists" addin="AboutClarionAddins"/>
+      </Not>
+      <DialogPanel id    = "ClarionAddinsDialog"
+                   label = "Clarion Addins"/>
+    </ComplexCondition>
+  </Path>
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionAddinsDialog">
     <DialogPanel id = "SetThemeOptionsPanel"
-                 label = "Configure IDE Theme"
+                 label = "Set IDE Theme"
                  class = "ClarionEdge.SetTheme.SetThemeOptionsPanel"/>
   </Path>
 

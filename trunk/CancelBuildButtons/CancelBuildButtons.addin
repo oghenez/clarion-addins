@@ -1,6 +1,6 @@
 ﻿<AddIn name        = "CancelBuildButtons"
-       author      = "ClarionEdge"
-       copyright   = "Copyright (c) 2011, Brahn Partridge"
+       author      = "ClarionAddins"
+       copyright   = "Copyright (c) 2012, Brahn Partridge"
        license     = "`Licensed under the MIT license &lt;http://www.opensource.org/licenses/mit-license.php&gt;`_"
        url         = "http://www.clarionaddins.com/addins/CancelBuildButtons.html"
        description = "Adds two buttons, Cancel Build and Cancel Generation, on the toolbar of the output pad."
@@ -13,13 +13,16 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.CancelBuildButtons" version="0.8"/>
+    <Identity name="ClarionEdge.CancelBuildButtons" version="0.10"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
     <Dependency addin = "SoftVelocity.ClarionBinding"/>
   </Manifest>
 
   <Runtime>
     <Import assembly = "CancelBuildButtons.dll"/>
+    <Import assembly = "Common.dll">
+      <ConditionEvaluator name = "CancelBuildButtons.AddinExists" class = "ClarionAddins.Common.AddinExistsCondition"/>
+    </Import>
     <Import assembly = "$SoftVelocity.ClarionBinding/Generator.dll"/>
     <Import assembly = "$SoftVelocity.ClarionBinding/CommonSources.dll"/>
   </Runtime>
@@ -76,10 +79,20 @@
     </Condition>
   </Path>
 
-  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ToolsOptions">
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog">
+    <ComplexCondition>
+      <Not>
+        <Condition name = "CancelBuildButtons.AddinExists" addin="AboutClarionAddins"/>
+      </Not>
+      <DialogPanel id    = "ClarionAddinsDialog"
+                   label = "Clarion Addins"/>
+    </ComplexCondition>
+  </Path>
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionAddinsDialog">
     <DialogPanel id = "CancelBuildOptionsPanel"
-                 label = "Cancel Build/Generate Buttons"
-                 class = "ClarionEdge.CancelBuildButtons.CancelBuildOptionsPanel"/>
+             label = "Cancel Build/Generate Buttons"
+             class = "ClarionEdge.CancelBuildButtons.CancelBuildOptionsPanel"/>
   </Path>
 
 </AddIn>

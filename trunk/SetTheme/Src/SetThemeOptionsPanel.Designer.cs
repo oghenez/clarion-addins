@@ -41,15 +41,20 @@
             this.kryptonGroup1 = new ComponentFactory.Krypton.Toolkit.KryptonGroup();
             this.btnDelete = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomThemes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).BeginInit();
             this.kryptonGroup1.Panel.SuspendLayout();
             this.kryptonGroup1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
+            this.kryptonGroupBox1.Panel.SuspendLayout();
+            this.kryptonGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // disableAddin
             // 
-            this.disableAddin.Location = new System.Drawing.Point(14, 48);
+            this.disableAddin.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.disableAddin.Location = new System.Drawing.Point(11, 11);
             this.disableAddin.Name = "disableAddin";
             this.disableAddin.Size = new System.Drawing.Size(214, 20);
             this.disableAddin.TabIndex = 1;
@@ -68,7 +73,7 @@
             // 
             this.dbSelectTheme.ButtonText = "Select Theme";
             this.dbSelectTheme.KryptonContextMenu = this.kcmDropDown;
-            this.dbSelectTheme.Location = new System.Drawing.Point(14, 74);
+            this.dbSelectTheme.Location = new System.Drawing.Point(11, 37);
             this.dbSelectTheme.Name = "dbSelectTheme";
             this.dbSelectTheme.OverrideFocus.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.False;
             this.dbSelectTheme.Size = new System.Drawing.Size(240, 25);
@@ -96,7 +101,7 @@
             this.dgvCustomThemes.RowHeadersVisible = false;
             this.dgvCustomThemes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomThemes.ShowEditingIcon = false;
-            this.dgvCustomThemes.Size = new System.Drawing.Size(409, 198);
+            this.dgvCustomThemes.Size = new System.Drawing.Size(437, 262);
             this.dgvCustomThemes.StateCommon.Background.Color1 = System.Drawing.SystemColors.Window;
             this.dgvCustomThemes.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.dgvCustomThemes.TabIndex = 4;
@@ -109,19 +114,21 @@
             this.themeName.HeaderText = "Theme Name";
             this.themeName.Name = "themeName";
             this.themeName.ReadOnly = true;
-            this.themeName.Width = 408;
+            this.themeName.Width = 436;
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(14, 105);
+            this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitlePanel;
+            this.kryptonLabel1.Location = new System.Drawing.Point(11, 68);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(146, 20);
+            this.kryptonLabel1.Size = new System.Drawing.Size(227, 29);
             this.kryptonLabel1.TabIndex = 5;
             this.kryptonLabel1.Values.Text = "Manage Custom Themes";
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(14, 337);
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImport.Location = new System.Drawing.Point(11, 373);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(90, 25);
             this.btnImport.TabIndex = 6;
@@ -130,55 +137,76 @@
             // 
             // kryptonGroup1
             // 
-            this.kryptonGroup1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonGroup1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonGroup1.Location = new System.Drawing.Point(14, 131);
+            this.kryptonGroup1.Location = new System.Drawing.Point(11, 103);
             this.kryptonGroup1.Name = "kryptonGroup1";
             // 
             // kryptonGroup1.Panel
             // 
             this.kryptonGroup1.Panel.Controls.Add(this.dgvCustomThemes);
-            this.kryptonGroup1.Size = new System.Drawing.Size(411, 200);
+            this.kryptonGroup1.Size = new System.Drawing.Size(439, 264);
             this.kryptonGroup1.TabIndex = 7;
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(110, 336);
+            this.btnDelete.Location = new System.Drawing.Point(107, 373);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 26);
+            this.btnDelete.Size = new System.Drawing.Size(90, 25);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Values.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(305, 337);
+            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonButton1.Location = new System.Drawing.Point(330, 373);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(119, 25);
             this.kryptonButton1.TabIndex = 9;
             this.kryptonButton1.Values.Text = "Palette Designer";
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
+            // kryptonGroupBox1
+            // 
+            this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonGroupBox1.Location = new System.Drawing.Point(5, 5);
+            this.kryptonGroupBox1.Name = "kryptonGroupBox1";
+            // 
+            // kryptonGroupBox1.Panel
+            // 
+            this.kryptonGroupBox1.Panel.Controls.Add(this.disableAddin);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.dbSelectTheme);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonLabel1);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonGroup1);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.btnImport);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.btnDelete);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.kryptonButton1);
+            this.kryptonGroupBox1.Panel.Padding = new System.Windows.Forms.Padding(8);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(465, 415);
+            this.kryptonGroupBox1.TabIndex = 10;
+            this.kryptonGroupBox1.Values.Heading = "";
+            // 
             // SetThemeOptionsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.kryptonButton1);
-            this.Controls.Add(this.dbSelectTheme);
-            this.Controls.Add(this.disableAddin);
-            this.Controls.Add(this.kryptonLabel1);
-            this.Controls.Add(this.kryptonGroup1);
-            this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.kryptonGroupBox1);
             this.Name = "SetThemeOptionsPanel";
-            this.Size = new System.Drawing.Size(438, 489);
+            this.Padding = new System.Windows.Forms.Padding(5);
+            this.Size = new System.Drawing.Size(475, 425);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomThemes)).EndInit();
             this.kryptonGroup1.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).EndInit();
             this.kryptonGroup1.ResumeLayout(false);
+            this.kryptonGroupBox1.Panel.ResumeLayout(false);
+            this.kryptonGroupBox1.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
+            this.kryptonGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -194,5 +222,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelete;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn themeName;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
     }
 }

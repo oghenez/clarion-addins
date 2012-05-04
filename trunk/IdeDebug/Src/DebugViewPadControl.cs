@@ -63,28 +63,50 @@ namespace ClarionAddins.IdeDebug
             WS_VSCROLL = 0x00200000;
         }
 
+        BackgroundWorker bw = new BackgroundWorker();
         public DebugViewPadControl()
         {
             InitializeComponent();
-            AttachDebugView();
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.RunWorkerAsync();
         }
 
-        private void AttachDebugView()
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            _dbgViewWin = (IntPtr)e.Result;
+            SetParent(_dbgViewWin, panel1.Handle);
+
+            // Remove border and whatnot
+            SetWindowLong(_dbgViewWin, GWL_STYLE, WindowStyles.WS_VISIBLE);
+
+            // Move the window to overlay it on this window
+            MoveWindow(_dbgViewWin, 0, 0, this.Width, this.Height, true);
+        }
+
+        void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             string debugViewPath = PropertyService.Get("ClarionAddins.IdeDebug.tbDebugViewPath", "");
             if (debugViewPath != "" && File.Exists(debugViewPath) == true)
             {
                 groupBox1.Visible = false;
-                Process p = Process.Start(debugViewPath, "/f");
+                Process p = null;
+                Process[] processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(debugViewPath));
+                if (processes.Length > 0)
+                {
+                    p = processes[0];
+                    if (p.MainWindowHandle == IntPtr.Zero)
+                    {
+                        p.Kill();
+                        p = null;
+                    }
+                }
+                if (p == null)
+                {
+                    p = Process.Start(debugViewPath, "/f");
+                }
                 p.WaitForInputIdle();
-                _dbgViewWin = p.MainWindowHandle;
-                SetParent(_dbgViewWin, panel1.Handle);
-
-                // Remove border and whatnot
-                SetWindowLong(_dbgViewWin, GWL_STYLE, WindowStyles.WS_VISIBLE);
-
-                // Move the window to overlay it on this window
-                MoveWindow(_dbgViewWin, 0, 0, this.Width, this.Height, true);
+                e.Result = p.MainWindowHandle;
             }
         }
 
@@ -95,9 +117,8 @@ namespace ClarionAddins.IdeDebug
                 MoveWindow(_dbgViewWin, 0, 0, this.Width, this.Height, true);
             }
             //base.OnResize(e);
-
         }
-        
+
         protected override void OnHandleDestroyed(EventArgs e)
         {
             // Stop the application
@@ -130,7 +151,7 @@ namespace ClarionAddins.IdeDebug
             {
                 tbDebugViewPath.Text = ofd.FileName;
                 PropertyService.Set("ClarionAddins.IdeDebug.tbDebugViewPath", tbDebugViewPath.Text);
-                AttachDebugView();
+                bw.RunWorkerAsync();
             }
         }
         

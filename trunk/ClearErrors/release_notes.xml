@@ -19,5 +19,11 @@
   <release version="0.6" date="2 March 2012">
     <note type="FEATURE">:guilabel:`Clear Errors` button removed. This is now available by default in C8.</note>
   </release>
+  <release version="0.7" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.8" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
 </release_notes>
 

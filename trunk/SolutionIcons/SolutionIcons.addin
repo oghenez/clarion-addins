@@ -11,7 +11,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SolutionIcons" version="0.5"/>
+    <Identity name="ClarionEdge.SolutionIcons" version="0.8"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -36,6 +36,18 @@
           resource   = "Icons.dvRun" />
     <Icon id = "ClarionICOIcon"
           extensions = ".ico"
+          resource   = "Icons.Silk.image" />
+    <Icon id = "ClarionBMPIcon"
+          extensions = ".bmp"
+          resource   = "Icons.Silk.image" />
+    <Icon id = "ClarionJPGIcon"
+          extensions = ".jpg"
+          resource   = "Icons.Silk.image" />
+    <Icon id = "ClarionpngIcon"
+          extensions = ".png"
+          resource   = "Icons.Silk.image" />
+    <Icon id = "ClarionGIFIcon"
+          extensions = ".gif"
           resource   = "Icons.Silk.image" />
     <Icon id = "ClarionAIcon"
           extensions = ".a"

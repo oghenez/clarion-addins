@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CG.Controls.Grid">
+      <HintPath>..\..\..\..\Program Files\PFGrid_1.1.8.3\CG.Controls.Grid.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.Core">
       <HintPath>..\..\..\..\..\..\..\Clarion7\bin\ICSharpCode.Core.dll</HintPath>
       <Private>False</Private>
@@ -42,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -85,7 +89,12 @@
       <DependentUpon>CancelBuildOptionsPanel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\ClarionAddins\Common\Common.csproj">
+      <Project>{836559D7-CBB6-40F6-85C7-09DE994EDAE6}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

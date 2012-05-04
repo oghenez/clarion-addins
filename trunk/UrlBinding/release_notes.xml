@@ -6,4 +6,10 @@
   <release version="0.2" date="14 March 2012">
     <note type="INFO">First public release</note>
   </release>
+  <release version="0.3" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.4" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
 </release_notes>

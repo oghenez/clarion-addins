@@ -10,4 +10,13 @@
   <release version="0.5" date="13 August 2011">
     <note type="CHANGE">I have added icons for a few more extensions: \*.a, \*.c, \*.exp, \*.htm, \*.html, \*.css, \*.bat, \*.api, \*.txt</note>
   </release>
+  <release version="0.6" date="18 April 2012">
+    <note type="CHANGE">Now has ClarionAddins global addin dependency.</note>
+  </release>
+  <release version="0.7" date="20 April 2012">
+    <note type="CHANGE">Added some more icons for image files.</note>
+  </release>
+  <release version="0.8" date="25 April 2012">
+    <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
+  </release>
 </release_notes>

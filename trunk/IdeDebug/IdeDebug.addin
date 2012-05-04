@@ -4,7 +4,7 @@
        license     = "Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php"
        url         = "http://www.clarionaddins.com/addins/IdeDebug.html"
        description = "Toggle QuietMode and Enable IDE Debugging and embed a view for OutputDebugString."
-       usage       = "Configuration is found in :menuselection:`Tools --> Options --> General --> Ide Debugging`.&#xD;"
+       usage       = "Configuration is found in :menuselection:`Tools --> Options --> ClarionAddins --> Ide Debugging`.&#xD;"
        features    = "&#xD;
 * Turn OFF 'quiet mode' - this causes error messages to show instead of being written to XLOG files.&#xD;
 * Generate Extra Debug Information - useful messages when developing addins.&#xD;
@@ -16,16 +16,29 @@
 
   <Runtime>
     <Import assembly = "IdeDebug.dll"/>
+    <Import assembly = "Common.dll">
+      <ConditionEvaluator name = "IdeDebug.AddinExists" class = "ClarionAddins.Common.AddinExistsCondition"/>
+    </Import>
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionAddins.IdeDebug" version="0.5"/>
+    <Identity name="ClarionAddins.IdeDebug" version="0.9"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 
   <BitmapResources file="Resources\BitmapResources.resources"/>
-  
-  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/UIOptions">
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog">
+    <ComplexCondition>
+      <Not>
+        <Condition name = "IdeDebug.AddinExists" addin="AboutClarionAddins"/>
+      </Not>
+      <DialogPanel id    = "ClarionAddinsDialog"
+                   label = "Clarion Addins"/>
+    </ComplexCondition>
+  </Path>
+
+  <Path name = "/SharpDevelop/Dialogs/OptionsDialog/ClarionAddinsDialog">
     <DialogPanel id = "IdeDebugOptionsPanel"
                  label = "Ide Debugging"
                  class = "ClarionAddins.IdeDebug.OptionsPanel"/>

@@ -14,7 +14,7 @@ Double clicking on this file from the solution explorer will open the URL contai
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionAddins.UrlBinding" version="0.2"/>
+    <Identity name="ClarionAddins.UrlBinding" version="0.4"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
   
