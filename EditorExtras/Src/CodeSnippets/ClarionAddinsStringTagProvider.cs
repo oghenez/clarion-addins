@@ -23,7 +23,10 @@ namespace ClarionAddins.CodeSnippets
 
         private string GetPromptResult()
         {
-            string promptVal = MessageService.ShowInputBox("Code Snippet", "Enter snippet value:", "");
+            string promptVal = MessageService.ShowInputBox("Code Snippet", "Enter PROMPT value:", "");
+            if (promptVal == null)
+                promptVal = String.Empty;
+
             PropertyService.Set("ClarionAddins.CodeSnippets.Prompt", promptVal);
             return promptVal;
         }

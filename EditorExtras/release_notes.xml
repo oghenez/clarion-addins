@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <release_notes>
-	<release version="0.1" date="09 Nov 2010" component="EditorMacros">
-		<note type="INFO">Public Release</note>
-		<note type="BLOG">`Editor Macros addin &lt;http://www.clarionedge.com/clarion/addins/editor-macros-addin.html&gt;`_</note>
-	</release>
-	<release version="0.2" date="04 June 2011" component="EditorMacros">
+  <release version="0.1" date="09 Nov 2010" component="EditorMacros">
+    <note type="INFO">Public Release</note>
+    <note type="BLOG">`Editor Macros addin &lt;http://www.clarionedge.com/clarion/addins/editor-macros-addin.html&gt;`_</note>
+  </release>
+  <release version="0.2" date="04 June 2011" component="EditorMacros">
     <note type="CHANGE">Preparing for public release of source code. Making the VS project work without dependencies, adding docs, etc</note>
     <note type="INFO">This project still has some dependencies on the Krypton Toolkit which I will sort out soon</note>
   </release>
@@ -86,5 +86,8 @@
   <release version="1.1" date="4 May 2012">
     <note type="FEATURE">Added support for PROMPT_VALUE code snippet tag. Use this after a PROMPT tag to insert the value entered in the prompt.</note>
   </release>
-  
+  <release version="1.2" date="4 May 2012">
+    <note type="CHANGE">Snippet PROMPT dialog text changed.</note>
+    <note type="CHANGE">Cancelling from the snippet PROMPT now returns a String.Empty instead of null.</note>
+  </release>
 </release_notes>
