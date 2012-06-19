@@ -19,4 +19,7 @@
   <release version="0.8" date="25 April 2012">
     <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
   </release>
+  <release version="0.9" date="7 June 2012">
+    <note type="CHANGE">Added a new icon for INC files.</note>
+  </release>
 </release_notes>

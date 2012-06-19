@@ -174,18 +174,20 @@ namespace ClarionEdge.PropertyGridExtras
 
         void grid_SelectedObjectChanged(object sender, SelectedObjectChangedEventArgs e)
         {
-            PGHelper.Log("");
             _selectedGridState = new PropertyGridState();
-
             if (Enabled() == false)
                 return;
 
+            if (_selectedGridState == null || PropertyPad.Instance == null || PropertyPad.Grid == null)
+            {
+                // For some reason this appears to happen occasionally 
+                // I think it is when right clicking in the solution explorer but so far it is not too clear
+                // SoftVelocity anyway, bail out... nothing here we CanCloseSolutionConditionEvaluator use yet!
+                return;
+            }
             // What is being shown in the PropertyPad has changed. Lets reload the state from disc
             _selectedGridState.ReloadState(PropertyPad.Grid, this);
-            //PropertyPad.Grid.s
 
-            PGHelper.Log("WorkbenchSingleton.Workbench.ActiveContent=" + WorkbenchSingleton.Workbench.ActiveContent.ToString());
-            PGHelper.Log("PropertyPad.Grid.SelectedObject=" + PropertyPad.Grid.SelectedObject.ToString());
             if (WorkbenchSingleton.Workbench.ActiveContent == null ||
                 WorkbenchSingleton.Workbench.ActiveContent is ClarionDesignerView)
             {
@@ -194,14 +196,13 @@ namespace ClarionEdge.PropertyGridExtras
             }
 
             if (sender == null ||
+                PropertyPad.Grid.SelectedObject == null ||
                 PropertyPad.Grid.SelectedObject is SoftVelocity.ClarionNet.WindowDesigner.Window ||
                 PropertyPad.Grid.SelectedObject is SoftVelocity.ClarionNet.Designer.SectionControls.BaseDesignerControl)
             {
                 _designerSW.Reset();
                 _designerSW.Start();
             }
-
-
         }
 
     }

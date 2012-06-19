@@ -22,7 +22,7 @@
   </Runtime>
 
   <Manifest>
-    <Identity name="ClarionAddins.IdeDebug" version="0.9"/>
+    <Identity name="ClarionAddins.IdeDebug" version="0.10"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 

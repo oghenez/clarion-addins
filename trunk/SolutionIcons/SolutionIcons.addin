@@ -11,7 +11,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SolutionIcons" version="0.8"/>
+    <Identity name="ClarionEdge.SolutionIcons" version="0.9"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -76,5 +76,8 @@
     <Icon id = "ClarionTXTIcon"
           extensions = ".txt"
           resource   = "Icons.Silk.text" />
+    <Icon id = "ClarionINCIcon"
+          extensions = ".inc"
+          resource   = "Icons.Silk.inc" />
   </Path>
 </AddIn>

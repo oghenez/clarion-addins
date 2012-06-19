@@ -16,7 +16,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.PropertyGridExtras" version="0.18"/>
+    <Identity name="ClarionEdge.PropertyGridExtras" version="0.21"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 

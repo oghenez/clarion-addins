@@ -39,7 +39,7 @@ Subsequently using $PROMPT_VALUE will replace with the text entered in the ${PRO
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionAddins.EditorExtras" version="1.1"/>
+    <Identity name="ClarionAddins.EditorExtras" version="1.2"/>
     <Dependency addin="SharpDevelop" version="2.1"/>
   </Manifest>
 

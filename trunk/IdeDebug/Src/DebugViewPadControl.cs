@@ -15,7 +15,7 @@ namespace ClarionAddins.IdeDebug
 {
     public partial class DebugViewPadControl : UserControl
     {
-        IntPtr _dbgViewWin;
+        IntPtr _dbgViewWin = IntPtr.Zero;
 
         [DllImport("user32.dll")]
         static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
@@ -74,14 +74,17 @@ namespace ClarionAddins.IdeDebug
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            _dbgViewWin = (IntPtr)e.Result;
-            SetParent(_dbgViewWin, panel1.Handle);
+            if (e.Result != null)
+            {
+                _dbgViewWin = (IntPtr)e.Result;
+                SetParent(_dbgViewWin, panel1.Handle);
 
-            // Remove border and whatnot
-            SetWindowLong(_dbgViewWin, GWL_STYLE, WindowStyles.WS_VISIBLE);
+                // Remove border and whatnot
+                SetWindowLong(_dbgViewWin, GWL_STYLE, WindowStyles.WS_VISIBLE);
 
-            // Move the window to overlay it on this window
-            MoveWindow(_dbgViewWin, 0, 0, this.Width, this.Height, true);
+                // Move the window to overlay it on this window
+                MoveWindow(_dbgViewWin, 0, 0, this.Width, this.Height, true);
+            }
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
