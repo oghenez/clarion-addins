@@ -23,6 +23,20 @@
   <release version="0.7" date="25 April 2012">
     <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
   </release>
-
+  <release version="0.8" date="22 June 2012">
+    <note type="FEATURE">`SearchPadExtras - Include [Find Next] button on embeditor toolbar &lt;http://support.fushnisoft.com/clarionaddins/issues/52&gt;`_</note>
+  </release>
+  <release version="0.9" date="19 July 2012">
+    <note type="FEATURE">`Feature request #55 - SearchPadExtras - search only in filled embeds &lt;http://support.fushnisoft.com/clarionaddins/issues/55&gt;`_</note>
+    <note type="CHANGE">The Find Next button on the embed editor/embeditor toolbar also uses the new search modes.</note>
+    <note type="CHANGE">Clarion 7 is no longer supported as of this version!</note>
+  </release>
+  <release version="0.10" date="20 July 2012">
+    <note type="FIX">Combo box now registers a new selection from the drop list correctly. This means you can select an item and immediately hit Find Next and it will actually work properly</note>
+    <note type="FIX">Combo box now registers the search string on los of focus so if you TAB out of the control Find Next will work correctly</note>
+    <note type="CHANGE">New toolbar icons instead of the built in ones.</note>
+    <note type="FIX">Icons are now 24x24 to match the default toolbar size.</note>
+    <note type="FIX">Checks in the options drop down are now scaled correctly when toolbars are at the default size</note>
+  </release>
 </release_notes>
 

@@ -4,6 +4,7 @@ using ICSharpCode.SharpDevelop.Gui;
 using ICSharpCode.SharpDevelop.Project;
 using ICSharpCode.SharpDevelop.DefaultEditor.Gui.Editor;
 using System.Drawing;
+using ICSharpCode.SharpDevelop;
 
 namespace ClarionEdge.MainToolbarExtras
 {
@@ -27,6 +28,18 @@ namespace ClarionEdge.MainToolbarExtras
             WorkbenchSingleton.Workbench.ActiveWorkbenchWindowChanged += new EventHandler(Workbench_ActiveWorkbenchWindowChanged);
             ProjectService.SolutionClosed += new EventHandler(ProjectService_SolutionClosed);
             ProjectService.SolutionLoaded += new EventHandler<SolutionEventArgs>(ProjectService_SolutionLoaded);
+            WorkbenchSingleton.Workbench.ViewClosed += new ViewContentEventHandler(Workbench_ViewClosed);
+            WorkbenchSingleton.Workbench.ViewOpened += new ViewContentEventHandler(Workbench_ViewOpened);
+        }
+
+        void Workbench_ViewOpened(object sender, ViewContentEventArgs e)
+        {
+            StartPageCommands.Refresh();
+        }
+
+        void Workbench_ViewClosed(object sender, ViewContentEventArgs e)
+        {
+            StartPageCommands.Refresh();
         }
 
         void ProjectService_SolutionLoaded(object sender, SolutionEventArgs e)

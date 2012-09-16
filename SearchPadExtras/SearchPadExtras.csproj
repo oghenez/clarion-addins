@@ -32,26 +32,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonSources">
+      <HintPath>..\..\..\..\Clarion8\bin\Addins\BackendBindings\ClarionBinding\Common\CommonSources.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ICSharpCode.Core">
-      <HintPath>..\..\..\..\..\..\..\Clarion7\bin\ICSharpCode.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Clarion8\bin\ICSharpCode.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpDevelop">
-      <HintPath>..\..\..\..\..\..\..\Clarion7\bin\ICSharpCode.SharpDevelop.dll</HintPath>
+      <HintPath>..\..\..\..\Clarion8\bin\ICSharpCode.SharpDevelop.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.TextEditor">
-      <HintPath>..\..\..\..\..\..\..\Clarion7\bin\ICSharpCode.TextEditor.dll</HintPath>
+      <HintPath>..\..\..\..\Clarion8\bin\ICSharpCode.TextEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\SearchPadExtrasCommands.cs" />
+    <Compile Include="Src\SearchToolbarCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="release_notes.xml">
@@ -67,6 +71,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BitmapResources.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

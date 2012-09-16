@@ -11,9 +11,9 @@ namespace ClarionEdge.MainToolbarExtras
         {
             // Only attempt to refresh the start page on these conditions. 
             // If CloseStartPageOnSolutionOpening == true then there is no point in trying to refresh it because it will not be there!
-            if (PropertyService.Get<bool>("SharpDevelop.CloseStartPageOnSolutionOpening", true) == true ||
-                PropertyService.Get<bool>("ClarionEdge.MainToolbarExtras.AutoRefreshStartPage", true) == false)
-                return;
+            //if (PropertyService.Get<bool>("SharpDevelop.CloseStartPageOnSolutionOpening", true) == true ||
+            //    PropertyService.Get<bool>("ClarionEdge.MainToolbarExtras.AutoRefreshStartPage", true) == false)
+            //    return;
 
             // Find the StartPage view and refresh it!
             foreach (IViewContent current in WorkbenchSingleton.Workbench.ViewContentCollection)
@@ -21,7 +21,7 @@ namespace ClarionEdge.MainToolbarExtras
                 BrowserPane browserPane = current as BrowserPane;
                 if (browserPane != null && browserPane.Url.Scheme == "startpage")
                 {
-                    browserPane.Load("startpage://project/");
+                    browserPane.Load(browserPane.Url.OriginalString);
                     LoggingService.Debug("attempting to refresh startpage!");
                 }
             }

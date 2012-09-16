@@ -21,7 +21,7 @@
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.MainToolbarExtras" version="0.19"/>
+    <Identity name="ClarionEdge.MainToolbarExtras" version="0.21"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
   
@@ -217,7 +217,10 @@
               class="ClarionEdge.MainToolbarExtras.UpdateOtherToolbars"/>
 
     <MenuItem id = "MTESeparator2" type = "Separator" />
-    
+    <MenuItem id="closeStartPageCheckBox"
+              label="${res:Dialog.Options.IDEOptions.ProjectAndSolutionOptions.CloseStartPage}"
+              type="CheckBox"
+              class="ClarionEdge.MainToolbarExtras.CloseStartPageCheckOption"/>
     <MenuItem id="ReOpenStartPage"
               label="Re-open StartPage when solution is closed"
               type="CheckBox"

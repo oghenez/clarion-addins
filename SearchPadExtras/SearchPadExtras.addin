@@ -11,12 +11,13 @@
 * Find Next&#xD;
 * Replace&#xD;
 * Quick Find: use :kbd:`Alt-Q` to move focus into quick find combo box on the **search pad** toolbar.&#xD;
-* Quick Find: use :kbd:`Alt-Q` to move focus into quick find combo box on the **Embeditor/Embed Editor** toolbar.&#xD;"
+* Quick Find: use :kbd:`Alt-Q` to move focus into quick find combo box on the **Embeditor/Embed Editor** toolbar.&#xD;
+* Quick Find Search Modes: Standard, Embed code only and Generated code only&#xD;"
        screenshot  = "SearchPadExtras.jpg"
        source      = "&lt;http://code.google.com/p/clarion-addins/&gt;`_">
 
   <Manifest>
-    <Identity name="ClarionEdge.SearchPadExtras" version="0.7"/>
+    <Identity name="ClarionEdge.SearchPadExtras" version="0.10"/>
     <Dependency addin = "SharpDevelop" version = "2.1"/>
   </Manifest>
 
@@ -26,6 +27,13 @@
     <Import assembly=":ICSharpCode.TextEditor"/>
   </Runtime>
 
+  <BitmapResources file="Resources\BitmapResources.resources" />
+
+  <!-- This was handy while debugging 
+  <Path name ="/SharpDevelop/Workbench/ToolBar/Standard">
+  </Path>
+  -->
+
   <Path name ="/SoftVelocity/Clarion/ToolBar/EmbedEditor">
     <ToolbarItem id = "SearchPadExtrasSeparator" type  = "Separator"/>
     <!-- These are duplicates of those found in the file clarion.addin 
@@ -33,19 +41,49 @@
     <ToolbarItem id      = "SearchPadExtras.SearchTermLabel"
                  type    = "Label"
                  label = "&amp;Quick Find" />
-    <ToolbarItem id = "SearchPadExtrasSeparator2" type  = "Separator"/>
+    
     <ToolbarItem id      = "SearchPadExtras.SearchTerm"
                  type    = "ComboBox"
                  shortcut = "Control|Shift|F"
-                 class   = "SearchAndReplace.FindComboBox"/>
+                 tooltip = "Quick Find (Alt + Q)"
+                 class   = "ClarionEdge.SearchPadExtras.FindComboBox"/>
+
+    <ToolbarItem id = "QuickFindOptions"
+             label = ""
+             type    = "DropDownButton"
+             tooltip = "Quick find options..."
+             icon = "Icons.snowish.tools"
+             class = "ClarionEdge.SearchPadExtras.QuickFindOptions">
+
+      <MenuItem id = "QuickFindOption.Standard"
+                type  = "CheckBox"
+                label = "Standard Search"
+                class =" ClarionEdge.SearchPadExtras.StandardSearch"/>
+      <MenuItem id = "QuickFindOption.Embeds"
+                label = "Embed Code Only"
+                type  = "CheckBox"
+                class =" ClarionEdge.SearchPadExtras.EmbedSearch"/>
+      <MenuItem id = "QuickFindOption.Generated"
+                label = "Generated Code Only"
+                type  = "CheckBox"
+                class =" ClarionEdge.SearchPadExtras.GeneratedSearch"/>
+
+    </ToolbarItem>
+
+    <ToolbarItem id = "FindNext"
+              label = "${res:XML.MainMenu.SearchMenu.FindNext}"
+              icon = "Icons.snowish.find_next"
+              shortcut = "F3"
+              class = "ClarionEdge.SearchPadExtras.FindNext"/>
+    
     <ToolbarItem id = "Find"
               label = "${res:XML.MainMenu.SearchMenu.Find}"
-              icon = "Icons.16x16.FindIcon"
+              icon = "Icons.snowish.find"
               shortcut = "Control|F"
               class = "SearchAndReplace.Find"/>
     <ToolbarItem id = "Replace"
               label = "${res:XML.MainMenu.SearchMenu.Replace}"
-              icon = "Icons.16x16.ReplaceIcon"
+              icon = "Icons.snowish.replace"
               shortcut = "Control|R"
               class = "SearchAndReplace.Replace"/>
   </Path>
@@ -69,7 +107,7 @@
     </Condition>
     <ToolbarItem id = "Find"
               label = "${res:XML.MainMenu.SearchMenu.Find}"
-              icon = "Icons.16x16.FindIcon"
+              icon = "Icons.snowish.find"
               shortcut = "Control|F"
               class = "SearchAndReplace.Find"/>
     <ToolbarItem id      = "SearchPadExtras.SearchTermLabel"
@@ -83,12 +121,12 @@
 
     <ToolbarItem id = "FindNext"
               label = "${res:XML.MainMenu.SearchMenu.FindNext}"
-              icon = "Icons.16x16.FindNextIcon"
+              icon = "Icons.snowish.find_next"
               shortcut = "F3"
               class = "SearchAndReplace.FindNext"/>
     <ToolbarItem id = "Replace"
               label = "${res:XML.MainMenu.SearchMenu.Replace}"
-              icon = "Icons.16x16.ReplaceIcon"
+              icon = "Icons.snowish.replace"
               shortcut = "Control|R"
               class = "SearchAndReplace.Replace"/>
   </Path>
