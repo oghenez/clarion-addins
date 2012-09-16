@@ -117,6 +117,21 @@ namespace ClarionEdge.MainToolbarExtras
         }
     }
 
+    class CloseStartPageCheckOption : AbstractCheckableMenuCommand
+    {
+        public override bool IsChecked
+        {
+            get
+            {
+                return PropertyService.Get<bool>("SharpDevelop.CloseStartPageOnSolutionOpening", true);
+            }
+            set
+            {
+                PropertyService.Set<bool>("SharpDevelop.CloseStartPageOnSolutionOpening", value);
+            }
+        }
+    }
+
     class ReOpenStartPage : AbstractCheckableMenuCommand
     {
         public override bool IsChecked

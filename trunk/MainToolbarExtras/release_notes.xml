@@ -66,4 +66,11 @@
   <release version="0.19" date="25 April 2012">
     <note type="CHANGE">Removed ClarionAddins global addin dependency.</note>
   </release>
+  <release version="0.20" date="23 July 2012">
+    <note type="CHANGE">StartPage is now reloaded on both ViewOpened and ViewClosed workbench events.</note>
+    <note type="CHANGE">StartPage is now reloaded using the current URI rather than the "home" page. Not sure why this wasn't always the case!</note>
+  </release>
+  <release version="0.21" date="24 July 2012">
+    <note type="FEATURE">The Main toolbar context menu now duplicates the CloseStartPageOnSolutionOpening option from the Project and Solution options panel.</note>
+  </release>
 </release_notes>
